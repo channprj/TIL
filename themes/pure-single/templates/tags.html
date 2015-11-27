@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block title %}All Tags | {{ super() }} {% endblock title %}
+{% block pagetitle %} All Tags {% endblock pagetitle %}
+
+{% block content %}
+  <div class="pure-u-1">
+    <div class="content">
+      <h1 class="content-subhead">All Tags</h1>
+      <ul>
+        
+        {% for tag, articles in tags|sort %}
+          <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }}) </li>
+        {% endfor %}
+        {% include 'footer.html' %}
+
+      </ul>
+    </div>
+  </div>
+{% endblock %}

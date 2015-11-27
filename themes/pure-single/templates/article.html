@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block sidebar %}{% if article.sidebarimage %}{{ article.sidebarimage }}{% else %}{{ super() }}{% endif %}{% endblock %}
+{% block title %}{{ article.title|striptags }} // {{ super() }}{% endblock title %}
+
+{% block head_css %}
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css">
+{% endblock %}
+
+{% block head_js %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+    {% if article and article.latex %}
+        {{ article.latex }}
+    {% endif %}
+    {% if page and page.latex %}
+        {{ page.latex }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>{{ article.title }}</h1>
+                        <p class="post-meta">
+                            // under {% for tag in article.tags %}
+                                <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                            {% endfor %}
+                        </p>
+                </header>
+            </section>
+            {{ article.content }}
+            <a href="#" class="go-top">Go Top</a>
+            {% include 'disqus.html' %}
+            {% include 'footer.html' %}
+        </div>
+    </div>
+{% endblock  %}
