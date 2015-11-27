@@ -2,6 +2,20 @@ language: python
 python:
   - "3.4"
 
-install: "pip install -r requirements.txt"
+install:
+  - pip install -r requirements.txt -q
+  - npm install -g less
 
-script: nosetests
+script:
+  - git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git output
+  - make publish
+
+after_success:
+  - cd output
+  - git add -f .
+  - git commit -a -m "Add new content"
+  - git push https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git master --quiet
+
+branches:
+  only:
+    - master
