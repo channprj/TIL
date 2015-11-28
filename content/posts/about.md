@@ -10,4 +10,4 @@ Summary: 블로그를 소개합니다.
 
 이 블로그는 Pelican 3.6.4와 Github Pages를 사용하였습니다.
 
-travis-ci 테스트.
+travis-ci 테스트2.
