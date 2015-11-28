@@ -3,7 +3,8 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'CHANN'
-SITENAME = 'GIT TO GEEK'
+SITENAME = 'CHANN World'
+SITESUBTITLE = 'Novice Programmer'
 SITEURL = ''
 DISQUS_SITENAME = u'githubs'
 
@@ -12,7 +13,9 @@ DISQUS_SITENAME = u'githubs'
 
 ### THEME SETTING
 THEME = 'themes/pure-single'
-# THEME = 'themes/pelican-bootstrap3'
+# THEME = 'themes/replika'
+# BOOTSTRAP_NAVBAR_INVERSE = True
+# DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 COVER_IMG_URL = 'http://blog.chann.kr/content/images/2015/11/photo-1421757295538-9c80958e75b0-1.jpeg'
 
 
@@ -37,7 +40,9 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/channprj'),
-          ('twitter-square', 'https://twitter.com/chann_kr'),
+          ('twitter', 'https://twitter.com/chann_kr'),
+          ('facebook', 'https://fb.com/channprj'),
+          ('resume', 'https://chann.kr'),
 )
 
 DEFAULT_PAGINATION = 10
