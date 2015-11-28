@@ -19,8 +19,7 @@ install:
 - npm install -g less
 
 before_script:
-- git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git
-  output
+- git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git output
 
 script:
 - make publish
