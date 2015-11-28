@@ -3,6 +3,8 @@
 *.backup
 __pycache__
 *.pyc
+*.swp
+output/
 
 ###
 
