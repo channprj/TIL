@@ -1,28 +1,28 @@
 language: python
 python:
-	- "3.4"
+  - "3.4"
 
 install:
-	- pip install -r requirements.txt -q
-	- npm install -g less
+  - pip install -r requirements.txt -q
+  - npm install -g less
 
 script:
-    - git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git output
-    - cd output
-	- tar -cf auto.tar CNAME upload.sh .git/
-	- mv auto.tar ..
-    - make publsh
+  - git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git output
+  - cd output
+  - tar -cf auto.tar CNAME upload.sh .git/
+  - mv auto.tar ..
+  - make publsh
 
 after_success:
-	- mv auto.tar output/
-	- cd output
-	- tar -xf auto.tar
-	- rm auto.tar
-    - git add -f .
-    - git commit -a -m "Contents updated from github using travis-ci."
-    - git push https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git master --quiet
-	- cd ..
+  - mv auto.tar output/
+  - cd output
+  - tar -xf auto.tar
+  - rm auto.tar
+  - git add -f .
+  - git commit -a -m "Contents updated from github using travis-ci."
+  - git push https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git master --quiet
+  - cd ..
 
 branches:
-    only:
-		- master
+  only:
+    - master
