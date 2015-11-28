@@ -11,6 +11,7 @@ script:
   - cd output
   - tar -cf auto.tar CNAME upload.sh .git/
   - mv auto.tar ..
+  - cd ..
   - make publsh
 
 after_success:
