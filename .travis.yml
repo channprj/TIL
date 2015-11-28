@@ -8,7 +8,7 @@ install:
 
 script:
   - git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git output
-  - make publish
+  - pelican -s pelicanconf.py
 
 after_success:
   - cd output
