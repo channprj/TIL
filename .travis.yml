@@ -2,6 +2,13 @@ language: python
 python:
   - "3.4"
 
+env:
+  global:
+  - GIT_COMMITTER_NAME=channprj
+  - GIT_COMMITTER_EMAIL=chann@chann.kr
+  - GIT_AUTHOR_NAME=channprj
+  - GIT_AUTHOR_EMAIL=chann@chann.kr
+
 before_install:
   - git config --global user.email "chann@chann.kr"
   - git config --global user.name "CHANN"
@@ -10,14 +17,16 @@ install:
   - pip install -r requirements.txt -q
   - npm install -g less
 
-script:
+before_script:
   - git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git output
+
+script:
   - make publish
 
 after_success:
   - cd output
-  - git add -f .
-  - git commit -a -m "Contents updated from github using travis-ci."
+  - git add -A
+  - git commit -m "Contents updated from github using travis-ci."
   - git push https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git master --quiet
 
 branches:
