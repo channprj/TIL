@@ -1,5 +1,4 @@
 ### personal setting
-output/
 *.original
 *.backup
 __pycache__
