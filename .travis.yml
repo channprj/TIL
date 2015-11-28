@@ -1,6 +1,7 @@
 language: python
 python:
 - '3.4'
+
 env:
   global:
   - GIT_COMMITTER_NAME=channprj
@@ -8,22 +9,31 @@ env:
   - GIT_AUTHOR_NAME=channprj
   - GIT_AUTHOR_EMAIL=chann@chann.kr
   - secure: bClXOjGwxmes6M19M3/dr8slkhiS6heY8Mv8RG2W/6IZoXWhvmevs2zNO9RuKuOTJ6xzNf4tH8KMGJdDEWAkkYedBreDApHqNX9acbTZi3Kb2p76UnEpVhuc0YX1hii0INWHmzsxcxVJqGqCWSGd0v29oV8FY5hXibHdxFjDOI9zd9aeLRMjEs47V9jW+EtIgD6bBNtiT/sn23H4gFc6HZS1dSohhVDzEMP9/hQHQhqOx94rOCFLPUxufbPPS/HV00NokgoCz/+9wnYvn9XSGC4Q4f0SJoFAGzD26KjQvg/Sn0Rw1rAtQ/So+fv8+kRyOpZvpIbuYqi5aMHCQjXry/98yud24mRJSY/nkeqMBugb1wtJ3WIic1jVVWCHAe9MsE7KXrQJMggzMjTbKjeXSP2SvNaDtZEUWJwTN+jTp0caXF2Hhz6cAnIc1v5eosgB1R9dZxNAETwyI7IMfDug1zhdYNqqc1D1005BPDka3bSISpJUoqZBlZz16Zr39wyV9doGGX9kuPL5cU9uvP0oN0QCpB8dap14V1v6Jt1uvdfwpboGnR0Hhqmnn0VmaVYcxqI3DaCJFc5dND6qABqm0+FVgcC4rAQwMOFjiwzld/wM/XNVxNawrpc1V2gDc8CNUQCWk7SauSkH3nVw5GNX84ZiJ9mqBB7366fybSsIOOs=
+
 before_install:
 - git config --global user.email "chann@chann.kr"
 - git config --global user.name "CHANN"
+
 install:
 - pip install -r requirements.txt -q
 - npm install -g less
+
 before_script:
 - git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git
   output
+
 script:
 - make publish
+
 after_success:
 - cd output
 - git add -A
 - git commit -m "Contents updated from github using travis-ci."
 - git push https://${GH_TOKEN}@github.com/channprj/channprj.github.io.git master --quiet
+
 branches:
   only:
   - master
+
+notifications:
+  email: false
