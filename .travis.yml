@@ -12,7 +12,7 @@ script:
   - tar -cf auto.tar CNAME upload.sh .git/
   - mv auto.tar ..
   - cd ..
-  - make publsh
+  - make publish
 
 after_success:
   - mv auto.tar output/
