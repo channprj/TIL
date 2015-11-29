@@ -5,15 +5,16 @@ from __future__ import unicode_literals
 AUTHOR = 'CHANN'
 SITENAME = 'CHANN World'
 SITESUBTITLE = 'Novice Programmer'
-SITEURL = ''
+SITEURL = 'http://git.chann.kr'
+# SITEURL = 'http://localhost:8000'
 DISQUS_SITENAME = u'githubs'
 
 # DISQUS_SECRET_KEY = u'YOUR_SECRET_KEY'
 # DISQUS_PUBLIC_KEY = u'YOUR_PUBLIC_KEY'
 
 ### THEME SETTING
-THEME = 'themes/pure-single'
-# THEME = 'themes/replika'
+THEME = 'theme/pure-single'
+# THEME = 'theme/replika'
 # BOOTSTRAP_NAVBAR_INVERSE = True
 # DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 COVER_IMG_URL = 'http://blog.chann.kr/content/images/2015/11/photo-1421757295538-9c80958e75b0-1.jpeg'
@@ -59,3 +60,5 @@ PAGE_SAVE_AS = PAGE_URL+'.html'
 
 CATEGORY_URL = '{slug}/index'
 CATEGORY_SAVE_AS = CATEGORY_URL+'.html'
+
+ARCHIVE_URL = '{archive}'
