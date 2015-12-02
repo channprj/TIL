@@ -6,6 +6,18 @@ __pycache__
 *.swp
 output/
 
+Gemfile
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+test_media
+.coveralls.yml
+coverage.xml
 ###
 
 # Byte-compiled / optimized / DLL files
