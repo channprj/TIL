@@ -22,6 +22,3 @@ HCI, 디자인, UX, IoT 등 관심을 두는 분야가 많지만 이 중 제대�
 
 Travis-ci와 연동하여 [Github 저장소](https://github.com/channprj/channprj.github.io-source)에 푸시가 되면 [Github  Pages](https://github.com/channprj/channprj.github.io)에 자동으로 빌드하고 푸시합니다.
 
-
-## 이미지 테스트
-![test](../images/test.png)
