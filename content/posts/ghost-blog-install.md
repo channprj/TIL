@@ -6,11 +6,8 @@ Tags: dev, nodejs, ghost, blog, server, package
 Author: CHANN
 <!--Summary: -->
 
-> ==작성중인 문서입니다.==
 
-----------------------------------------
-
-Ghost는 정말 블로그를 위한 도구다. 마크다운[^n] 기반의 에디터가 기본이며, 별다른 기능이 없다. 그래서 가볍고 빠르다. 마크다운 에디터라서 글 쓰는 속도 또한 빠르고 편리하다. 아직 0.7.x 버전[^n]이라 완성되었다고 보긴 힘들지만, 당장 사용하기에 전혀 무리가 없다. Ghost는 워드프레스가 점점 기능이 많아지면서 무겁고 사용하기 어려워진 것에 반해 오로지 블로그만을 위해 태어났고, 제 역할에만 충실하여 매우 마음에 든다.
+Ghost는 정말 블로그를 위한 도구다. 마크다운[^1] 기반의 에디터가 기본이며, 별다른 기능이 없다. 그래서 가볍고 빠르다. 마크다운 에디터라서 글 쓰는 속도 또한 빠르고 편리하다. 아직 0.7.x 버전[^2]이라 완성되었다고 보긴 힘들지만, 당장 사용하기에 전혀 무리가 없다. Ghost는 워드프레스가 점점 기능이 많아지면서 무겁고 사용하기 어려워진 것에 반해 오로지 블로그만을 위해 태어났고, 제 역할에만 충실하여 매우 마음에 든다.
 
 Ghost 블로그를 사용하는 방법은 워드프레스와 마찬가지로 2가지이다.
 
@@ -29,7 +26,7 @@ Ghost 블로그를 사용하는 방법은 워드프레스와 마찬가지로 2�
 직접 만들기 위해서는 당연히 서버가 있어야 한다. 서버를 구입하거나, 월정액으로 빌려 쓰거나, 자신의 PC를 서버화하거나, Github Page를 이용하는 방법이 있다.
 
 1. AWS, Digital Ocean, Vultr와 같은 가상화 서버를 사용 (시간제 요금, $5 ~)
-2. 라즈베리파이2, 오드로이드, 인텔 에디슨과 같은 SBC[^n] 구매 (구입비 $30)
+2. 라즈베리파이2, 오드로이드, 인텔 에디슨과 같은 SBC[^3] 구매 (구입비 $30)
 3. 자신의 PC
 4. Github Pages 기능을 우회해서 구현
 
@@ -340,32 +337,39 @@ APP="/home/blog/ghost/index.js"
 LOG="/var/log/ghost/server.log"
 
 stop() {
-	sudo su - $USER -c"NODE_ENV=production forever stop $APP"
+	su - $USER -c "source ~/.zshrc; NODE_ENV=production forever stop $APP;"
+	# su - $USER -c "NODE_ENV=production forever stop $APP"
 }
 
 start() {
-	sudo su - $USER -c"NODE_ENV=production forever start --append -l $LOG -o $LOG -e $LOG $APP"
+	su - $USER -c "source ~/.zshrc; NODE_ENV=production forever start --append -l $LOG -o $LOG -e $LOG $APP;"
+	# su - $USER -c "NODE_ENV=production forever start --append -l $LOG -o $LOG -e $LOG $APP"
 }
 
 case "$1" in
-	start)
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
 		stop
-		start
-		;;
-	stop)
-		stop
-		;;
-	restart)
-		start
-		;;
-	*)
-	echo "Usage: $0 {start|stop|restart}"
+        start
+        ;;
+    *)
+    echo "Usage: $0 {start|stop|restart}"
 esac
 ```
 
-그럼 서버가 부팅하면 블로그가 백그라운드로 실행된다.
+마무리는 이렇게...
 
-> 작성중입니다.
+```shell
+$ update-rc.d ghost defaults
+$ update-rc.d ghost enable
+```
+
+그럼 서버가 부팅하면 블로그가 백그라운드로 실행된다.
 
 ---
 
@@ -382,6 +386,6 @@ esac
 12. [Ghost 공식 문서](http://docs.ghost.org/ko/installation/)    
 
 
-[^n]: 텍스트 문서를 편집하는 문법 중 하나. 쉽게 HTML 등 다른 문서형태로 변환이 가능한 것이 장점.
-[^n]: 보통 버전 숫자가 1.0 이하라면 베타라 보는 것이 좋다.
-[^n]: Single Board Computer의 약자. 보통 작은 마더보드 하나로 작동하는 작은 컴퓨터를 지칭한다.
+[^1]: 텍스트 문서를 편집하는 문법 중 하나. 쉽게 HTML 등 다른 문서형태로 변환이 가능한 것이 장점.
+[^2]: 보통 버전 숫자가 1.0 이하라면 베타라 보는 것이 좋다.
+[^3]: Single Board Computer의 약자. 보통 작은 마더보드 하나로 작동하는 작은 컴퓨터를 지칭한다.
