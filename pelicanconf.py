@@ -13,11 +13,11 @@ DISQUS_SITENAME = u'githubs'
 # DISQUS_PUBLIC_KEY = u'YOUR_PUBLIC_KEY'
 
 ### THEME SETTING
-THEME = 'theme/pure-single'
+THEME = 'theme/pelican-svbtle'
 # THEME = 'theme/replika'
 # BOOTSTRAP_NAVBAR_INVERSE = True
 # DISPLAY_CATEGORY_IN_BREADCRUMBS = True
-COVER_IMG_URL = 'http://blog.chann.kr/content/images/2015/11/photo-1421757295538-9c80958e75b0-1.jpeg'
+# COVER_IMG_URL = 'http://blog.chann.kr/content/images/2015/11/photo-1421757295538-9c80958e75b0-1.jpeg'
 
 
 OUTPUT_PATH = 'output'
