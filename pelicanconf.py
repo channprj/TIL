@@ -35,15 +35,16 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
+LINKS = (
+         ('Blog', 'http://blog.chann.kr'),
 )
 
 # Social widget
-SOCIAL = (('github', 'https://github.com/channprj'),
-          ('twitter', 'https://twitter.com/chann_kr'),
-          ('facebook', 'https://fb.com/channprj'),
-          ('resume', 'https://chann.kr'),
+SOCIAL = (
+	('Resume', 'https://chann.kr'),
+	('Github', 'https://github.com/channprj'),
+	('Twitter', 'https://twitter.com/chann_kr'),
+	('Facebook', 'https://fb.com/channprj'),
 )
 
 DEFAULT_PAGINATION = 10
