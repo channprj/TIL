@@ -13,7 +13,7 @@ DISQUS_SITENAME = u'githubs'
 # DISQUS_PUBLIC_KEY = u'YOUR_PUBLIC_KEY'
 
 ### THEME SETTING
-THEME = 'theme/pelican-svbtle'
+THEME = 'theme/pelican-svbhack'
 # THEME = 'theme/replika'
 # BOOTSTRAP_NAVBAR_INVERSE = True
 # DISPLAY_CATEGORY_IN_BREADCRUMBS = True
