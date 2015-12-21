@@ -53,6 +53,8 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 
 # Remove html extension
+ARCHIVE_URL = '{archive}'
+
 ARTICLE_URL = '{category}/{slug}'
 ARTICLE_SAVE_AS = ARTICLE_URL+'.html'
 
@@ -62,4 +64,8 @@ PAGE_SAVE_AS = PAGE_URL+'.html'
 CATEGORY_URL = '{slug}/index'
 CATEGORY_SAVE_AS = CATEGORY_URL+'.html'
 
-ARCHIVE_URL = '{archive}'
+TAG_URL = 'tag/{slug}'
+TAG_SAVE_AS = TAG_URL+'.html'
+
+AUTHOR_URL = 'author/{slug}'
+AUTHOR_SAVE_AS = AUTHOR_URL+'.html'
