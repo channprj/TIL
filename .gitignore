@@ -6,8 +6,6 @@ __pycache__
 *.swp
 output/
 
-Gemfile
-
 # Installer logs
 pip-log.txt
 
