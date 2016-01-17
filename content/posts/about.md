@@ -2,7 +2,7 @@ Title: About
 Slug: about
 Date: 2015-12-25 00:00
 Category: About
-Tags: about, pelican, github, github pages, introduction, miscellany
+Tags: about, pelican, github, github pages, introduction
 Author: CHANN
 <!--Summary: -->
 
