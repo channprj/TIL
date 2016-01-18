@@ -20,7 +20,7 @@ install:
 - npm install -g less
 
 before_script:
-- git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/git.chann.kr.git output
+- git clone --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/til.chann.kr.git output
 
 script:
 - make publish
@@ -29,7 +29,7 @@ after_success:
 - cd output
 - git add -A
 - git commit -m "Contents updated from Github using Travis-CI."
-- git push https://${GH_TOKEN}@github.com/channprj/git.chann.kr.git gh-pages --quiet
+- git push https://${GH_TOKEN}@github.com/channprj/til.chann.kr.git gh-pages --quiet
 
 branches:
   only:
