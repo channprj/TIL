@@ -28,7 +28,7 @@ script:
 after_success:
 - cd output
 - git add -A
-- git commit -m "Contents updated from github using travis-ci."
+- git commit -m "Contents updated from Github using Travis-CI."
 - git push https://${GH_TOKEN}@github.com/channprj/git.chann.kr.git gh-pages --quiet
 
 branches:
