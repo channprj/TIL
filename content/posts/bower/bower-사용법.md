@@ -1,6 +1,6 @@
 Title: Bower 사용법
 Date: 2016-01-15 20:12
-Category: Dev
+Category: Bower
 Tags: dev, bower, package manager, tool
 Slug: how-to-use-bower
 Author: CHANN
