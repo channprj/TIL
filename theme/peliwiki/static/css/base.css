@@ -1,0 +1,142 @@
+/* Webfont */
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    font-weight: 700;
+    /*src: local('SpoqaHanSans-Bold'), local('SpoqaHanSans-Bold'),*/
+    src: url(../font/SpoqaHanSans-Bold.eot) format('eot');
+    src: url(../font/SpoqaHanSans-Bold.svg) format('svg');
+    /*src: url(../font/SpoqaHanSans-Bold.ttf) format('truetype');*/
+    src: local(※), url(../font/SpoqaHanSans-Bold.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    font-weight: 400;
+    /*src: local('SpoqaHanSans-Regular'), local('SpoqaHanSans-Regular'),*/
+    src: url(../font/SpoqaHanSans-Regular.eot) format('eot');
+    src: url(../font/SpoqaHanSans-Regular.svg) format('svg');
+    /*src: url(../font/SpoqaHanSans-Regular.ttf) format('truetype');*/
+    src: local(※), url(../font/SpoqaHanSans-Regular.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    font-weight: 200;
+    /*src: local('SpoqaHanSans-Thin'), local('SpoqaHanSans-Thin'),*/
+    src: url(../font/SpoqaHanSans-Thin.eot) format('eot');
+    src: url(../font/SpoqaHanSans-Thin.svg) format('svg');
+    /*src: url(../font/SpoqaHanSans-Thin.ttf) format('truetype');*/
+    src: local(※), url(../font/SpoqaHanSans-Thin.woff) format('woff');
+}
+
+html, body {
+	font-family: 'Spoqa Han Sans', 'Noto Sans', 나눔바른고딕, NanumBarunGothic, 나눔고딕, NanumGothic, '맑은 고딕', 'Malgun Gothic', shs, 'Open Sans', 'Helvetica Neue', Helvetica, Dotum, 돋움, sans-serif;
+}
+
+body {
+	background-color: #ebebeb;
+}
+
+p {
+	font-size: 18px;
+	line-height: 1.8;
+}
+
+/* XEICON */
+.gnb-xeicon {
+	font-size: 1.4em;
+	line-height: 18px;
+	padding: 0 4px;
+	float: left;
+}
+/* // XEICON */
+
+/* Bootstrap overrides */
+.navbar {
+	height: 40px;
+	min-height: 40px;
+	border-radius: 0;
+}
+
+.navbar-header {
+	height: 38px;
+}
+
+.navbar-brand {
+	height: 40px;
+	min-height: 40px;
+	font-size: 1.6em;
+	padding: 10px 10px;
+	line-height: 18px;
+}
+.navbar-inverse {
+	width: 100%;
+	position: fixed;
+	background-color: #303030;
+	z-index: 100000;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #ffffff;
+}
+
+.navbar-nav>li>a {
+	padding: 10px 10px;
+	font-size: 1.2em;
+	height: 38px;
+	line-height: 18px;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus,
+.navbar-inverse .navbar-nav>li>a:hover {
+	background-color: #505050;	
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
+	background-color: #505050;
+}
+
+.navbar-toggle {
+	margin-top: 2px;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+	background-color: #303030;	
+}
+
+.container {
+	width: 1000px;
+	padding: 16px 20px;
+	background-color: #ffffff;
+	-webkit-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb {
+	border-radius: 0;
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* // Bootstrap mobile overrides */
+
+.gnb {
+	padding: 0;
+	background-color: #303030;
+	z-index: 100000;
+}
+
+
+footer {
+	margin-bottom: 60px;
+}
+
+.breadcrumbs {
+	padding-top: 40px;
+	margin-bottom: 20px;
+    background-color: #f5f5f5;
+}
