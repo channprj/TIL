@@ -1,0 +1,1 @@
+from . linkclass import *
