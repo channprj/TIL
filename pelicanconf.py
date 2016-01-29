@@ -20,17 +20,16 @@ DISQUS_SITENAME = u'githubs'
 # THEME = 'theme/pelican-svbhack'
 THEME = 'theme/peliwiki'
 
-
 BOOTSTRAP_NAVBAR_INVERSE = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 DISPLAY_CATEGORIES_ON_MENU = False
+DISPLAY_PAGES_ON_MENU = False
 DISPLAY_BREADCRUMBS = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 HIDE_SIDEBAR = True
-MENUITEMS = (
-    ('About', '/about'),
-    ('Blog', 'https://blog.chann.kr'),
-)
+
+
+# MENUITEMS = (('About', '/about'),)
 
 OUTPUT_PATH = 'output'
 PATH = 'content'
