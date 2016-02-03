@@ -19,6 +19,7 @@ DISQUS_SITENAME = u'githubs'
 ### THEME SETTING
 # THEME = 'theme/pelican-svbhack'
 THEME = 'theme/peliwiki'
+DIRECT_TEMPLATES = ('index', 'search', 'archives', 'categories','tags')
 
 BOOTSTRAP_NAVBAR_INVERSE = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
