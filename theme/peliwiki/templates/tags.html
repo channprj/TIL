@@ -14,6 +14,7 @@
 {% block content %}
     <section id="tags">
         <h1>Tags for {{ SITENAME }}</h1>
+        <center>
         <div class="panel-group" id="accordion">
             {%- for tag, articles in tags|sort %}
             <div class="panel panel-default">
@@ -32,6 +33,6 @@
             </div>
             {% endfor %}
         </div>
-
+		</center>
     </section>
 {% endblock %}
