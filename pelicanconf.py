@@ -15,9 +15,7 @@ DISQUS_SITENAME = u'githubs'
 # GOOGLE_ANALYTICS = ""
 # GITHUB_USER = 'channprj'
 
-
 ### THEME SETTING
-# THEME = 'theme/pelican-svbhack'
 THEME = 'theme/peliwiki'
 DIRECT_TEMPLATES = ('index', 'search', 'archives', 'categories','tags')
 
@@ -28,15 +26,12 @@ DISPLAY_PAGES_ON_MENU = False
 DISPLAY_BREADCRUMBS = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 HIDE_SIDEBAR = True
-
-
 # MENUITEMS = (('About', '/about'),)
 
 OUTPUT_PATH = 'output'
 PATH = 'content'
 
 TIMEZONE = 'Asia/Seoul'
-
 DEFAULT_LANG = 'ko'
 
 # Feed generation is usually not desired when developing
