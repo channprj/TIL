@@ -19,4 +19,4 @@ Influenced by [Thoughtbot](https://github.com/thoughtbot/til), [jbranchaud](http
 
 ## Etc
 :electric_plug: [Source](https://github.com/channprj/til.chann.kr-source)
-:memo: [Web](http://til.chann.kr)
+:memo: [Web](https://til.chann.kr)
