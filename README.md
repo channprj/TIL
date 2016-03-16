@@ -13,6 +13,7 @@ Influenced by [Thoughtbot](https://github.com/thoughtbot/til), [jbranchaud](http
 ## Rule
 * Naming of folder and document would be English.
 * Write document based on [Github-Flavoured Markdown](https://guides.github.com/features/mastering-markdown/).
+* Use a short sentences and phrases.
 * Generate Github Pages using Python 3 and [Pelican](https://github.com/getpelican/pelican).
 
 ------
