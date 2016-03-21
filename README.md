@@ -3,8 +3,6 @@
 # Today I Learned
 Write things down that I learned today.
 
-Influenced by [Thoughtbot](https://github.com/thoughtbot/til), [jbranchaud](https://github.com/jbranchaud/til), [milooy](https://github.com/milooy/TIL), [ahastudio](https://github.com/ahastudio/til)
-
 <center>![til](https://cloud.githubusercontent.com/assets/1831308/13661643/e25fc4bc-e6d7-11e5-8a54-87eb071b2e5c.jpg)</center>
 
 
@@ -21,3 +19,7 @@ Influenced by [Thoughtbot](https://github.com/thoughtbot/til), [jbranchaud](http
 ## Etc
 :electric_plug: [Source](https://github.com/channprj/til.chann.kr-source)
 :memo: [Web](https://til.chann.kr)
+
+------
+
+Influenced by [Thoughtbot](https://github.com/thoughtbot/til), [jbranchaud](https://github.com/jbranchaud/til), [milooy](https://github.com/milooy/TIL), [ahastudio](https://github.com/ahastudio/til)
