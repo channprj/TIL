@@ -3,7 +3,9 @@
 # Today I Learned
 Write things down that I learned today.
 
-<center>![til](https://cloud.githubusercontent.com/assets/1831308/13661643/e25fc4bc-e6d7-11e5-8a54-87eb071b2e5c.jpg)</center>
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/1831308/13661643/e25fc4bc-e6d7-11e5-8a54-87eb071b2e5c.jpg">
+</p>
 
 
 ------
@@ -22,4 +24,6 @@ Write things down that I learned today.
 
 ------
 
-Influenced by [Thoughtbot](https://github.com/thoughtbot/til), [jbranchaud](https://github.com/jbranchaud/til), [milooy](https://github.com/milooy/TIL), [ahastudio](https://github.com/ahastudio/til)
+<p align="right">
+Influenced by <a href="https://github.com/thoughtbot/til">Thoughtbot</a>, <a href="https://github.com/jbranchaud/til">jbranchaud</a>, <a href="https://github.com/milooy/TIL">milooy</a>, <a href="https://github.com/ahastudio/til">ahastudio</a>
+</p>
