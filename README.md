@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/channprj/til.chann.kr-source.svg)](https://travis-ci.org/channprj/til.chann.kr-source)
+[![Build Status](https://travis-ci.org/channprj/TIL.svg?branch=master)](https://travis-ci.org/channprj/TIL)
 [![Requirements Status](https://requires.io/github/channprj/til.chann.kr-source/requirements.svg?branch=master)](https://requires.io/github/channprj/til.chann.kr-source/requirements/?branch=master)
 # Today I Learned
 Write things down that I learned today.
