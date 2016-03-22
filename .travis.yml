@@ -16,18 +16,22 @@ before_install:
 - git config --global user.name "CHANN"
 - git clone -b generator --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git generator
 - cd generator
-- pwd
-- git clone -b gh-pages --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git output
-- cd content/posts
-- pwd
-- git pull origin master
-- cd ../..
 
 install:
 - pip install -r requirements.txt -q
 - npm install -g less
 
-# before_script:
+before_script:
+- git clone -b gh-pages --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git output
+- cd content/posts
+- rm -rf *
+- git clone -b master --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git doc
+- cd doc
+- mv .* ..
+- mv * ..
+- cd ..
+- rmdir doc
+- cd ../..
 
 script:
 - make publish
@@ -35,7 +39,7 @@ script:
 after_success:
 - cd output
 - git add -A
-- git commit -m "Contents updated from Github using Travis-CI."
+- git commit -m "Pages updated from Github using Travis-CI."
 - git push https://${GH_TOKEN}@github.com/channprj/TIL.git gh-pages --quiet
 
 branches:
