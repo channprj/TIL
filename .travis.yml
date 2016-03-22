@@ -14,12 +14,6 @@ env:
 before_install:
 - git config --global user.email "chann@chann.kr"
 - git config --global user.name "CHANN"
-
-# install:
-# - pip install -r requirements.txt -q
-# - npm install -g less
-
-before_script:
 - git clone -b generator --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git generator
 - cd generator
 - git clone -b gh-pages --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git output
@@ -27,8 +21,13 @@ before_script:
 - git pull origin master
 - cd ../..
 
-script:
+install:
 - pip install -r requirements.txt -q
+- npm install -g less
+
+# before_script:
+
+script:
 - make publish
 
 after_success:
