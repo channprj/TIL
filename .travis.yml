@@ -23,15 +23,10 @@ install:
 
 before_script:
 - git clone -b gh-pages --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git output
-- cd content/posts
-- rm -rf *
-- git clone -b master --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git doc
-- cd doc
-- mv .* ..
-- mv * ..
+- cd content
+- rm -rf posts
+- git clone -b master --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git posts
 - cd ..
-- rmdir doc
-- cd ../..
 
 script:
 - make publish
