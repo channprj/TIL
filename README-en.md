@@ -7,22 +7,15 @@ Write things down that I learned today.
 <img src="https://cloud.githubusercontent.com/assets/1831308/13661643/e25fc4bc-e6d7-11e5-8a54-87eb071b2e5c.jpg">
 </p>
 
-
-
-
 ## Rule
 * Naming of folder and document would be English.
 * Write document based on [Github-Flavoured Markdown](https://guides.github.com/features/mastering-markdown/).
 * Use a short sentences and phrases.
 * Generate Github Pages using Python 3 and [Pelican](https://github.com/getpelican/pelican).
 
-
-
 ## Etc
-:electric_plug: [Source](https://github.com/channprj/til.chann.kr-source)
+:electric_plug: [Source](https://github.com/channprj/TIL)
 :memo: [Web](https://til.chann.kr)
-
-
 
 <p align="right">
 Influenced by <a href="https://github.com/thoughtbot/til">Thoughtbot</a>, <a href="https://github.com/jbranchaud/til">jbranchaud</a>, <a href="https://github.com/milooy/TIL">milooy</a>, <a href="https://github.com/ahastudio/til">ahastudio</a>
