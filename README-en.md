@@ -12,6 +12,7 @@ Write things down that I learned today.
 * Write document based on [Github-Flavoured Markdown](https://guides.github.com/features/mastering-markdown/).
 * Use a short sentences and phrases.
 * Generate Github Pages using Python 3 and [Pelican](https://github.com/getpelican/pelican).
+* All changes apply to [Today I Learned Website](https://til.chann.kr) by Travis-CI automatically.
 
 ## Etc
 :electric_plug: [Source](https://github.com/channprj/TIL)
