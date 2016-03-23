@@ -2,7 +2,7 @@ Title: S65-01 JS, Canvas, SVG
 Date: 2016-02-11 22:32
 Category: Study
 Tags: study, programming, dev, js, javascript, canvas, svg, 자바스크립트, ECMAScript, ES6
-Slug: s65-js-study
+Slug: s65-js-study-01
 Author: CHANN
 <!--Summary: -->
 
