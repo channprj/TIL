@@ -19,7 +19,7 @@ before_install:
 
 install:
 - pip install -r requirements.txt -q
-- npm install -g less
+# - npm install -g less
 
 before_script:
 - git clone -b gh-pages --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git output
@@ -27,6 +27,9 @@ before_script:
 - rm -rf posts
 - git clone -b master --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git posts
 - cd ..
+- git add -A
+- git commit -m "Update contents."
+- git push https://${GH_TOKEN}@github.com/channprj/TIL.git generator --quiet
 
 script:
 - make publish
@@ -34,7 +37,7 @@ script:
 after_success:
 - cd output
 - git add -A
-- git commit -m "Pages updated from Github using Travis-CI."
+- git commit -m "Github Pages updated from Github using Travis-CI."
 - git push https://${GH_TOKEN}@github.com/channprj/TIL.git gh-pages --quiet
 
 branches:
