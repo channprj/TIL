@@ -6,7 +6,7 @@ Slug: git-ko-path-name-fix
 Author: CHANN
 <!--Summary: -->
 
-인코딩 문제. 아래 한 줄이면 된다.
+인코딩 문제. 아래 한 줄이면 됨.
 
 ```bash
 $ git config core.quotepath false
