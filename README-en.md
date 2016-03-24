@@ -3,7 +3,7 @@
 # Today I Learned
 Write things down that I learned today.
 
-*Read this in other languages: [English](https://github.com/channprj/TIL/blob/master/README.md)*
+*Read this in other languages: [Korean](https://github.com/channprj/TIL/blob/master/README.md)*
 
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/1831308/13661643/e25fc4bc-e6d7-11e5-8a54-87eb071b2e5c.jpg">
