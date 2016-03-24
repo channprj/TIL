@@ -6,7 +6,7 @@ Slug: python-coding-convention
 Author: CHANN
 <!--Summary: -->
 
-<center>![Imgur](http://i.imgur.com/P58yvJI.png)</center>
+<center>![Imgur](https://i.imgur.com/P58yvJI.png)</center>
 
 [코딩 컨벤션(Coding convention)](https://en.wikipedia.org/wiki/Coding_conventions)이란 읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약(약속)임.
 
