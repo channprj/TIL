@@ -68,5 +68,3 @@ $ update-rc.d ghost defaults
 $ update-rc.d ghost enable
 ```
 
-------
-
