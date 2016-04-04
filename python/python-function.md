@@ -366,7 +366,7 @@ print(next(iter_check))
 
 > 이름 그대로 값을 계속 발생시키는 녀석임.
 
-```
+```python
 def reverse(string):
     for i in range(len(string)-1, -1, -1):
         yield string[i]
@@ -381,7 +381,7 @@ print()
 
 위의 코드를 보면 `reverse()` 함수는 7번 호출되며, `yield` 를 호출한 곳에서 계속 값을 돌려주지만 함수는 메모리에 그대로 있음. 그래서 다음에 `reverse()` 가 다시 호출되더라도 가장 최근에 호출된 상태로 실행됨. 위에서 `return` 을 사용했다면 L만 출력됨.
 
-```
+```python
 def reverse(string):
     for i in range(len(string)-1, -1, -1):
         return string[i]  # <<< yield 대신 return 을 사용
@@ -396,7 +396,7 @@ print()
 
 앞서 언급한 바와 같이 제네레이터는 함수의 상태가 그대로 보존되기 때문에 이터레이터 객체를 만들 때 매우 강력하고 메모리가 절약된다는 장점을 가짐. 아래의 예제처럼 필요할 때마다 데이터를 생성하면 메모리 사용을 줄일 수 있음.
 
-```
+```python
 a = [1,2,3,4,5,6,7,8,9,10]  # 10개의 객체를 저장할 메모리 공간이 필요
 print(sum(a))
 
