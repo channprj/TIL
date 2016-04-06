@@ -418,22 +418,22 @@ class deco_test(object):
         print("생성자!")
         func()  # 함수를 호출
 
-    def __call__(self):  # 소멸자
-        print("소멸자!")
+    def __call__(self):  # 함수가 호출될 떄
+        print("호출됨!")
 
-@deco_test
-def shit():
-    print("이건 물소의 똥이야!! 똥!!")
+@deco_test  # deco_test에 shit 함수를 꾸며줌.
+def deco():
+    print("꾸며줌!!")
     return
 
 print("끝!!")
-shit()
+deco()
 
 ### result:
 # 생성자!
-# 이건 물소의 똥이야!! 똥!!
+# 꾸며줌!!
 # 끝!!
-# 소멸자!
+# 호출됨!
 ```
 
 ------
