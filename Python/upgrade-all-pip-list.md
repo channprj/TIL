@@ -1,5 +1,5 @@
 Title: 파이썬 패키지 한번에 업그레이드하기
-Date: 2016-03-11 14:00
+Date: 2016-04-08 21:00
 Category: Python
 Tags: python, programming, dev, scrpit, pip, regex, package
 Slug: upgrade-all-python-packages
