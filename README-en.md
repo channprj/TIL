@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/channprj/TIL.svg?branch=master)](https://travis-ci.org/channprj/TIL)
-[![Requirements Status](https://requires.io/github/channprj/til.chann.kr-source/requirements.svg?branch=master)](https://requires.io/github/channprj/til.chann.kr-source/requirements/?branch=master)
+[![Requirements Status](https://requires.io/github/channprj/TIL/requirements.svg?branch=generator)](https://requires.io/github/channprj/TIL/requirements/?branch=generator)
 # Today I Learned
 Write things down that I learned today.
 
