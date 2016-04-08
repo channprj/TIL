@@ -16,7 +16,7 @@
 * Python 3와 [Pelican](https://github.com/getpelican/pelican)을 이용하여 Github Pages를 생성
 * Travis-CI로 동기화되어 자동으로 [Today I Learned 사이트](https://til.chann.kr)에 반영됨
 
-## Etc
+## 기타
 :electric_plug: [Source](https://github.com/channprj/TIL)
 :memo: [Web](https://til.chann.kr)
 
