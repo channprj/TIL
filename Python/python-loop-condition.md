@@ -118,6 +118,8 @@ print([i for i in word if len(i) > 4])
 
 ------
 
+아래와 같이 `filter()` 내장함수나 lambda 함수도 사용 가능.
+
 ```python
 m = [10, 99, 101, 1000]
 
