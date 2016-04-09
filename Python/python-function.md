@@ -2,7 +2,7 @@ Title: 파이썬 함수
 Date: 2016-02-08 13:00
 Category: Python
 Tags: python, programming, dev, scrpit, function, 파이썬, 프로그래밍, 개발, 스크립트, 함수, 공부, 스터디, study
-Slug: python-function
+Slug: function
 Author: CHANN
 <!--Summary: -->
 

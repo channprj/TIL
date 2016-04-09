@@ -2,7 +2,7 @@ Title: 파이썬 기초
 Date: 2016-01-04 20:12
 Category: Python
 Tags: python, programming, dev, scrpit
-Slug: python-variable-operator
+Slug: variable-operator
 Author: CHANN
 <!--Summary: -->
 
