@@ -1,7 +1,7 @@
 Title: TIL에 Travis-CI 적용하기
 Date: 2016-03-22 23:00
 Category: CI
-Tags: ci, travis-ci, dev, scrpit, yaml, til
+Tags: ci, travis-ci, dev, script, yaml, til, 개발, 스크립트, 자동화, 지속적통합
 Slug: travis-ci-setting-on-til
 Author: CHANN
 <!--Summary: -->
