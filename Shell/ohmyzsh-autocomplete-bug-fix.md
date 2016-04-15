@@ -1,7 +1,7 @@
 Title: zsh에서 vim 명령어 자동완성 오류
 Date: 2016-01-25 21:12
 Category: Shell
-Tags: zsh, shell, terminal, cli, sh, ohmyzsh, bug, fix
+Tags: zsh, shell, terminal, cli, sh, ohmyzsh, bug, fix, 터미널, 쉘
 Slug: ohmyzsh-autocomplete-bug-fix
 Author: CHANN
 <!--Summary: -->
