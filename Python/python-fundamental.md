@@ -2,7 +2,7 @@ Title: 파이썬 기초
 Date: 2016-01-04 20:12
 Category: Python
 Tags: python, programming, dev, scrpit
-Slug: variable-operator
+Slug: fundamental
 Author: CHANN
 <!--Summary: -->
 
@@ -31,26 +31,38 @@ Author: CHANN
 
 ## 설치법
 ### 윈도우
-[파이썬 재단 홈페이지](https://www.python.org/downloads/) 참고.
+[파이썬 재단 홈페이지](https://www.python.org/downloads/)에서 파이썬을 다운로드 받아서 설치.
+
+설치 후 Python Interpreter 프로그램을 실행하여 아래와 같이 인터프리터의 위치를 파악한 후, 주로 사용하는 IDE 나 에디터 설정에서 인터프리터 위치를 잡아주면 됨. PyCharm 기준으로는 인터프리터 설정에서 Python.exe 파일을 선택하면 나머진 알아서 다 잡아줌.
+
+```python
+>>> import sys
+>>> sys.path
+
+['', 'C:\\Users\\CHANN\\AppData\\Local\\Programs\\Python\\Python35-32\\python35.zip', 'C:\\Users\\CHANN\\AppData\\Local\\Programs\\Python\\Python35-32\\DLLs', 'C:\\Users\\CHANN\\AppData\\Local\\Programs\\Python\\Python35-32\\lib', 'C:\\Users\\CHANN\\AppData\\Local\\Programs\\Python\\Python35-32', 'C:\\Users\\CHANN\\AppData\\Local\\Programs\\Python\\Python35-32\\lib\\site-packages']
+```
+
+
+자세한 사항은 [파이썬 재단 홈페이지](https://www.python.org/downloads/) 참고.
 
 ----
 
 ### 맥
-맥에는 기본적으로 2.7.10이 내장되어 있다. 가급적 3.x 이상의 버전을 사용하라고 권고하고 있으니 따로 설치만 해주면 된다.
+맥에는 기본적으로 2.7.10이 내장되어 있다. 가급적 3.x 이상의 버전을 사용하라고 권고하고 있으니 따로 설치만 해주면 됨. 다른 버전을 설치하고 싶다면 [Brew](http://brew.sh/) 를 사용해서 `brew install python3`, `brew install pyenv` 등을 설치하면 됨.
 
-[파이썬 재단 홈페이지](https://www.python.org/downloads/) 참고.
+자세한 사항은 [파이썬 재단 홈페이지](https://www.python.org/downloads/) 참고.
 
 ----
 
 ### 리눅스
 `apt-get`, `yum` 등 별도의 패키지 관리도구를 이용해서 설치하면 된다.
  
-[파이썬 재단 홈페이지](https://www.python.org/downloads/) 참고.
+자세한 사항은 [파이썬 재단 홈페이지](https://www.python.org/downloads/) 참고.
  
 ----
 
 ## 변수명
-변수명은 문자, 숫자, 언더바(_)를 포함 가능하지만 숫자가 먼저 올 수 없다.
+변수명은 문자, 숫자, 언더바(_)를 포함 가능하지만 숫자가 먼저 올 수 없음.
 
 ```python
 >>> python = 1
@@ -60,7 +72,7 @@ Author: CHANN
 ```
 <br>
 
-사전에 기능과 의미가 정의된 파이썬 키워드는 변수명으로 사용할 수 없다.
+사전에 기능과 의미가 정의된 파이썬 키워드는 변수명으로 사용할 수 없음.
 
 ```python
 >>> import keyword
@@ -71,7 +83,7 @@ Author: CHANN
 ----
 
 ## 문자열
-반드시 큰따옴표("")나 작은따옴표('')로 감싸야 한다.
+반드시 큰따옴표("")나 작은따옴표('')로 감싸야.
 
 ```python
 >>> 'str'
@@ -87,7 +99,7 @@ Author: CHANN
 ```
 <br>
 
-이스케이프 문자는 C와 유사하다.
+이스케이프 문자는 C와 유사.
 
 * `\n`	: 줄바꿈
 * `\t`	: 탭
@@ -105,7 +117,7 @@ Escape character.
 ```
 <br>
 
-문자열을 다루는 것도 쉽다. 잘라 쓰기 쉽고 붙이기는 더 쉽다. 자동으로 배열처럼 인덱싱도 된다. 인덱스를 이용하여 문자열의 특정 문자를 다른 문자로 변경할 수는 없으나 문자열 전체를 변경하는 것은 가능하다.
+문자열을 다루는 것도 쉬움. 잘라 쓰기 쉽고 붙이기는 더 쉬움. 자동으로 배열처럼 인덱싱도 됨. 인덱스를 이용하여 문자열의 특정 문자를 다른 문자로 변경할 수는 없으나 문자열 전체를 변경하는 것은 가능.
 
 ```python
 >>> '파이' '썬'
@@ -137,7 +149,7 @@ Escape character.
 ----
 
 ## 리스트
-파이썬에서의 리스트는 값의 나열이라 순서가 있으며 여러 종류의 값을 담을 수 있다. 인덱스는 0부터 시작하며 슬라이싱도 가능하다.
+파이썬에서의 리스트는 값의 나열이라 순서가 있으며 여러 종류의 값을 담을 수 있음. 인덱스는 0부터 시작하며 슬라이싱도 가능.
 
 ```python
 # 배열의 선언
@@ -191,7 +203,7 @@ Escape character.
 ```
 <br>
 
-기본적으로 리스트 아이템을 삭제하는 건 크게 2가지 방법이 있다.
+기본적으로 리스트 아이템을 삭제하는 건 크게 2가지 방법이 있음.
 
 * pop()	: 뒤에서부터 값을 빼내옴.
 * remove()	: 위치에 상관없이 리스트 아이템 삭제.
@@ -415,7 +427,7 @@ def Test(a, b)
 	return a+b
 ```
 
-파이썬에서는 함수도 객체다. `def` 는 함수를 만드는 구문이다. Test 라는 이름은 생성된 함수 객체를 참조하는 레퍼런스다. 메모리 어딘가에 함수 객체가 생성되는 것이고, 객체이기 때문에 생성할 때마다 다른 주소값을 가진다.
+파이썬에서는 함수도 객체. `def` 는 함수를 만드는 구문. 위의 코드에서 Test 라는 이름은 생성된 함수 객체를 참조하는 레퍼런스. 메모리 어딘가에 함수 객체가 생성되는 것이고, 객체이기 때문에 생성할 때마다 다른 주소값을 가짐.
 
-`return`에서는 함수를 종료하고, 해당 함수를 호출한 곳으로 다시 되돌아간다. 객체를 되돌려준다. `return`을 적지 않아도, `return`만 적어도 종료되며, 이때 반환값은 None이다.
+`return`에서는 객체를 되돌려주며 함수를 종료하고, 해당 함수를 호출한 곳으로 다시 되돌아감. `return` 은 함수를 종료하는 구문인데, 굳이 적지 않아도 묵시적으로 `return` 을 적어줌. 반환값을 따로 적지 않으면 None 을 리턴함.
 
