@@ -1,7 +1,7 @@
 Title: 파이썬 코딩 컨벤션
 Date: 2016-03-11 14:00
 Category: Python
-Tags: python, programming, dev, scrpit, function, study, coding style, coding convension, coding standard
+Tags: python, programming, dev, scrpit, function, study, coding style, coding convension, coding standard, 파이썬, 코딩 스타일, 코딩 컨벤션
 Slug: coding-convention
 Author: CHANN
 <!--Summary: -->

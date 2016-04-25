@@ -1,7 +1,7 @@
 Title: 리눅스 runlevel 정리
 Date: 2016-01-30 06:22
 Category: Linux
-Tags: linux, server, cli, runlevel, ubuntu, centos, redhat, fedora, 
+Tags: linux, server, cli, runlevel, ubuntu, centos, redhat, fedora, 리눅스, 서버
 Slug: runlevel-summary
 Author: CHANN
 <!--Summary: -->
