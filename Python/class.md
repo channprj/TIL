@@ -2,7 +2,7 @@ Title: 파이썬 클래스
 Date: 2016-04-25 21:00
 Category: Python
 Tags: python, programming, dev, scrpit, function, study, class, oop, 파이썬, 프로그래밍, 개발, 스크립트, 함수, 공부, 스터디, 클래스, 객체지향
-Slug: base-function
+Slug: class
 Author: CHANN
 <!--Summary: -->
 
