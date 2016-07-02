@@ -1,6 +1,6 @@
 Title: Pelican 문서 작성법
 Date: 2016-02-27 18:00
-Category: Pelican
+Category: Python
 Tags: python, pelican, static site generator, 파이썬, 펠리칸, 정적 페이지 생성기, 블로그, blog, github pages, markdown, 마크다운, writing, 글쓰기
 Slug: how-to-write-pelican-docs
 Author: CHANN
