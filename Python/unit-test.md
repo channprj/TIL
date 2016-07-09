@@ -1,5 +1,5 @@
 Title: 파이썬 단위 테스트
-Date: 2016-04-25 21:00
+Date: 2016-07-02 19:00
 Category: Python
 Tags: python, programming, dev, scrpit, study, unittest, test, 파이썬, 프로그래밍, 개발, 스크립트, 공부, 스터디, 단위테스트, 유닛테스트
 Slug: unit_test
