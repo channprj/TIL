@@ -1,6 +1,9 @@
 [![Build Status](https://travis-ci.org/channprj/TIL.svg?branch=master)](https://travis-ci.org/channprj/TIL)
 [![Requirements Status](https://requires.io/github/channprj/TIL/requirements.svg?branch=generator)](https://requires.io/github/channprj/TIL/requirements/?branch=generator)
 # Today I Learned
+:electric_plug: [Source](https://github.com/channprj/TIL)
+:memo: [Web](https://til.chann.kr)
+
 오늘 배운 내용을 정리하는 곳입니다.
 
 *Read this in other languages: [English](https://github.com/channprj/TIL/blob/master/README-en.md)*
@@ -23,10 +26,13 @@
 * **generator** 브랜치로 생성한 HTML 문서를 **gh-pages** 브랜치에 저장하여 웹으로 배포
 * 이러한 환경을 구성하게 된 계기는 [블로그(글 작성중)](https://blog.chann.kr/) 참고.
 
-## 기타
-:electric_plug: [Source](https://github.com/channprj/TIL)
-:memo: [Web](https://til.chann.kr)
+## Inspired by
+Learned from these respectable people.
+* [Thoughtbot](https://github.com/thoughtbot/til)
+* [jbranchaud](https://github.com/jbranchaud/til)
+* [milooy](https://github.com/milooy/TIL)
+* [ahastudio](https://github.com/ahastudio/til)
+* [Hanju Jo](https://github.com/AWEEKJ/TIL)
 
-<p align="right">
-Influenced by <a href="https://github.com/thoughtbot/til">Thoughtbot</a>, <a href="https://github.com/jbranchaud/til">jbranchaud</a>, <a href="https://github.com/milooy/TIL">milooy</a>, <a href="https://github.com/ahastudio/til">ahastudio</a>
-</p>
+## License
+This repository is licensed under the WTFPL license. See [License](https://github.com/channprj/TIL/blob/master/LICENSE) for details.
