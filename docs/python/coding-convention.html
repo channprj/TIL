@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>파이썬 코딩 컨벤션 - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+<link rel="canonical" href="https://til.chann.kr/python/coding-convention">
+
+        <meta name="author" content="CHANN" />
+        <meta name="keywords" content="python,programming,dev,scrpit,function,study,coding style,coding convension,coding standard,파이썬,코딩 스타일,코딩 컨벤션" />
+        <meta name="description" content="코딩 컨벤션(Coding convention)이란 읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약(약속)임. 대부분의 언어는 대표적인 코딩 컨벤션을 가지고 있고, 일반적으로는 그러한 암묵적인 표준을 따르게 됨. 하지만 프로젝트별, 회사별, 기타 단체마다 각자 다른 규칙을 가짐. 단체에서는 아무리 작은 프로젝트라 하더라도 유지 보수 및 추가 개발 등의 ..." />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+	<link href="https://til.chann.kr/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned Python ATOM Feed"/>
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+                <li><a href="https://til.chann.kr/python/index" title="Python">Python</a></li>
+                <li class="active">파이썬 코딩 컨벤션</li>
+            </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://til.chann.kr/python/coding-convention"
+                       rel="bookmark"
+                       title="Permalink to 파이썬 코딩 컨벤션">
+                        파이썬 코딩 컨벤션
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-03-11T14:00:00+09:00"> 2016-03-11</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://til.chann.kr/tag/python">python</a>
+        /
+	<a href="https://til.chann.kr/tag/programming">programming</a>
+        /
+	<a href="https://til.chann.kr/tag/dev">dev</a>
+        /
+	<a href="https://til.chann.kr/tag/scrpit">scrpit</a>
+        /
+	<a href="https://til.chann.kr/tag/function">function</a>
+        /
+	<a href="https://til.chann.kr/tag/study">study</a>
+        /
+	<a href="https://til.chann.kr/tag/coding-style">coding style</a>
+        /
+	<a href="https://til.chann.kr/tag/coding-convension">coding convension</a>
+        /
+	<a href="https://til.chann.kr/tag/coding-standard">coding standard</a>
+        /
+	<a href="https://til.chann.kr/tag/paisseon">파이썬</a>
+        /
+	<a href="https://til.chann.kr/tag/koding-seutail">코딩 스타일</a>
+        /
+	<a href="https://til.chann.kr/tag/koding-keonbensyeon">코딩 컨벤션</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <!--Summary: -->
+
+<p><center><img alt="Imgur" src="https://i.imgur.com/P58yvJI.png" /></center></p>
+<p><a href="https://en.wikipedia.org/wiki/Coding_conventions">코딩 컨벤션(Coding convention)</a>이란 읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약(약속)임.</p>
+<p>대부분의 언어는 대표적인 코딩 컨벤션을 가지고 있고, 일반적으로는 그러한 암묵적인 표준을 따르게 됨. 하지만 프로젝트별, 회사별, 기타 단체마다 각자 다른 규칙을 가짐. 단체에서는 아무리 작은 프로젝트라 하더라도 유지 보수 및 추가 개발 등의 관리를 해야 하기 때문에 코딩 스타일 규약은 반드시 필요.</p>
+<p>완벽한 코딩 컨벤션은 없음. 효율성이나 편의성이 확실히 증명되어 채택된 방식이 있을 수도 있지만 대개 취향의 차이임. 그러나 각 언어별 '존잘'~~(존나 잘하는)~~ 분들이 계신데, 대체로 그 분들의 영향력이 많이 끼침. 취향의 차이라서 그런지 서로 많이들 싸우기도 하는데, 대표적인 예로는 아래와 같음.</p>
+<ul>
+<li>인덴트 2칸 vs 4칸 vs 8칸(...소수)</li>
+<li>인덴트 Tab vs Space</li>
+<li>괄호를 어떻게 열고 닫을 것이냐</li>
+<li>변수나 함수 등 이름짓는 법</li>
+<li>주석 다는 법</li>
+<li>camelCase vs PascalCase vs snake_case vs hgCase vs ...</li>
+<li>...</li>
+</ul>
+<p>사실 코딩 컨벤션은 취향이지만 종교와도 같은 것이어서 이렇다 할 정답이 없음. 프로그래머 10명 잡고 물어보면 다들 선호하는 코딩 스타일이 다름. 예를 들어 함수이름만 봐도 어떤 프로그래머는 private함수는 getNum() 이란식으로 작성하고 public 함수는 GetNum()이라고 작성하자고 하는 반면 다른 프로그래머는 get_num()과 GetNum()이라고 하자고도 할 것.</p>
+<p>단체에서는 일의 효율과 체계를 갖추기 위해 엄격하게 규칙을 정해놓고 프로그래머들에게 강요하지만, 이로 인해 스타일을 바꾸야 하는(개종해야하는) 사람들에게는 오히려 생산성 저하의 요소가 되기도 함.</p>
+<p>대표적인 코딩 컨벤션으로는 BSD, K&amp;R, GNU 와 같은 것이 있는데 예시는 아래와 같음.</p>
+<p>BSD</p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">statement</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>K&amp;R</p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">statement</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>GNU</p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">statement</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<p>스크립트 언어들은 다른 고급 언어에 비해 유연한 문법 구조를 가지고 있어 좀 더 엄격한 코딩 스타일 규약이 필요. 코딩 컨벤션은 코딩 스탠다드, 코딩 스타일 가이드 등으로도 불림.</p>
+<hr />
+<h2>어떤 규칙을 따라야 하나</h2>
+<p>개인적으로 제가 코딩 컨벤션을 정하는 방법은 아래와 같음.
+~~... 회사에선 높은 사람이 시키는대로...~~</p>
+<ol>
+<li>창시자가 시키는대로 하기</li>
+<li>존잘러 구글의 권장사항을 참고</li>
+<li>기타 존잘러의 의견을 참고</li>
+<li>커뮤니티와 통계를 참고</li>
+</ol>
+<h3>그럼 파이썬에서는</h3>
+<p>우선, 파이썬은 주로 스네이크 표기법을 따름. ~~(파이썬이 도마뱀이니 뱀 표기법을...)~~ 그리고 앞서 말씀드린 바와 같이 창시자, 존잘러 구글, 기타 존잘러, 커뮤니티와 통계 순으로 내용을 다룰 예정.</p>
+<h4>창시자의 권장사항</h4>
+<blockquote>
+<p>PEP 8 is pretty much "the root" of all common style guides.</p>
+</blockquote>
+<p>PEP 8은 파이썬에서 광영높으신 최고존엄 <strong>귀도 반 로썸</strong> 형님이 작성하신 PEP(Python Enhance Proposal)에 작성하신 권장사항. PEP란 파이썬을 개선하기 위한 개선 제안서를 뜻하는 것으로 3가지로 구분됩니다.</p>
+<ul>
+<li>Standard Track : 파이썬의 새로운 기능이나 구현을 제안</li>
+<li>Informational : 파이썬의 디자인 이슈나 일반적인 지침을 제안</li>
+<li>Process : 파이썬 커뮤니티에 정보를 제안</li>
+</ul>
+<p>이들 PEP 제안 중에서 PEP8은 파이썬 코딩 스타일 가이드라인을 의미하며 파이썬 커뮤니티에 정보를 제안하는 Process에 해당함. 이러한 PEP8(파이썬 코딩 스타일 가이드라인)의 대표적인 사항을 요약하면 아래와 같음.</p>
+<ol>
+<li>들여쓰기는 공백 4개</li>
+<li>한 줄의 최대 글자는 79자</li>
+<li>파일은 UTF-8 또는 ASCII로 인코딩</li>
+<li>하나의 import에는 모듈 하나만 하기</li>
+<li>import는 표준 라이브러리, 서드파티, 로컬 라이브러리 순서로 묶기</li>
+<li>소괄호 안, 중괄호 안, 대괄호 안, 쉼표, 콜론과 세미콜론 앞에 추가로 공백을 입력하지 말기</li>
+<li>키워드 인자와 인자의 기본값(default parameter value)의 = 는 붙여 쓰기</li>
+<li>불필요한 주석은 달지 말기, 한 줄 주석은 신중하게 달기</li>
+<li>불린형(boolean)의 값을 조건문에서 ==를 통해 비교하지 말기</li>
+<li>...</li>
+</ol>
+<p>파이썬의 대표적이고 기본적인 가이드라인이니만큼 규칙만 빽빽할 것 같지만, PEP 8는 서두부터 예외를 언급한 섹션이 있음.</p>
+<blockquote>
+<p>A Foolish Consistency is the Hobgoblin of Little Minds. </p>
+</blockquote>
+<p>멍청하게 일관성을 유지하는 것은 소인배(홉 고블린...)의 발상.</p>
+<blockquote>
+<p>A style guide is about consistency. Consistency with this style guide is important. Consistency within a project is more important. Consistency within one module or function is most important.</p>
+</blockquote>
+<p>스타일 가이드는 일관성(consistency)에 관한 것. 이 스타일 가이드의 일관성은 중요. 하지만 프로젝트의 일관성은 더욱 중요하며, 하나의 모듈이나 함수의 일관성은 더더욱 중요함.</p>
+<blockquote>
+<p>But most importantly: know when to be inconsistent – sometimes the style guide just doesn’t apply. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don’t hesitate to ask!</p>
+</blockquote>
+<p>하지만 가장 중요한 건 언제 이것을 어길지 아는 것. – 때때로 스타일 가이드는 적용되지 않음. 의심이 들 때는 여러분의 최선의 판단을 따라야. 다른 예제를 보고 어느 게 제일 나은지 고르기. 그릭호 언제든 질문하기!</p>
+<blockquote>
+<p>Two good reasons to break a particular rule:</p>
+<p>When applying the rule would make the code less readable, even for someone who is used to reading code that follows the rules.
+To be consistent with surrounding code that also breaks it (maybe for historic reasons) – although this is also an opportunity to clean up someone else’s mess (in true XP style).</p>
+</blockquote>
+<p>다음은 규칙들을 어기는 2가지 좋은 예외 사항.</p>
+<p>규칙을 적용한 코드가 (규칙을 숙지한 사람 눈에도) 읽기 어려운 경우.
+일관성을 지키려고 한 수정이 다른 규칙을 어기는 경우(아마도 역사적인 이유).</p>
+<p>기타 자세한 세부규칙은 아래의 참고 링크에서 확인 가능. 영어가 살짝 귀찮으시다면 <a href="http://kenial.tistory.com/902">번역된 버전</a>도 있음. <a href="http://spoqa.github.io/2012/08/03/about-python-coding-convention.html">번역 및 요약된 버전</a>도 있으니 참고.</p>
+<hr />
+<h4>구글의 권장사항</h4>
+<p>최고존엄 귀도 반 로썸 형님이 구글에 계시므로, PEP8과 구글의 스타일 가이드가 크게 다르진 않은데, <a href="https://github.com/google/yapf/blob/master/yapf/yapflib/style.py#L119">이러한 식</a>으로 조금 다름. </p>
+<p>idiosyncratic (the two-space indents instead of the popular four-space ones, and the CamelCase style for functions and methods instead of the camel_case style, are pretty major idiosyncrasies).</p>
+<p>이것 역시 자세한 건 직접 확인을 해야.</p>
+<hr />
+<h4>커뮤니티와 통계</h4>
+<p><a href="http://sideeffect.kr/popularconvention#python">2014-07-19 통계</a>를 요약하자면 아래와 같음.</p>
+<ul>
+<li>스페이스 4칸 사용 : 94.86%</li>
+<li>줄 길이가 80자 이내 : 93.05%</li>
+<li>import를 다른 라인에 명시 : 96.06%</li>
+<li>괄호에 추가적인 빈칸 사용하지 않기 : 79.83%</li>
+</ul>
+<p>다수가 사용하는 방식을 채택하는 것 또한 나쁘지 않다고 봄. 협업하는 데엔 도움이 많이 될 것.</p>
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="http://legacy.python.org/dev/peps/pep-0008/">PEP8 by Guido van Rossum</a></li>
+<li><a href="http://kenial.tistory.com/902">PEP8의 한글 번역</a></li>
+<li><a href="http://coreapython.hosting.paran.com/etc/CS%2011%20Python%20track%20coding%20style%20guide.htm">PEP8의 한글 번역 2</a></li>
+<li><a href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a></li>
+<li><a href="http://sideeffect.kr/popularconvention#python">Popular Coding Convention on Github</a></li>
+<li><a href="http://spoqa.github.io/2012/08/03/about-python-coding-convention.html">파이썬 코딩 컨벤션 - Spoqa 기술 블로그</a></li>
+<li><a href="http://nuli.navercorp.com/sharing/fe/coding">NULI NAVER 코딩컨벤션</a></li>
+<li><a href="http://www.hanul93.com/kicomav-pep8/">hanul93님 블로그</a></li>
+<li><a href="http://blog.dahlia.kr/post/18035893350">홍민희님 블로그</a></li>
+<li><a href="http://www.gamedevforever.com/116">포프님 블로그</a></li>
+<li><a href="https://code.google.com/p/soc/wiki/PythonStyleGuide">melange 스타일 가이드</a></li>
+<li><a href="https://ukupat.github.io/tabs-or-spaces/">ukupat의 Tab or Space</a></li>
+</ol>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'coding-convention';
+                var disqus_url = 'https://til.chann.kr/python/coding-convention';
+
+            var disqus_config = function () {
+                this.language = "ko";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!--
+	## for client-side less
+	<link rel="stylesheet/less" type="text/css" href="http://til.chann.kr/theme/css/style.less">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+	-->
+	<link rel="stylesheet" type="text/css" href="http://til.chann.kr/theme/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://til.chann.kr/theme/css/pygments.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="CHANN">
+	<meta name="description" content="Posts and writings by CHANN">
+
+	<link href="http://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned Atom" />
+
+<meta name="keywords" content="dev, bower, package manager, tool">
+
+	<title>
+		Today I Learned
+&ndash; Bower 사용법	</title>
+
+</head>
+
+<body>
+	<aside>
+		<div id="user_meta">
+			<a href="http://til.chann.kr">
+				<img src="http://til.chann.kr/theme/images/logo.png" alt="logo" style="width:100px;height:100px;">
+			</a>
+			<h2><a href="http://til.chann.kr">CHANN</a></h2>
+			<p></p>
+			<ul>
+				<li><a href="/categories">카테고리</a></li>
+				<li><a href="/tags">태그</a></li>
+				<li><a href="/archives">아카이브</a></li>
+				<li><a href="http://blog.chann.kr" target="_blank">Blog</a></li>
+				<li><a href="https://chann.kr" target="_blank">Resume</a></li>
+				<li><a href="https://github.com/channprj" target="_blank">Github</a></li>
+				<li><a href="https://twitter.com/chann_kr" target="_blank">Twitter</a></li>
+				<li><a href="https://fb.com/channprj" target="_blank">Facebook</a></li>
+			</ul>
+		</div>
+	</aside>
+
+	<main>
+		<header>
+			<p>
+			<a href="http://til.chann.kr">Index</a> &brvbar; <a href="http://til.chann.kr/archives.html">Archives</a>
+			&brvbar; <a href="http://til.chann.kr/feeds/all.atom.xml">Atom</a>
+			</p>
+		</header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://til.chann.kr/dev/how-to-use-bower">Bower 사용법</a></h3>
+  </div>
+  <div class="article_text">
+    <!--Summary: -->
+
+<p><a href="http://bower.io">Bower</a> 는 웹을 위한 패키지 관리도구다. 트위터에서 개발하였고, 웹 개발시 자주 쓰이는 라이브러리를 쉽고 간편하게 관리할 수 있다. <code>npm</code>, <code>pip</code>, <code>gem</code> 과는 다르게 '웹 패키지 관리도구'라서 특정 언어의 종속성을 가지고 있지 않다. 개인적으로 느낀 장단점은 아래와 같다.</p>
+<h2>장점</h2>
+<ul>
+<li>패키지 설치 및 버전 관리, 의존성 관리 용이</li>
+<li>HTML, CSS, JS, Font, Image 파일 등의 최적화된 패키지</li>
+</ul>
+<h2>단점</h2>
+<ul>
+<li>패키지 설치장소 변경 불가, 패키지 디렉토리가 깔끔하지 않음.<br />
+(예시: ~/project/bower_components/bootstrap/dist/js)</li>
+<li>npm 에 의존적인 패키지 관리자. npm으로 bower를 설치 및 관리해야함.</li>
+</ul>
+<hr />
+<h2>사용법</h2>
+<h3>Bower 설치</h3>
+<p>아래와 같이 설치한다.</p>
+<div class="highlight"><pre>npm install -g bower
+</pre></div>
+
+
+<hr />
+<h3>패키지 설치</h3>
+<p>패키지 설치는 <code>npm</code> 등 다른 패키지 관리도구와 비슷하다.</p>
+<div class="highlight"><pre><span class="nv">$ </span>bower install bootstrap
+</pre></div>
+
+
+<hr />
+<h3>패키지 검색</h3>
+<p>아래와 같다.</p>
+<div class="highlight"><pre><span class="nv">$ </span>bower search bootstrap  <span class="c"># bootstrap 패키지 전체 검색</span>
+<span class="nv">$ </span>bower lookup bootstrap  <span class="c"># bootstrap과 일치하는 패키지만 찾기</span>
+<span class="nv">$ </span>bower info bootstrap  <span class="c"># bootstrap의 버전 정보 확인</span>
+</pre></div>
+
+
+<hr />
+<h3>패키지 버전, 의존성 관리</h3>
+<p><code>node.js</code> 에서는 <code>package.json</code> 으로 관리하는데, bower에서도 비슷하게 <code>bower.json</code> 으로 관리를 한다.</p>
+<div class="highlight"><pre><span class="nv">$ </span>bower init  <span class="c"># bower 패키지 정보를 저장</span>
+</pre></div>
+
+
+<p>패키지 설치할 때, <code>--save</code> 를 뒤에 붙여주면 설치하고 나서 <code>bower.json</code>에 자동으로 기록해준다.</p>
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="http://bower.io">Bower 공식 홈페이지</a></li>
+<li><a href="https://github.com/bower/bower">Bower 저장소</a></li>
+</ol>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Fri 15 January 2016</p>
+    <p>Category: <a href="http://til.chann.kr/dev/index">Dev</a>
+ &ndash; Tags:
+      <a href="http://til.chann.kr/tag/dev">dev</a>,      <a href="http://til.chann.kr/tag/bower">bower</a>,      <a href="http://til.chann.kr/tag/package-manager">package manager</a>,      <a href="http://til.chann.kr/tag/tool">tool</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "dev/how-to-use-bower";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://githubs.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+		<div id="ending_message">
+			<p>&copy; CHANN. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+		</div>
+	</main>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>파이썬 제어문 - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+<link rel="canonical" href="https://til.chann.kr/python/loop-condition">
+
+        <meta name="author" content="CHANN" />
+        <meta name="keywords" content="python,programming,dev,scrpit,loop,condition,파이썬,프로그래밍,스크립트,언어,반복문,조건문,개발" />
+        <meta name="description" content="조건문 다른 언어들과 마찬가지로 if, elif, else 조건문이 있음. 여러줄일 경우 들여쓰기로 블록을 지정해야 함. 예시는 아래와 같음. if 문 if a == 1: print(&#34;a is 1 !!&#34;) elif a == 2: print(&#34;a is 2 !!&#34;) else: print(&#34;a is not 1 and 2&#34;) 파이썬에서의 장점 C 나 Java 계열의 언어와는 다르게 ..." />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+	<link href="https://til.chann.kr/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned Python ATOM Feed"/>
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+                <li><a href="https://til.chann.kr/python/index" title="Python">Python</a></li>
+                <li class="active">파이썬 제어문</li>
+            </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://til.chann.kr/python/loop-condition"
+                       rel="bookmark"
+                       title="Permalink to 파이썬 제어문">
+                        파이썬 제어문
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-04-09T21:00:00+09:00"> 2016-04-09</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://til.chann.kr/tag/python">python</a>
+        /
+	<a href="https://til.chann.kr/tag/programming">programming</a>
+        /
+	<a href="https://til.chann.kr/tag/dev">dev</a>
+        /
+	<a href="https://til.chann.kr/tag/scrpit">scrpit</a>
+        /
+	<a href="https://til.chann.kr/tag/loop">loop</a>
+        /
+	<a href="https://til.chann.kr/tag/condition">condition</a>
+        /
+	<a href="https://til.chann.kr/tag/paisseon">파이썬</a>
+        /
+	<a href="https://til.chann.kr/tag/peurogeuraeming">프로그래밍</a>
+        /
+	<a href="https://til.chann.kr/tag/seukeuribteu">스크립트</a>
+        /
+	<a href="https://til.chann.kr/tag/eoneo">언어</a>
+        /
+	<a href="https://til.chann.kr/tag/banbogmun">반복문</a>
+        /
+	<a href="https://til.chann.kr/tag/jogeonmun">조건문</a>
+        /
+	<a href="https://til.chann.kr/tag/gaebal">개발</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <!--Summary: -->
+
+<h2>조건문</h2>
+<p>다른 언어들과 마찬가지로 <code>if</code>, <code>elif</code>, <code>else</code> 조건문이 있음. 여러줄일 경우 들여쓰기로 블록을 지정해야 함. 예시는 아래와 같음.</p>
+<hr />
+<h3>if 문</h3>
+<div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a is 1 !!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a is 2 !!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a is not 1 and 2&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<h4>파이썬에서의 장점</h4>
+<p><em>C</em> 나 <em>Java</em> 계열의 언어와는 다르게 <code>score &gt;= 80 &amp;&amp; score &lt; 90</code> 과 같은 방식으로 표현하지 않고 <code>80 &lt;= score &lt; 90</code> 과 같은 구문을 지원. 코드를 쓰기에도 쉽고 보기에도 편리함.</p>
+<hr />
+<h3>조건식 참/거짓 판별</h3>
+<p>조건식의 참/거짓은 <code>bool()</code> 내장함수의 판단방식과 같음. 대략적인 판단은 아래와 같음.</p>
+<ul>
+<li>상수의 값이 0일 경우 거짓인 <code>False</code>, 0이 아닐 경우 <code>True</code></li>
+<li>리스트, 튜플, 딕셔너리가 비어있거나 빈 문자열의 경우 <code>False</code></li>
+<li>논리연산자는 왼쪽에서 오른쪽방향으로 진행하여 판단 (좌변을 우선으로 단축평가 가능)</li>
+</ul>
+<p>단축평가(short-circuit evaluation)란 앞부분에서 참이나 거짓임이 자명할 때 조건식 전체를 연산하여 평가하지 않는 것을 의미.</p>
+<hr />
+<h2>반복문</h2>
+<p>파이썬은 당연히 <code>while</code>, <code>for</code> 와 같은 반복문이 있음. 조건문과 마찬가지로 여러줄일 경우 들여쓰기로 블록을 지정해야 함. 예시는 아래와 같음.</p>
+<hr />
+<h3>while 문</h3>
+<div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;print&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;times !!&quot;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<hr />
+<h3>for 문</h3>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;print&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;times !!&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>파이썬에서의 한계</h4>
+<p><code>for</code> 문에서 주목할 점은 <code>while</code> 문과는 다르게 순회 가능한 시퀸스형 자료를 토대로 반복문을 수행한다는 것. 이터레이터(iterator)이기 때문에 수행 중 점프가 힘들다는 단점을 가짐. <code>continue</code> 혹은 <code>break</code> 는 가능하나 임의로 수행을 단축시킬 수는 없음. 파이썬의 <code>for</code> 문은 <em>C</em> 나 <em>Java</em> 의 <code>for</code> 문과는 다름. <code>foreach</code> 에 가깝다고 봐야함. 이러한 경우엔 <code>while</code> 문을 사용해야.</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;jump!&quot;</span><span class="p">)</span>
+        <span class="c1"># iterator 값이 우선이라 index 값으로 반복을 제어할 수 없음.</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">5</span>
+        <span class="k">continue</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;numbers.&quot;</span><span class="p">)</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># 0 jump!</span>
+<span class="c1"># 1 numbers.</span>
+<span class="c1"># 2 numbers.</span>
+<span class="c1"># 3 jump!</span>
+<span class="c1"># 4 numbers.</span>
+<span class="c1"># 5 numbers.</span>
+<span class="c1"># 6 jump!</span>
+<span class="c1"># 7 numbers.</span>
+<span class="c1"># 8 numbers.</span>
+<span class="c1"># 9 jump!</span>
+</pre></div>
+
+
+<p>하지만 <code>foreach</code> 에 가까우므로 <code>for i in [1,2,3,4,5]:</code> 와 같은 구문으로 시퀸스형 자료를 이터레이터(iterator)로 사용 가능.</p>
+<hr />
+<h2>응용</h2>
+<p><code>for</code> 문을 아래와 같이 C 스타일로도 사용 가능.</p>
+<div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;APPLE&quot;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;index: {0}, value: {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+
+
+<hr />
+<p>아래와 같이 <code>enumerate()</code> 내장함수도 이용 가능.</p>
+<div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;APPLE&quot;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<p>아래와 같이 조건문을 넣을 수도 있음.</p>
+<div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="s2">&quot;Cat&quot;</span><span class="p">,</span> <span class="s2">&quot;Banana&quot;</span><span class="p">,</span> <span class="s2">&quot;Tea&quot;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">word</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+
+
+<hr />
+<p>아래와 같이 <code>filter()</code> 내장함수나 lambda 함수도 사용 가능.</p>
+<div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="c1">### filter 사용 가능</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">big_money</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+<span class="c1">### 아래와 같이 lambda 가능</span>
+<span class="c1"># result = filter(lambda m: m &gt; 100, m)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Big Money: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="c1">### result: </span>
+<span class="c1"># Big Money: 101</span>
+<span class="c1"># Big Money: 1000</span>
+</pre></div>
+
+
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="https://docs.python.org/3.4/index.html">Python Documentation</a></li>
+<li><a href="http://wikidocs.net/">Wikidocs</a></li>
+</ol>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'loop-condition';
+                var disqus_url = 'https://til.chann.kr/python/loop-condition';
+
+            var disqus_config = function () {
+                this.language = "ko";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

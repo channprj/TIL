@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>서버 - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+
+    <meta name="author" content="CHANN" />
+    <meta name="keywords" content="서버" />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <ol class="breadcrumb">
+        <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+        <li><a href="https://til.chann.kr/tags" title="Tags">Tags</a></li>
+        <li class="active">서버</li>
+    </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+            <article>
+                <h2><a href="https://til.chann.kr/linux/runlevel-summary">리눅스 runlevel 정리</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<h2>runlevel 이란</h2>
+<p><code>runlevel</code> 이란, 리눅스 시스템 관리의 용이함을 위하여 서비스의 실행을 단계별로 구분하여 적용하는 것을 말함. 보통 0 ~ 6 까지 총 7가지 모드가 있음. 리눅스마다 조금씩 다르지만 0(정지), 1(싱글모드), 6(재시작)은 일치함. 낮은 레벨일수록, 시스템 시작시 불러오는 드라이버나 데몬 수가 적음. <code>runlevel</code> 은 높아지는 방향으로 진행되며, 부팅되면 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/linux/runlevel-summary">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>service worker - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+
+    <meta name="author" content="CHANN" />
+    <meta name="keywords" content="service worker" />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <ol class="breadcrumb">
+        <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+        <li><a href="https://til.chann.kr/tags" title="Tags">Tags</a></li>
+        <li class="active">service worker</li>
+    </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+            <article>
+                <h2><a href="https://til.chann.kr/study/gdg-webtech-160827">GDG Webtech 160827</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<blockquote>
+<p>단순 참고용 메모, 개인 기록임.</p>
+</blockquote>
+<ul>
+<li>CPU 와 GPU 사이에 통신하면서 발생하는 이슈</li>
+<li>메모리의 한계에 도달했을 때</li>
+<li>CPU 데이터 변경 시 GPU 데이터도 변경 필요</li>
+</ul>
+<hr />
+<h2>Vertex &amp; Plolygon</h2>
+<p>개념 숙지</p>
+<hr />
+<h2>렌더링</h2>
+<p>GPU를 효율적으로 활용하도록 잘 이용해야.</p>
+<ul>
+<li>텍스쳐로 이미지 고속 출력</li>
+<li>이미 가지고 있는 텍스쳐 재활용</li>
+<li>회전, 확대, 축소, 기울임, 반투명 등</li>
+<li>동시 ...</li></ul></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/study/gdg-webtech-160827">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

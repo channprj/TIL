@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!--
+	## for client-side less
+	<link rel="stylesheet/less" type="text/css" href="http://git.chann.kr/theme/css/style.less">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+	-->
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/pygments.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="CHANN">
+	<meta name="description" content="Posts and writings by CHANN">
+
+	<link href="http://git.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="CHANN World Atom" />
+
+<meta name="keywords" content="Dev, iPhone, HTML, JS, Front-End, Apple">
+
+	<title>
+		CHANN World
+&ndash; 아이폰에서 모바일웹을 앱처럼 보이게 하기	</title>
+
+</head>
+
+<body>
+	<aside>
+		<div id="user_meta">
+			<a href="http://git.chann.kr">
+				<img src="http://git.chann.kr/theme/images/logo.png" alt="logo" style="width:100px;height:100px;">
+			</a>
+			<h2><a href="http://git.chann.kr">CHANN</a></h2>
+			<p></p>
+			<ul>
+				<li><a href="/categories">카테고리</a></li>
+				<li><a href="/tags">태그</a></li>
+				<li><a href="/archives">아카이브</a></li>
+				<li><a href="http://blog.chann.kr" target="_blank">Blog</a></li>
+				<li><a href="https://chann.kr" target="_blank">Resume</a></li>
+				<li><a href="https://github.com/channprj" target="_blank">Github</a></li>
+				<li><a href="https://twitter.com/chann_kr" target="_blank">Twitter</a></li>
+				<li><a href="https://fb.com/channprj" target="_blank">Facebook</a></li>
+			</ul>
+		</div>
+	</aside>
+
+	<main>
+		<header>
+			<p>
+			<a href="http://git.chann.kr">Index</a> &brvbar; <a href="http://git.chann.kr/archives.html">Archives</a>
+			&brvbar; <a href="http://git.chann.kr/feeds/all.atom.xml">Atom</a>
+			</p>
+		</header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://git.chann.kr/dev/how-to-make-iphone-webapp/">아이폰에서 모바일웹을 앱처럼 보이게 하기</a></h3>
+  </div>
+  <div class="article_text">
+    <!--Summary: 테스트-->
+
+<blockquote>
+<p>~~웹을 앱이라고 사기치는 법에 대해 다룹니다~~</p>
+</blockquote>
+<p>안드로이드에서는 앱 패킹(App Packing)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>이 어느정도 먹힌다. 아무래도 일반인들은 안드로이드 마켓에서 앱을 설치하는 것이 모바일 브라우져로 접속해서 홈 화면에 추가하는 것보다 익숙하니 비효율적<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>일지라도 사업적인 측면에선 바람직한 선택일 수 있다.</p>
+<p>그래서 아이폰에서도 비슷하게나마 앱처럼 보이게 하고 싶을 수도 있다. 하지만 앱스토어는 여러모로 '빡센 곳'<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup>이라 힘든데, 그럴 땐 <code>Safari 전용 WebApp</code> 설정을 해주면 된다. 이것으로 <code>홈 화면에 추가</code>하는 것만으로도  사용자에게 앱과 거의 유사한 경험을 제공할 수 있다. Rails라던가, Node.js 등을 활용한 <code>SPA</code><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup> 에서 사용하도록 제공하는 기능 같은데, 그냥 생짜 HTML에도 먹히니 그냥 쓰면 된다. 사파리 모바일웹에서만 먹히니 아이폰 전용이라 할 수 있다.</p>
+<p>사실 모바일웹으로 서비스를 이용 하다보면 검색창에 주소를 직접 칠 일이 많지가 않은데, 이 기능을 활용하면 주소창이 싹 사라지므로 공간이 넓어보이는 이점이 있으니 개인적으로는 일단 해두면 좋다고 생각한다. <code>홈 화면에 추가</code>를 해야만 작동하기 때문에 사실 바꿔도 사람들이 잘 모른다 (...)</p>
+<p>아래는 예시 이미지이다.</p>
+<p><img alt="kuple-webapp" src="/content/images/2015/12/-----2015-12-20-19-08-24.png" /></p>
+<hr />
+<h2>사파리 웹앱 적용법</h2>
+<p><code>&lt;head&gt; &lt;/head&gt;</code> 사이에 아래와 같이 앱 아이콘 추가를 해 주고</p>
+<div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">href=</span><span class="s">&quot;touch-icon-iphone.png&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;76x76&quot;</span> <span class="na">href=</span><span class="s">&quot;touch-icon-ipad.png&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;120x120&quot;</span> <span class="na">href=</span><span class="s">&quot;touch-icon-iphone-retina.png&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;152x152&quot;</span> <span class="na">href=</span><span class="s">&quot;touch-icon-ipad-retina.png&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>웹앱 실행 시 인트로 화면이 뜨게 하고 싶으면 아래 코드를 더 추가하자. ~~근데 iPhone 4S 이후로 작동하지 않는 것 같다. 폰이 좋아진 탓에 로딩이 짧아져서 그런가...;;~~</p>
+<div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span> <span class="na">href=</span><span class="s">&quot;/startup.png&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>아래 코드로 마무리하면 사파리에서 버튼과 주소창이 사라진다.</p>
+<div class="highlight"><pre><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;apple-mobile-web-app-capable&quot;</span> <span class="na">content=</span><span class="s">&quot;yes&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>추가적으로, 위에 노티바 색깔도 아래와 같이 브랜드 컬러와 맞춰주자.</p>
+<div class="highlight"><pre><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;apple-mobile-web-app-status-bar-style&quot;</span> <span class="na">content=</span><span class="s">&quot;black&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>아래와 같은 방식으로 다른 네이티브 앱으로 전환도 가능하다</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;tel:1-408-555-5555&quot;</span><span class="nt">&gt;</span>Call me<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>자, 이름 끝인 줄 알았는데, <code>JS</code>코드 한 줄을 더 넣어주어야 한다. 이 상태에서 특정 링크를 누르면 정상적인 사파리 브라우져가 추가적으로 뜨기 때문. </p>
+<p><code>&lt;/body&gt;</code> 상단에 아래와 같은 자바스크립트를 추가해주자.</p>
+<div class="highlight"><pre><span class="c">&lt;!-- Webapp Transition hotfix --&gt;</span>
+<span class="nt">&lt;script&gt;</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="nx">c</span> <span class="k">in</span> <span class="nx">b</span><span class="o">&amp;&amp;</span><span class="nx">b</span><span class="p">[</span><span class="nx">c</span><span class="p">]){</span><span class="kd">var</span> <span class="nx">d</span><span class="p">,</span><span class="nx">e</span><span class="o">=</span><span class="nx">a</span><span class="p">.</span><span class="nx">location</span><span class="p">,</span><span class="nx">f</span><span class="o">=</span><span class="sr">/^(a|html)$/i</span><span class="p">;</span><span class="nx">a</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="nx">d</span><span class="o">=</span><span class="nx">a</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nx">f</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">))</span><span class="nx">d</span>    <span class="o">=</span><span class="nx">d</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">;</span><span class="s2">&quot;href&quot;</span><span class="k">in</span> <span class="nx">d</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span><span class="o">||~</span><span class="nx">d</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">host</span><span class="p">))</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">(),</span><span class="nx">e</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="nx">d</span><span class="p">.</span><span class="nx">href</span><span class="p">)},</span><span class="o">!</span><span class="mi">1</span><span class="p">)}})(</span><span class="nb">document</span><span class="p">,</span><span class="nb">window</span><span class="p">.</span><span class="nx">navigator</span><span class="p">,</span><span class="s2">&quot;standal    one&quot;</span><span class="p">)</span><span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+
+<p>그럼 주소창과 버튼이 사라진 풀스크린의 모바일웹이 완성된다. 홈 화면에 추가해야만 작동하니 적용 후 홍보가 살짝 필요하다. 겉보기엔 진짜 그냥 평범한 앱처럼 보여서 일반인에게 사기치면 잘 속더라.</p>
+<hr />
+<h2>추가: 아래의 코드 참고.</h2>
+<div class="highlight"><pre><span class="cp">&lt;!doctype html&gt;</span>
+
+<span class="c">&lt;!-- http://taylor.fausak.me/2015/01/27/ios-8-web-apps/ --&gt;</span>
+
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>iOS 8 web app<span class="nt">&lt;/title&gt;</span>
+
+    <span class="c">&lt;!-- CONFIGURATION --&gt;</span>
+    <span class="c">&lt;!-- Allow web app to be run in full-screen mode. --&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;apple-mobile-web-app-capable&quot;</span>
+          <span class="na">content=</span><span class="s">&quot;yes&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Make the app title different than the page title. --&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;apple-mobile-web-app-title&quot;</span>
+          <span class="na">content=</span><span class="s">&quot;iOS 8 web app&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Configure the status bar. --&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;apple-mobile-web-app-status-bar-style&quot;</span>
+          <span class="na">content=</span><span class="s">&quot;black&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Set the viewport. --&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span>
+          <span class="na">content=</span><span class="s">&quot;initial-scale=1&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Disable automatic phone number detection. --&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;format-detection&quot;</span>
+          <span class="na">content=</span><span class="s">&quot;telephone=no&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- ICONS --&gt;</span>
+    <span class="c">&lt;!-- iPad retina icon --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/152&quot;</span>
+          <span class="na">sizes=</span><span class="s">&quot;152x152&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-icon-precomposed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPad retina icon (iOS &lt; 7) --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/144&quot;</span>
+          <span class="na">sizes=</span><span class="s">&quot;144x144&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-icon-precomposed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPad non-retina icon --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/76&quot;</span>
+          <span class="na">sizes=</span><span class="s">&quot;76x76&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-icon-precomposed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPad non-retina icon (iOS &lt; 7) --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/72&quot;</span>
+          <span class="na">sizes=</span><span class="s">&quot;72x72&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-icon-precomposed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone 6 Plus icon --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/180&quot;</span>
+          <span class="na">sizes=</span><span class="s">&quot;120x120&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-icon-precomposed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone retina icon (iOS &lt; 7) --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/114&quot;</span>
+          <span class="na">sizes=</span><span class="s">&quot;114x114&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-icon-precomposed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone non-retina icon (iOS &lt; 7) --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/57&quot;</span>
+          <span class="na">sizes=</span><span class="s">&quot;57x57&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-icon-precomposed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- STARTUP IMAGES --&gt;</span>
+    <span class="c">&lt;!-- iPad retina portrait startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/1536x2008&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 768px) and (device-height: 1024px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 2)</span>
+<span class="s">                 and (orientation: portrait)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPad retina landscape startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/1496x2048&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 768px) and (device-height: 1024px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 2)</span>
+<span class="s">                 and (orientation: landscape)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPad non-retina portrait startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/768x1004&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 768px) and (device-height: 1024px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 1)</span>
+<span class="s">                 and (orientation: portrait)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPad non-retina landscape startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/748x1024&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 768px) and (device-height: 1024px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 1)</span>
+<span class="s">                 and (orientation: landscape)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone 6 Plus portrait startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/1242x2148&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 414px) and (device-height: 736px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 3)</span>
+<span class="s">                 and (orientation: portrait)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone 6 Plus landscape startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/1182x2208&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 414px) and (device-height: 736px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 3)</span>
+<span class="s">                 and (orientation: landscape)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone 6 startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/750x1294&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 375px) and (device-height: 667px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 2)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone 5 startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/640x1096&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 320px) and (device-height: 568px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 2)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone &lt; 5 retina startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/640x920&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 320px) and (device-height: 480px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 2)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- iPhone &lt; 5 non-retina startup image --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://placehold.it/320x460&quot;</span>
+          <span class="na">media=</span><span class="s">&quot;(device-width: 320px) and (device-height: 480px)</span>
+<span class="s">                 and (-webkit-device-pixel-ratio: 1)&quot;</span>
+          <span class="na">rel=</span><span class="s">&quot;apple-touch-startup-image&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- HACKS --&gt;</span>
+    <span class="c">&lt;!-- Prevent text size change on orientation change. --&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+      <span class="nt">html</span> <span class="p">{</span>
+        <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="k">size</span><span class="o">-</span><span class="n">adjust</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>iOS 8 web app<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html">애플 공식 개발자 문서</a></li>
+</ol>
+<hr />
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><code>Webview</code>를 활용하여 앱으로 포장해서 안드로이드 마켓에 올리는 방식. 아이폰 앱스토어에서는 단칼에 거절당하는데 안드로이드에선 제법 통과되는 것 같다.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>용량을 좀 더 차지하고, 불필요한 배터리 소모도 늘어난다. 아무튼 지저분해지고 유저 입장에서는 쓸데없는 앱이 많아봐야 영 좋지 않다.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>개발자 연회비 12만원에 시어머니(?)만큼이나 깐깐한 앱스토어 심사 등 타이핑해봐야 손가락만 아프다.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Single Page Application으로, 비동기식 방식으로 페이지 이동 없이 기능이 동작하도록 구성한 웹 어플리케션을 말한다.&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sun 20 December 2015</p>
+    <p>Category: <a href="http://git.chann.kr/dev/index">Dev</a>
+ &ndash; Tags:
+      <a href="http://git.chann.kr/tag/dev.html">Dev</a>,      <a href="http://git.chann.kr/tag/iphone.html">iPhone</a>,      <a href="http://git.chann.kr/tag/html.html">HTML</a>,      <a href="http://git.chann.kr/tag/js.html">JS</a>,      <a href="http://git.chann.kr/tag/front-end.html">Front-End</a>,      <a href="http://git.chann.kr/tag/apple.html">Apple</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "dev/how-to-make-iphone-webapp/";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://githubs.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+		<div id="ending_message">
+			<p>&copy; CHANN. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+		</div>
+	</main>
+</body>
+</html>

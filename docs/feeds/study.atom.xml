@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Today I Learned</title><link href="https://til.chann.kr/" rel="alternate"></link><link href="https://til.chann.kr/feeds/study.atom.xml" rel="self"></link><id>https://til.chann.kr/</id><updated>2016-08-27T18:30:00+09:00</updated><entry><title>GDG Webtech 160827</title><link href="https://til.chann.kr/study/gdg-webtech-160827" rel="alternate"></link><published>2016-08-27T18:30:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-08-27:study/gdg-webtech-160827</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;단순 참고용 메모, 개인 기록임.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU 와 GPU 사이에 통신하면서 발생하는 이슈&lt;/li&gt;
+&lt;li&gt;메모리의 한계에 도달했을 때&lt;/li&gt;
+&lt;li&gt;CPU 데이터 변경 시 GPU 데이터도 변경 필요&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Vertex &amp;amp; Plolygon&lt;/h2&gt;
+&lt;p&gt;개념 숙지&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;렌더링&lt;/h2&gt;
+&lt;p&gt;GPU를 효율적으로 활용하도록 잘 이용해야.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;텍스쳐로 이미지 고속 출력&lt;/li&gt;
+&lt;li&gt;이미 가지고 있는 텍스쳐 재활용&lt;/li&gt;
+&lt;li&gt;회전, 확대, 축소, 기울임, 반투명 등&lt;/li&gt;
+&lt;li&gt;동시 처리 등&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;주의해야 할 점&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GPU 비디오 메모리로 데이터 전송하는 것이 매우 느림&lt;/li&gt;
+&lt;li&gt;데이터 전송 시간 = 데이터 크기 / 버스 속도&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CPU 처리시간&lt;/strong&gt; : CPU에서 데이터 생성 후 GPU로 전송&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;웹페이지 &amp;amp; 크롬 렌더링&lt;/h2&gt;
+&lt;p&gt;HTML tab soup --&amp;gt; DOM Tree --&amp;gt; Render Tree --&amp;gt; Paint
+크롬 렌더링은 조금 더 복잡&lt;/p&gt;
+&lt;h2&gt;레이어 모델&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;이미지 단위의 요소&lt;/li&gt;
+&lt;li&gt;최종적으로 표현될 이미지 단위&lt;/li&gt;
+&lt;li&gt;텍스쳐로 GPU로 업로드&lt;/li&gt;
+&lt;li&gt;레이어 배치 합성하여 최종 웹페이지 표현&lt;/li&gt;
+&lt;li&gt;레이어 이미지는 CPU에서 생성 --&amp;gt; 레이어에 생성되는 이미지는 CPU 소모&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;컴포지트(Composite)&lt;/h2&gt;
+&lt;p&gt;Content Rendering --&amp;gt; Page Composition --&amp;gt; Desktop Composition
+뭐 하나만 바뀌어도 이 과정을 모두 다시 거치게 됨.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reflow 이슈&lt;/h2&gt;
+&lt;p&gt;Reflow = Layout = Layouting
+* DOM 노드가 가지는 레이아웃 정보(Geometry)가 변경되면 레이아웃은 다시 재계산을 해야함.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;레이아웃의 변경이 트리를 따라 전파 (CPU)&lt;/li&gt;
+&lt;li&gt;레이어 이미지의 갱신 필요 (CPU)&lt;/li&gt;
+&lt;li&gt;레이어 이미지 변경으로 VRMA의 텍스터 갱신 필요 (RAM to VRAM Bandwidth)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Repaint 이슈&lt;/h2&gt;
+&lt;p&gt;Repaint = Redraw&lt;/p&gt;
+&lt;p&gt;컨텐츠 변경으로 텍스쳐를 새로 생성해야함&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;최적화&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;네이티브 어플리케이션 --&amp;gt; 최대한 가벼운 렌더링 프로세스 구성&lt;/li&gt;
+&lt;li&gt;렌더링 패스는 철저히 브라우져 영역&lt;/li&gt;
+&lt;li&gt;병목 구간의 발생을 줄여야&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;가장 간단한 Hack - 레이어 분리&lt;/h2&gt;
+&lt;h3&gt;크롬에서 DOM 노드가 레이어로 분리되는 조건들&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;3D혹은 Perspective 를 표현하는 CSS Transform 속성을 가진 경우&lt;/li&gt;
+&lt;li&gt;하드웨어 가속 디코딩을 사용하는 &lt;video&gt; 엘리먼트&lt;/li&gt;
+&lt;li&gt;3D 컨텍스트 혹은 하드웨어 가속 2D 컨텍스트를 가지는 &lt;canvas&gt; 엘리먼트&lt;/li&gt;
+&lt;li&gt;플러그인 영역&lt;/li&gt;
+&lt;li&gt;Opacity 또는 Trasform 애니메이션의 사용&lt;/li&gt;
+&lt;li&gt;가속 가능한 CSS 필터&lt;/li&gt;
+&lt;li&gt;COmposite Layer 를 가진 하위 노드&lt;/li&gt;
+&lt;li&gt;낮은 z-index 를 가진 형제노드가 Composite Layer 를 가진 경우&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;분리 조건 요약 : 해당 DOM 노드가 주변 노드와는 별개로 렌더링되어야 빠른 경우&lt;/p&gt;
+&lt;h3&gt;강제적인 레이어 분리가 만능은 아님&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;레이어 분리는 필연적으로 텍스쳐 이미지 분리를 의미 --&amp;gt; 추가 메모리 소모&lt;/li&gt;
+&lt;li&gt;메모리 공간 부족 시 기존 데이터 릴리즈 후 새로운 데이터 업로드&lt;/li&gt;
+&lt;li&gt;레이어 분리를 통한 성능 향상은 송수신 오버헤드를 발생시킴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;하드웨어 가속으로 얻는 성능은 공짜가 아님&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;CSS의 will-chage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;바뀔 가능성이 큰 CSS 엘리먼트를 hint 로 제공&lt;/li&gt;
+&lt;li&gt;브라우져가 가능할 경우 레이어로 분리해둠&lt;/li&gt;
+&lt;li&gt;효과가 미미할 수 있으나 퍼포먼스에 도움이 될 것&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;렌더링 퍼포먼스&lt;/h2&gt;
+&lt;p&gt;web fundamental, w3c 등 문서 참고.&lt;/p&gt;
+&lt;h2&gt;Webp&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;picture&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;picture&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;img&gt;의 sizes, srcset, src...etc&lt;/h2&gt;
+&lt;p&gt;자세한 건 검색&lt;/p&gt;
+&lt;h2&gt;Round Trip&lt;/h2&gt;
+&lt;p&gt;Wifi, LTE, 3G, 2G 등의 통신환경에 따른 대처. 한국은 인프라가 짱짱하므로 국내 서비스에선 대체로 신경쓰지 않아도 됨. HTTP Request 관련 문서 참고. &lt;/p&gt;
+&lt;h2&gt;Regioning, Critical then Rest...&lt;/h2&gt;
+&lt;p&gt;초반에 Preload 하여 보여준 후 나중에 전체 로딩. FOUC vs 형태 초기로딩 후 천천히 형태를 완성하는 방식. 애니메이션 렌더링 등과 관련된 JS 참고. &lt;a href="https://aerotwist.com/blog/guitar-tuner/"&gt;링크&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Defer iFrames&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;data-src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;// async loading iframes&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;HTTP/2&lt;/h2&gt;
+&lt;p&gt;HTTP/2는 커넥션을 연결하고 한꺼번에 요청을 보내서(stream) 속도가 매우 빨라짐. simplehttp2server by google 참고.&lt;/p&gt;
+&lt;h2&gt;Lie-Fi&lt;/h2&gt;
+&lt;p&gt;네트워크 인프라의 문제로 서버와의 통신이 원활하지 않음. 그럴 땐 Application Cache를 사용. &lt;/p&gt;
+&lt;h2&gt;Service Worker&lt;/h2&gt;
+&lt;p&gt;Background 에서 작업을 돌림. 로딩만을 위한 규격은 아님. 오프라인이나 느리게 로딩되는 것을 Service Worker 가 캐시해둠.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UI 스레드에서 분리되어 실행해야 하므로 DOM 에 대한 직접 접근/조작 불가&lt;/li&gt;
+&lt;li&gt;자체적 글로벌 스코프&lt;/li&gt;
+&lt;li&gt;일부 속성, API 만 허가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Shared Worker는 Lifecycle을 가지고 있음.&lt;/p&gt;</summary><category term="study"></category><category term="programming"></category><category term="dev"></category><category term="web"></category><category term="chrome"></category><category term="service worker"></category><category term="optimization"></category><category term="tech"></category><category term="gdg"></category></entry><entry><title>S65-01 JS, Canvas, SVG</title><link href="https://til.chann.kr/study/s65-js-study-01" rel="alternate"></link><published>2016-02-11T22:32:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-02-11:study/s65-js-study-01</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;!-- 첫 번째 출석 8865 --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;트렌디한 프레임워크나 라이브러리, 최신기술보다는 원론적인 내용을 다룰것&lt;/li&gt;
+&lt;li&gt;개발자로서 오래 살아남기 위해서는 기초 및 핵심기술이 중요&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Graphic System&lt;/h2&gt;
+&lt;p&gt;디지털 환경에서는 픽셀(점)으로 그래픽을 표현함. 모든 컴퓨터 그래픽 시스템의 기초는 비트맵 시스템임.&lt;/p&gt;
+&lt;p&gt;점을 하나하나 찍기보다는 계산에 의해 색을 채울 방법을 고민하기 시작함.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Layer 0 - Fixed Number : 확정되고 고정된 수치
+--&amp;gt; Fixed Number로 반응형 환경에 대응하기 힘들었음.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Layer 0과 1 사이의 애매함 : Drawing API, Shader, Filter, FontRenderer)
+--&amp;gt; 보통 Layer 0을 감싸고 있는 기저레이어에서 제공&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Layer 1 - Caculator Hint : 상대적인 수치
+ScreenSize, ChromeSize, Foreground, Layout System, LazyDetect, Reflow, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Canvas API --&amp;gt; Apple의 Dashboard API 기반.
+Dashboard, Android Widget 등에서 쓰이는 Canvas API도 위와 거의 동일.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Layer 2 - Components
+추상화로 미리 구현된 요소(element)들. (div, input, textarea, img, a, ...)
+요소 &amp;lt; 노드&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;Hello World!&lt;/div&gt;
+
+&lt;p&gt;--&amp;gt; Static Rendering&lt;/p&gt;
+&lt;p&gt;Model(Data) - View(Layout)
+기억하고 보여주고 싶은 데이터만을 추린 것이 모델.
+Runtime Rendering&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Layer 3 - Frameworks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;SVG (Scalable Vector Graphics)&lt;/h2&gt;
+&lt;p&gt;2D 그래픽을 표현하기 위해 XML로 정의된 마크업 언어.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vector Shape&lt;/li&gt;
+&lt;li&gt;Images&lt;/li&gt;
+&lt;li&gt;Text&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Group, Style, Transform 가능.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Embedding&lt;/li&gt;
+&lt;li&gt;Scripting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;SVG의 선, 도형 하나한가 DOM 엘리먼트로 동작하여 이벤트를 걸 수 있음.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;SVG(VML) vs Canvas&lt;/h3&gt;
+&lt;p&gt;DOM은 구조적으로 복잡하여 로딩 속도가 느려질 수 밖에 없음.
+Canvas는 단일 엘리먼트라 상대적으로 속도가 빠를 수 밖에 없음.&lt;/p&gt;
+&lt;h3&gt;Tools, Library for SVG&lt;/h3&gt;
+&lt;h4&gt;Tools&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Adobe Illustrator&lt;/li&gt;
+&lt;li&gt;CorelDRAW&lt;/li&gt;
+&lt;li&gt;Libre Office Draw, Open Office Draw (무료)&lt;/li&gt;
+&lt;li&gt;Inkscape (무료)&lt;/li&gt;
+&lt;li&gt;etc...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Libraries&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;D3.js&lt;/li&gt;
+&lt;li&gt;raphaelJS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;SVG as a markup&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;svg&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;img src="#" /&amp;gt;&lt;/code&gt; ...&lt;/p&gt;</summary><category term="study"></category><category term="programming"></category><category term="dev"></category><category term="js"></category><category term="javascript"></category><category term="canvas"></category><category term="svg"></category><category term="자바스크립트"></category><category term="ECMAScript"></category><category term="ES6"></category></entry><entry><title>프로그래밍 공부 사이트 정리</title><link href="https://til.chann.kr/study/programming-study-site-list" rel="alternate"></link><published>2016-01-20T16:32:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-01-20:study/programming-study-site-list</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;h1&gt;&lt;a href="https://blog.chann.kr/link"&gt;https://blog.chann.kr/link&lt;/a&gt; 로 대체.&lt;/h1&gt;</summary><category term="study"></category><category term="programming"></category><category term="dev"></category><category term="favorite"></category></entry></feed>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>파이썬 클래스 - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+<link rel="canonical" href="https://til.chann.kr/python/class">
+
+        <meta name="author" content="CHANN" />
+        <meta name="keywords" content="python,programming,dev,scrpit,function,study,class,oop,파이썬,프로그래밍,개발,스크립트,함수,공부,스터디,클래스,객체지향" />
+        <meta name="description" content="파이썬은 객체지향 언어이기에 클래스를 사용을 권장함. 클래스는 좀 더 효율적이고 간결하게 기능을 구현하기 위해 존재. 클래스는 객체지향 프로그래밍 언어에서 주로 사용하는 개념. 상속(Inheritance), 다형성(Polymorphism), 캡슐화(Encapsulation) 또는 정보은닉(Information Hiding)의 개념을 알아야 함. 선언 클래스는 선언과 동시에 객체로 생성됨. 일반적인 클래스는 데이터와 메서드로 구성되나 없어도 무방 ..." />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+	<link href="https://til.chann.kr/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned Python ATOM Feed"/>
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+                <li><a href="https://til.chann.kr/python/index" title="Python">Python</a></li>
+                <li class="active">파이썬 클래스</li>
+            </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://til.chann.kr/python/class"
+                       rel="bookmark"
+                       title="Permalink to 파이썬 클래스">
+                        파이썬 클래스
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-04-25T21:00:00+09:00"> 2016-04-25</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://til.chann.kr/tag/python">python</a>
+        /
+	<a href="https://til.chann.kr/tag/programming">programming</a>
+        /
+	<a href="https://til.chann.kr/tag/dev">dev</a>
+        /
+	<a href="https://til.chann.kr/tag/scrpit">scrpit</a>
+        /
+	<a href="https://til.chann.kr/tag/function">function</a>
+        /
+	<a href="https://til.chann.kr/tag/study">study</a>
+        /
+	<a href="https://til.chann.kr/tag/class">class</a>
+        /
+	<a href="https://til.chann.kr/tag/oop">oop</a>
+        /
+	<a href="https://til.chann.kr/tag/paisseon">파이썬</a>
+        /
+	<a href="https://til.chann.kr/tag/peurogeuraeming">프로그래밍</a>
+        /
+	<a href="https://til.chann.kr/tag/gaebal">개발</a>
+        /
+	<a href="https://til.chann.kr/tag/seukeuribteu">스크립트</a>
+        /
+	<a href="https://til.chann.kr/tag/hamsu">함수</a>
+        /
+	<a href="https://til.chann.kr/tag/gongbu">공부</a>
+        /
+	<a href="https://til.chann.kr/tag/seuteodi">스터디</a>
+        /
+	<a href="https://til.chann.kr/tag/keulraeseu">클래스</a>
+        /
+	<a href="https://til.chann.kr/tag/gaegcejihyang">객체지향</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <!--Summary: -->
+
+<p>파이썬은 객체지향 언어이기에 클래스를 사용을 권장함. 클래스는 좀 더 효율적이고 간결하게 기능을 구현하기 위해 존재. 클래스는 <a href="https://ko.wikipedia.org/wiki/객체_지향_프로그래밍">객체지향 프로그래밍 언어</a>에서 주로 사용하는 개념. 상속(Inheritance), 다형성(Polymorphism), 캡슐화(Encapsulation) 또는 정보은닉(Information Hiding)의 개념을 알아야 함.</p>
+<h2>선언</h2>
+<p>클래스는 선언과 동시에 객체로 생성됨. 일반적인 클래스는 데이터와 메서드로 구성되나 없어도 무방. </p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SamplePerson</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c1"># 클래스 정의</span>
+    <span class="sd">&quot;&quot;&quot;docstring for SamplePerson&quot;&quot;&quot;</span>  <span class="c1"># 클래스에 대한 설명, help(클래스이름()) 입력시 나타남.</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;CHANN&quot;</span>  <span class="c1"># 멤버 변수</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>  <span class="c1"># 생성자</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SamplePerson</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
+
+    <span class="k">def</span> <span class="nf">who_am_i</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 멤버 메서드</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="n">SamplePerson</span><span class="p">(</span><span class="s2">&quot;Object Sample&quot;</span><span class="p">)</span>  <span class="c1"># 인스턴스 객체 생성</span>
+<span class="n">person</span><span class="o">.</span><span class="n">who_am_i</span><span class="p">()</span>  <span class="c1"># 클래스 내 함수를 호출하여 멤버 변수 출력: I am CHANN</span>
+
+<span class="n">person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;찬&quot;</span>  <span class="c1"># 인스턴스 객체의 멤버 변수 값 변경</span>
+<span class="n">person</span><span class="o">.</span><span class="n">who_am_i</span><span class="p">()</span>  <span class="c1"># I am 찬</span>
+</pre></div>
+
+
+<p>클래스를 정의하면 클래스 객체가 생성되고 독립적인 네임스페이스가 설정됨. 클래스를 사용하려면 일반적으로 인스턴스 객체를 생성해야함. 인스턴스 객체는 클래스의 이름을 사용하여 함수를 호출하는 형태. 인스턴스 객체의 변수나 메서드가 변경되기 전까지는 기존의 클래스 객체를 가리킴.</p>
+<p>클래스의 변수와 메서드를 접근할 떈 속성 접근자 <code>.</code> 를 사용. 파이썬의 철학은 개발자에게 많은 제약을 가하지 않는 것이기에 기본적으로 클래스와 인스턴스의 접근 권한은 <code>public</code> 임.</p>
+<p><code>self</code> 는 현재 인스턴스 객체를 가리키는 것이며, C++ 이나 Java 의 this 와 거의 동일하지만 파이썬에서는 특별히 예약어로 지정되지는 않았음. 관용적으로 사용하기 때문에 메서드의 첫 인자는 self로 사용하는 것이 좋음.</p>
+<hr />
+<p>메서드 호출 시 크게 2가지 방법이 있음.</p>
+<ul>
+<li>바운드(Bound) 메서드 호출 - <code>person.who_am_i()</code></li>
+<li>언바운드(Unboud) 메서드 호출 - <code>SamplePerson.who_am_i(person)</code></li>
+</ul>
+<p>바운드 메서드 호출은 암묵적으로 첫 인자를 인스턴스 객체로 선언하나 호출할 때엔 자동으로 반영되기 때문에 따로 명시하지 않음. 인스턴스 객체로 클래스 메서드 호출.</p>
+<p>언바운드 메서드 호출은 명시적으로 첫 인자로 인스턴스 객체를 전달함. 클래스 객체를 통해 메서드를 호출함. 클래스 객체에서 인스턴스 객체를 받아서 호출.</p>
+<p>멤버 메서드에서 <code>self</code> 가 누락된 경우 원하는 값을 출력하지 않음. 전역 변수와 이름이 같기 때문에 에러가 뜨지도 않아 규모가 큰 프로그램에서는 문제를 찾기가 힘듦.</p>
+<div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Test String&quot;</span>
+
+<span class="k">class</span> <span class="nc">Mistake</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;docstring for Mistake&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span>
+    <span class="k">def</span> <span class="nf">make_mistake</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="c1"># print(self.msg)  # self 를 명시해야 원하는 값을 출력</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Mistake</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;This is Test Message!&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">make_mistake</span><span class="p">()</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># Test String</span>
+</pre></div>
+
+
+<hr />
+<h2>네임스페이스</h2>
+<p>클래스 객체(Class Object)와 인스턴스 객체(Instance Object)의 네임스페이스는 다른 영역. 기본적으로 아래와 같은 순서로 변수나 메서드 이름을 찾음. <code>LGB Rule</code> 과 유사한 방식.</p>
+<ol>
+<li>인스턴스 객체 영역</li>
+<li>클래스 객체 영역</li>
+<li>전역 영역</li>
+</ol>
+<p>위의 과정을 거친 후에도 찾지 못할 경우 <code>AttributeError</code> 예외가 발생.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">():</span>  <span class="c1"># 클래스 정의</span>
+    <span class="sd">&quot;&quot;&quot;docstring for Person&quot;&quot;&quot;</span>  <span class="c1"># 클래스에 대한 설명, help(클래스이름()) 입력시 나타남.</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Default&quot;</span>  <span class="c1"># 멤버 변수</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 생성자</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Person</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">who_am_i</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 멤버 메서드</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+<span class="n">me</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">you</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+
+<span class="n">Person</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Person 클래스에 age 변수 추가</span>
+
+<span class="n">me</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;CHANN&quot;</span>
+<span class="n">me</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="n">me</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="s2">&quot;developer&quot;</span>  <span class="c1"># 인스턴스에 job 변수 추가</span>
+
+<span class="n">me</span><span class="o">.</span><span class="n">who_am_i</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;age: &quot;</span><span class="p">,</span> <span class="n">me</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>  <span class="c1"># 모든 인스턴스에서 사용 가능</span>
+<span class="k">print</span><span class="p">(</span><span class="n">me</span><span class="o">.</span><span class="n">job</span><span class="p">)</span>  <span class="c1"># 해당 인스턴스에서만 사용 가능</span>
+
+<span class="n">you</span><span class="o">.</span><span class="n">who_am_i</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;age: &quot;</span><span class="p">,</span> <span class="n">you</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>  <span class="c1"># 모든 인스턴스에서 사용 가능</span>
+</pre></div>
+
+
+<hr />
+<h2>생성자, 소멸자</h2>
+<p>파이썬은 C++ 나 Java 와 마찬가지로 생성자, 소멸자 메서드를 지원함. 생성자는 인스턴스 객체가 생성될 때 자동으로 호출되며, 소멸자는 인스턴스 객체의 레퍼런스 카운터가 0이 될 때 호출됨. 생성자 메서드와 소멸자 메서드는 각각 <code>__init__()</code> 과 <code>__del__()</code> 로 미리 정의되어 있음. 파이썬에서 앞뒤로 언더바(__) 2개가 있는 것은 특별한 용도로 미리 정의된 것들임. 생성자 메서드의 경우 인스턴스 객체 생성 시 초기화할 멤버 변수값을 전달할 수 있음.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">student</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;docstring for student&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">student</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;생성자! value:&quot;</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;소멸자!&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">student</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">test</span><span class="p">()</span>
+<span class="c1">### result:</span>
+<span class="c1"># 생성자! value: 10</span>
+<span class="c1"># 소멸자!</span>
+</pre></div>
+
+
+<p>함수 내부에서 생성할 경우 함수 블록을 벗어났을 떄 자동으로 소멸자가 호출되고 소멸됨. 아래와 같이 명시적으로 <code>del</code> 구문을 사용한다고 소멸자가 항상 호출되는 것은 아님. 레퍼런스 카운터가 1 이상일 경우 <code>del</code> 구문을 사용해도 소멸자가 호출되지 않음.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">test</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;docstring for test&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;생성자!&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;소멸자!&quot;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">test</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="k">del</span> <span class="n">c</span>
+<span class="c1"># del b</span>
+<span class="c1"># del a</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;END&quot;</span><span class="p">)</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># 생성자!</span>
+<span class="c1"># END  # del 해도 소멸자가 호출되지 않음</span>
+<span class="c1"># 소멸자!  # 프로그램 종료해서 소멸자가 호출됨</span>
+</pre></div>
+
+
+<hr />
+<h2>정적 메서드, 클래스 메서드</h2>
+<p>메서드의 확장 형태로 정적 메서드(Static Method)와 클래스 메서드(Class Method)가 있음. 정적 메서드는 인스턴스 객체 없이 클래스를 통해 직접 호출할 수 있는 메서드임. 이 경우 메서드를 정의할 때 인스턴스 객체를 참조하는 'self' 인자를 선언하지 않음.</p>
+<p>인스턴스의 갯수를 관리하고 싶은 경우엔 클래스 영역에서 해당 정보를 관리하는 것이 효율적.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">s_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">student</span><span class="o">.</span><span class="n">s_count</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># 인스턴스 객체 갯수 증가</span>
+    <span class="k">def</span> <span class="nf">print_count</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;instance:&quot;</span><span class="p">,</span> <span class="n">student</span><span class="o">.</span><span class="n">s_count</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">student</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">student</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">student</span><span class="p">()</span>
+
+<span class="n">student</span><span class="o">.</span><span class="n">print_count</span><span class="p">()</span>  <span class="c1"># 인스턴스 갯수 출력</span>
+<span class="c1"># a.print_count()  # 에러: 암묵적으로 인스턴스 객체를 받기 때문</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># instance: 3</span>
+</pre></div>
+
+
+<hr />
+<p>정적 메서드와 클래스 메서드의 비교 예시는 아래와 같음.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">student</span><span class="p">():</span>
+    <span class="n">s_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">student</span><span class="o">.</span><span class="n">s_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">s_method</span><span class="p">():</span>  <span class="c1"># 정적 메서드 정의</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;static method:&quot;</span><span class="p">,</span> <span class="n">student</span><span class="o">.</span><span class="n">s_count</span><span class="p">)</span>
+    <span class="n">print_s_count</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">s_method</span><span class="p">)</span>  <span class="c1"># 정적 메서드 등록</span>
+
+    <span class="k">def</span> <span class="nf">c_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 클래스 메서드 정의, 첫 인자로 클래스를 받음</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;class method:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_count</span><span class="p">)</span>
+    <span class="n">print_c_count</span> <span class="o">=</span> <span class="nb">classmethod</span><span class="p">(</span><span class="n">c_method</span><span class="p">)</span>  <span class="c1"># 클래스 메서드 등록</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">student</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">student</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">student</span><span class="p">()</span>
+
+<span class="n">student</span><span class="o">.</span><span class="n">s_method</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">print_s_count</span><span class="p">()</span>
+
+<span class="n">student</span><span class="o">.</span><span class="n">c_method</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">print_c_count</span><span class="p">()</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># static method: 3</span>
+<span class="c1"># static method: 3</span>
+<span class="c1"># class method: 3</span>
+<span class="c1"># class method: 3</span>
+</pre></div>
+
+
+<hr />
+<p>인스턴스 카운터와 같은 용도의 변수는 외부에서 값이 변경되어선 안됨. 파이썬에서는 이름 변경(Name Mangling) 으로 대처함. 앞에 '__'로 시작하는 변수나 메서드의 경우 클래스 외부에서 참조할 때 명시하는 변수명이 자동적으로 <code>_[클래스이름]__[멤버이름]</code> 으로 변경됨. 클래스 내에서는 정의한 이름 그대로 <code>__[멤버이름]</code> 만으로 사용할 수 있음.</p>
+<p>이렇게 하는 경우는 파이썬 문법의 제약사항으로 정보은닉을 제공하기보다는 이름 변경으로 개발자의 의도를 나타낸 것. 그러므로 외부에서 변경된 이름으로 변수 접근 및 사용을 권장하지 않음.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">student</span><span class="p">():</span>
+    <span class="n">__s_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># ...중략</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">student</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">_student__s_count</span><span class="p">)</span>  <span class="c1"># 외부 참조시 명시하는 이름이 변경됨.</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">student</span><span class="p">))</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># 1</span>
+<span class="c1"># [(..중략..) &#39;_student__s_count&#39;, &#39;c_method&#39;, (..중략..)]  # 실제 이름이 저렇게 등록되어있음을 확인.</span>
+</pre></div>
+
+
+<hr />
+<h2>연산자 중복 정의</h2>
+<p>연산자 중복(Operator Overriding)은 아래와 같은 메서드들을 활용하여 정의함. 자세한 건 <a href="https://docs.python.org/3.5/reference/datamodel.html#emulating-numeric-types">공식 문서</a>를 참고.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># 더하기(+)</span>
+<span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># 빼기(-)</span>
+<span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># 곱하기(*)</span>
+<span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># 나누기(/)</span>
+<span class="k">def</span> <span class="nf">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># 나누기 몫만(//)</span>
+<span class="k">def</span> <span class="nf">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># 나누기 나머지만(%)</span>
+<span class="k">def</span> <span class="nf">__divmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># divmod()</span>
+<span class="k">def</span> <span class="nf">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># pow(), **</span>
+<span class="k">def</span> <span class="nf">__lshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># &lt;&lt;</span>
+<span class="k">def</span> <span class="nf">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># &gt;&gt;</span>
+<span class="k">def</span> <span class="nf">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># &amp;</span>
+<span class="k">def</span> <span class="nf">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># |</span>
+<span class="k">def</span> <span class="nf">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># ^</span>
+<span class="k">def</span> <span class="nf">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># abs()</span>
+<span class="k">def</span> <span class="nf">__pos__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 더하기(+, 단항)</span>
+<span class="k">def</span> <span class="nf">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 빼기(-, 단항)</span>
+<span class="k">def</span> <span class="nf">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># ~(비트연산)</span>
+<span class="o">...</span><span class="err">중략</span>
+</pre></div>
+
+
+<hr />
+<p>연산자 중복 예시는 다음과 같음.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;docstring for student&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">arg</span>
+    <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">student</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">student</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">s_print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">student</span><span class="p">(</span><span class="s2">&quot;Heechan.B&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">-=</span> <span class="s2">&quot;.B&quot;</span>
+<span class="n">a</span><span class="o">.</span><span class="n">s_print</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">s_print</span><span class="p">()</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># Heechan</span>
+<span class="c1"># HEECHAN</span>
+</pre></div>
+
+
+<hr />
+<h2>상속</h2>
+<p>부모클래스의 모든 변수, 메서드를 자식클래스로 물려줄 수 있음. 여러 클래스의 공통된 속성은 부모 클래스에서 정의를 하고, 각 자식 클래스(하위 클래스)에서는 각각 용도에 걸맞은 변수, 메서드를 구현하면 됨. 이러한 개념은 같은 코드의 반복을 방지하고 유지보수가 용이해짐. 예시는 아래와 같음.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">car</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    자동차 부모클래스</span>
+<span class="sd">    변수:</span>
+<span class="sd">        차명</span>
+<span class="sd">        가격</span>
+<span class="sd">        연비</span>
+
+<span class="sd">    출처: http://auto.naver.com</span>
+
+<span class="sd">    ----------------------------------------------------------------------</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">fuel</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">arg</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">car</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fuel</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">print_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;차 정보를 출력. Name, Price, Fuel.&quot;&quot;&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Info(Name={0}, Price={1}, Fuel={2})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fuel</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">kia</span><span class="p">(</span><span class="n">car</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    자동차 자식클래스</span>
+<span class="sd">    변수:</span>
+<span class="sd">        차명</span>
+<span class="sd">        가격</span>
+<span class="sd">        연비</span>
+<span class="sd">        회사명</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">fuel</span><span class="p">,</span> <span class="n">company</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">kia</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fuel</span> <span class="o">=</span> <span class="n">fuel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">company</span> <span class="o">=</span> <span class="n">company</span>  <span class="c1"># 자식클래스의 확장 변수</span>
+
+    <span class="k">def</span> <span class="nf">print_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 다형성, 메서드 재정의(확장)</span>
+        <span class="sd">&quot;&quot;&quot;차 정보를 출력. Name, Price, Fuel, Company.&quot;&quot;&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Info(Name={0}, Price={1}, Fuel={2}, Company={3})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fuel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">company</span><span class="p">))</span>
+
+<span class="c1"># 부릉이 자동차(부모)</span>
+<span class="n">broong</span> <span class="o">=</span> <span class="n">car</span><span class="p">(</span><span class="s2">&quot;Broong&quot;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;13km/L&quot;</span><span class="p">)</span>
+<span class="n">broong</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+
+<span class="c1"># 기아 레이 자동차(자식)</span>
+<span class="n">ray</span> <span class="o">=</span> <span class="n">kia</span><span class="p">(</span><span class="s2">&quot;Ray&quot;</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="s2">&quot;13.2km/L&quot;</span><span class="p">,</span> <span class="s2">&quot;KIA Motors&quot;</span><span class="p">)</span>
+<span class="n">ray</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+
+<span class="c1"># 클래스 간의 관계 확인, issubclass(자식, 부모)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;kia: child, car: parent ---&quot;</span><span class="p">,</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">kia</span><span class="p">,</span> <span class="n">car</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;kia: parent, car: child ---&quot;</span><span class="p">,</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">car</span><span class="p">,</span> <span class="n">kia</span><span class="p">))</span>
+
+<span class="c1"># 부모클래스 추적</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;What is kia parent? &quot;</span><span class="p">,</span> <span class="n">kia</span><span class="o">.</span><span class="n">__bases__</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<h2>상속과 네임스페이스</h2>
+<p>클래스 상속의 스코핑 룰(Scoping Rule)은 아래와 같음.</p>
+<ol>
+<li>인스턴스 객체 영역</li>
+<li>클래스 객체 영역</li>
+<li>전역 영역</li>
+</ol>
+<hr />
+<p>여기서 클래스간의 상속 관계가 포함되면 아래와 같이 규칙이 확장됨. 이러한 규칙을 상속 관계 검색의 원칙(Principles of Inheritance Search)이라고 함.</p>
+<ol>
+<li>인스턴스 객체 영역</li>
+<li>클래스 객체 상속 영역(자식 -&gt; 부모 순으로 탐색)</li>
+<li>전역 영역</li>
+</ol>
+<p>이렇게 하는 이유는 중복 변수와 메서드를 최소화하여 메모리 효율을 높이기 위함.</p>
+<hr />
+<h2>다중 상속</h2>
+<p>다중상속은 2개 이상의 클래스를 상속받는 경우를 말함. 두 클래스의 속성을 물려받게 됨. 상속 정보는 MRO(Method Resolution Order)에 저장되어 있으며,  <code>__mro__()</code> 를 이용해서 조회 가능.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">person</span><span class="p">:</span>  <span class="c1"># 사람</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;person 호출&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="k">class</span> <span class="nc">girl</span><span class="p">(</span><span class="n">person</span><span class="p">):</span>  <span class="c1"># 여자</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>  <span class="c1"># 사람 생성자 호출</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;girl 호출&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>  <span class="c1"># 확장 변수 추가</span>
+
+<span class="k">class</span> <span class="nc">girlfriend</span><span class="p">(</span><span class="n">girl</span><span class="p">):</span>  <span class="c1"># 여자친구</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">pretty</span><span class="p">):</span>
+        <span class="n">girl</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">)</span>  <span class="c1"># 사람 생성자 호출</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt; girlfriend 호출&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pretty</span> <span class="o">=</span> <span class="n">pretty</span>  <span class="c1"># person -&gt; girl -&gt; girlfriend 로 다중 상속 후 확장 변수 추가</span>
+
+    <span class="k">def</span> <span class="nf">print_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 다중상속 후 확장 메서드 추가</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Name: {0}, Gender: {1}, is_pretty?: {2}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pretty</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">boy</span><span class="p">(</span><span class="n">person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
+        <span class="n">person</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>  <span class="c1"># 사람 생성자 호출</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;boy 호출&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
+
+<span class="k">class</span> <span class="nc">boyfriend</span><span class="p">(</span><span class="n">boy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">pretty</span><span class="p">):</span>
+        <span class="n">boy</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">)</span>
+        <span class="n">girlfriend</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">pretty</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt; boyfriend 호출&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">print_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Name: {0}, Gender: {1}, is_pretty?: {2}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pretty</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">girlfriend</span><span class="p">(</span><span class="s2">&quot;IU&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">boyfriend</span><span class="p">(</span><span class="s2">&quot;Jongsuk&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">print_all</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">print_all</span><span class="p">()</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;What is girlfriend parent? &quot;</span><span class="p">,</span> <span class="n">girlfriend</span><span class="o">.</span><span class="n">__bases__</span><span class="p">)</span>  <span class="c1"># (&lt;class &#39;__main__.girl&#39;&gt;,)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">girlfriend</span><span class="o">.</span><span class="n">__mro__</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># person 호출</span>
+<span class="c1"># girl 호출</span>
+<span class="c1"># &gt;&gt; girlfriend 호출</span>
+
+<span class="c1"># person 호출  --&gt; 1번 호출</span>
+<span class="c1"># boy 호출</span>
+<span class="c1"># person 호출  --&gt; 2번 호출됨 &lt;&lt;</span>
+<span class="c1"># girl 호출</span>
+<span class="c1"># &gt;&gt; girlfriend 호출</span>
+<span class="c1"># &gt;&gt; boyfriend 호출</span>
+
+<span class="c1"># Name: IU, Gender: F, is_pretty?: 1</span>
+<span class="c1"># Name: Jongsuk, Gender: M, is_pretty?: 1</span>
+
+<span class="c1"># What is girlfriend parent?  (&lt;class &#39;__main__.girl&#39;&gt;,)</span>
+<span class="c1"># &lt;class &#39;__main__.girlfriend&#39;&gt;</span>
+<span class="c1"># &lt;class &#39;__main__.girl&#39;&gt;</span>
+<span class="c1"># &lt;class &#39;__main__.person&#39;&gt;</span>
+<span class="c1"># &lt;class &#39;object&#39;&gt;</span>
+</pre></div>
+
+
+<hr />
+<h2>super()를 이용한 상위클래스 메서드 호출</h2>
+<p>위와 같은 코드에서는 <em>person</em> 클래스가 두 번 호출되는 문제가 있음. 그 이유는 <em>boyfriend</em> 클래스의 생성자에서 <em>boy</em> 를 호출했음에도  <em>girlfriend</em> 를 호출하면서 <em>person</em> 생성자가 <strong>2번 호출되기 때문</strong>. 이러한 문제는 다이아 형태로 상속할 때 발생.</p>
+<hr />
+<p>이러한 문제는 <code>super()</code> 내장함수로 해결 가능하며, 부모 클래스의 객체를 반환하므로 Java의 <code>super</code> 나 C# 의 <code>base</code> 와 유사함. 일반적으로 자식 클래스에서 <code>super(클래스 이름, self).__init__()</code> 와 같이 호출하므로 코드의 유지보수가 쉬움.</p>
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="https://wikidocs.net/28">Jump to Python</a></li>
+</ol>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'class';
+                var disqus_url = 'https://til.chann.kr/python/class';
+
+            var disqus_config = function () {
+                this.language = "ko";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

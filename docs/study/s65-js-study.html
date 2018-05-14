@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>S65-01 JS, Canvas, SVG - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+<link rel="canonical" href="https://til.chann.kr/study/s65-js-study">
+
+        <meta name="author" content="CHANN" />
+        <meta name="keywords" content="study,programming,dev,js,javascript,canvas,svg,자바스크립트,ECMAScript,ES6" />
+        <meta name="description" content="트렌디한 프레임워크나 라이브러리, 최신기술보다는 원론적인 내용을 다룰것 개발자로서 오래 살아남기 위해서는 기초 및 핵심기술이 중요 Graphic System 디지털 환경에서는 픽셀(점)으로 그래픽을 표현함. 모든 컴퓨터 그래픽 시스템의 기초는 비트맵 시스템임. 점을 하나하나 찍기보다는 계산에 의해 색을 채울 방법을 고민하기 시작함. Layer 0 - Fixed Number : 확정되고 고정된 수치 --&gt; Fixed Number로 ..." />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+	<link href="https://til.chann.kr/feeds/study.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned Study ATOM Feed"/>
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+                <li><a href="https://til.chann.kr/study/index" title="Study">Study</a></li>
+                <li class="active">S65-01 JS, Canvas, SVG</li>
+            </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://til.chann.kr/study/s65-js-study"
+                       rel="bookmark"
+                       title="Permalink to S65-01 JS, Canvas, SVG">
+                        S65-01 JS, Canvas, SVG
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-11T22:32:00+09:00"> Thu 11 February 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://til.chann.kr/tag/study">study</a>
+        /
+	<a href="https://til.chann.kr/tag/programming">programming</a>
+        /
+	<a href="https://til.chann.kr/tag/dev">dev</a>
+        /
+	<a href="https://til.chann.kr/tag/js">js</a>
+        /
+	<a href="https://til.chann.kr/tag/javascript">javascript</a>
+        /
+	<a href="https://til.chann.kr/tag/canvas">canvas</a>
+        /
+	<a href="https://til.chann.kr/tag/svg">svg</a>
+        /
+	<a href="https://til.chann.kr/tag/jabaseukeuribteu">자바스크립트</a>
+        /
+	<a href="https://til.chann.kr/tag/ecmascript">ECMAScript</a>
+        /
+	<a href="https://til.chann.kr/tag/es6">ES6</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <!--Summary: -->
+
+<!-- 첫 번째 출석 8865 -->
+
+<ul>
+<li>트렌디한 프레임워크나 라이브러리, 최신기술보다는 원론적인 내용을 다룰것</li>
+<li>개발자로서 오래 살아남기 위해서는 기초 및 핵심기술이 중요</li>
+</ul>
+<h2>Graphic System</h2>
+<p>디지털 환경에서는 픽셀(점)으로 그래픽을 표현함. 모든 컴퓨터 그래픽 시스템의 기초는 비트맵 시스템임.</p>
+<p>점을 하나하나 찍기보다는 계산에 의해 색을 채울 방법을 고민하기 시작함.</p>
+<ul>
+<li>Layer 0 - Fixed Number : 확정되고 고정된 수치
+--&gt; Fixed Number로 반응형 환경에 대응하기 힘들었음.</li>
+</ul>
+<p>(Layer 0과 1 사이의 애매함 : Drawing API, Shader, Filter, FontRenderer)
+--&gt; 보통 Layer 0을 감싸고 있는 기저레이어에서 제공</p>
+<ul>
+<li>Layer 1 - Caculator Hint : 상대적인 수치
+ScreenSize, ChromeSize, Foreground, Layout System, LazyDetect, Reflow, etc.</li>
+</ul>
+<p>Canvas API --&gt; Apple의 Dashboard API 기반.
+Dashboard, Android Widget 등에서 쓰이는 Canvas API도 위와 거의 동일.</p>
+<ul>
+<li>Layer 2 - Components
+추상화로 미리 구현된 요소(element)들. (div, input, textarea, img, a, ...)
+요소 &lt; 노드</li>
+</ul>
+<div>Hello World!</div>
+
+<p>--&gt; Static Rendering</p>
+<p>Model(Data) - View(Layout)
+기억하고 보여주고 싶은 데이터만을 추린 것이 모델.
+Runtime Rendering</p>
+<ul>
+<li>Layer 3 - Frameworks</li>
+</ul>
+<hr />
+<h2>SVG (Scalable Vector Graphics)</h2>
+<p>2D 그래픽을 표현하기 위해 XML로 정의된 마크업 언어.</p>
+<ul>
+<li>Vector Shape</li>
+<li>Images</li>
+<li>Text</li>
+</ul>
+<p>Group, Style, Transform 가능.</p>
+<ul>
+<li>Embedding</li>
+<li>Scripting</li>
+</ul>
+<p><strong>SVG의 선, 도형 하나한가 DOM 엘리먼트로 동작하여 이벤트를 걸 수 있음.</strong></p>
+<h3>SVG(VML) vs Canvas</h3>
+<p>DOM은 구조적으로 복잡하여 로딩 속도가 느려질 수 밖에 없음.
+Canvas는 단일 엘리먼트라 상대적으로 속도가 빠를 수 밖에 없음.</p>
+<h3>Tools, Library for SVG</h3>
+<h4>Tools</h4>
+<ul>
+<li>Adobe Illustrator</li>
+<li>CorelDRAW</li>
+<li>Libre Office Draw, Open Office Draw (무료)</li>
+<li>Inkscape (무료)</li>
+<li>etc...</li>
+</ul>
+<h4>Libraries</h4>
+<ul>
+<li>D3.js</li>
+<li>raphaelJS</li>
+</ul>
+<h3>SVG as a markup</h3>
+<p><code>&lt;svg&gt;</code>, <code>&lt;img src="#" /&gt;</code> ...</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 's65-js-study';
+                var disqus_url = 'https://til.chann.kr/study/s65-js-study';
+
+            var disqus_config = function () {
+                this.language = "ko";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+
+</body>
+</html>

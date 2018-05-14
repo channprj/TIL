@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!--
+	## for client-side less
+	<link rel="stylesheet/less" type="text/css" href="http://git.chann.kr/theme/css/style.less">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+	-->
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/pygments.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="CHANN">
+	<meta name="description" content="Posts and writings by CHANN">
+
+	<link href="http://git.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="CHANN World Atom" />
+
+<meta name="keywords" content="dev, nodejs, ghost, blog, server, package">
+
+	<title>
+		CHANN World
+&ndash; ghost 블로그 설치하기	</title>
+
+</head>
+
+<body>
+	<aside>
+		<div id="user_meta">
+			<a href="http://git.chann.kr">
+				<img src="http://git.chann.kr/theme/images/logo.png" alt="logo" style="width:100px;height:100px;">
+			</a>
+			<h2><a href="http://git.chann.kr">CHANN</a></h2>
+			<p></p>
+			<ul>
+				<li><a href="/categories">카테고리</a></li>
+				<li><a href="/tags">태그</a></li>
+				<li><a href="/archives">아카이브</a></li>
+				<li><a href="http://blog.chann.kr" target="_blank">Blog</a></li>
+				<li><a href="https://chann.kr" target="_blank">Resume</a></li>
+				<li><a href="https://github.com/channprj" target="_blank">Github</a></li>
+				<li><a href="https://twitter.com/chann_kr" target="_blank">Twitter</a></li>
+				<li><a href="https://fb.com/channprj" target="_blank">Facebook</a></li>
+			</ul>
+		</div>
+	</aside>
+
+	<main>
+		<header>
+			<p>
+			<a href="http://git.chann.kr">Index</a> &brvbar; <a href="http://git.chann.kr/archives.html">Archives</a>
+			&brvbar; <a href="http://git.chann.kr/feeds/all.atom.xml">Atom</a>
+			</p>
+		</header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://git.chann.kr/dev/ghost-blog-install-guide">ghost 블로그 설치하기</a></h3>
+  </div>
+  <div class="article_text">
+    <!--Summary: -->
+
+<p>Ghost는 정말 블로그를 위한 도구다. 마크다운<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> 기반의 에디터가 기본이며, 별다른 기능이 없다. 그래서 가볍고 빠르다. 마크다운 에디터라서 글 쓰는 속도 또한 빠르고 편리하다. 아직 0.7.x 버전<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>이라 완성되었다고 보긴 힘들지만, 당장 사용하기에 전혀 무리가 없다. Ghost는 워드프레스가 점점 기능이 많아지면서 무겁고 사용하기 어려워진 것에 반해 오로지 블로그만을 위해 태어났고, 제 역할에만 충실하여 매우 마음에 든다.</p>
+<p>Ghost 블로그를 사용하는 방법은 워드프레스와 마찬가지로 2가지이다.</p>
+<ol>
+<li><a href="http://ghost.org">Ghost</a> 호스팅을 이용하는 방법(유료)</li>
+<li>직접 서버를 구축해서 설치하여 사용하는 법(사실상 유료)</li>
+</ol>
+<p>1번의 경우에는 편리하지만 자유도가 떨어진다. 워드프레스닷컴과 마찬가지로 제공하는 기능만 사용 가능하다는 단점이 있다. 하지만 업데이트가 가장 빠르고, 안정적이다. 사용하려면 <a href="http://ghost.org">Ghost</a> 홈페이지에 접속해서 회원가입해서 사용하면 된다.</p>
+<p>2번의 경우에는 서버를 직접 운영해야 하고 생소할 수 있는 <code>node.js</code>를 사용하여 직접 설치해야 하기 때문에 번거롭다. 대신 자유롭게 수정 가능하다는 장점이 있다. 직접 만들기 귀찮으면 1번, 아니면 2번을 고르자.</p>
+<p>사실 직접 써 보기 전까진 모르니까 서버에 설치하기 전에 미리 체험을 해 보는 것을 추천한다. 14일 무료체험을 해볼 수 있으니 지금 한번 써보자. 그마저도 귀찮다면 <a href="http://ghosditor.herokuapp.com">Ghost 에디터만 사용해보자.</a></p>
+<hr />
+<h2>서버 준비</h2>
+<p>직접 만들기 위해서는 당연히 서버가 있어야 한다. 서버를 구입하거나, 월정액으로 빌려 쓰거나, 자신의 PC를 서버화하거나, Github Page를 이용하는 방법이 있다.</p>
+<ol>
+<li>AWS, Digital Ocean, Vultr와 같은 가상화 서버를 사용 (시간제 요금, $5 ~)</li>
+<li>라즈베리파이2, 오드로이드, 인텔 에디슨과 같은 SBC<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup> 구매 (구입비 $30)</li>
+<li>자신의 PC</li>
+<li>Github Pages 기능을 우회해서 구현</li>
+</ol>
+<p>이 글에서 중심적으로 다룰 내용은 1번의 가상화 서버를 활용하는 방법이지만 사실 2, 3번도 크게 상이하진 않다. 운영체제를 설치하고 네트워크를 설정한 이후에는 거의 동일한 과정이라고 볼 수 있다. 4번의 경우엔 무료인 대신 많이 복잡하다. Github Pages 기능은 기본적으로 <code>Ruby</code> 기반의 페이지라서 Ghost의 <code>node.js</code>를 사용할 수가 없기에 자신의 PC 혹은 노트북에 로컬 서버환경울 구축하고 Ghost를 설치한 후 <a href="https://github.com/axitkhurana/buster">Buster</a>라는 정적 페이지 생성기를 사용하여 자신의 Github Pages 저장소에 커밋해야 한다. 4번의 경우 나중에 따로 다룰 예정.</p>
+<p>우선, 서버를 사자. Cafe24나 스마일서브 같은 국내 가상화서버 혹은 AWS가 가장 좋긴 한데 비싸다. Digital Ocean도 물론 좋지만, 일본지역 서버가 없다. Linode는 일본지역 서버가 있는데 자리가 모두 나가서 새로 서버를 생성할 수가 없다. ~~그러니 Vultr를 사용하도록 하자.~~ ==(2015-12-10) AWS 서버로 이전함.==</p>
+<hr />
+<h2>Linuxbrew  설치</h2>
+<p>먼저, ruby 기반 통합 패키지 도구인 <code>Homebrew</code>를 설치하자. 맥에서 주로 쓰이는 도구이지만, 리눅스에서도 사용하기 유용하다. apt-get에 비해 패키지 버전이 빠르다. 그러나 서버 전역에서 쓰이는 패키지라면 apt-get으로 설치하는 것이 좀 더 바람직하다. <code>Homebrew</code>는 루트 권한으로 패키지 설치가 안 되기 때문. 리눅스에서는 <code>Linuxbrew</code> 라는 별칭으로 불린다.</p>
+<p>ruby 기반이기 때문에 서버에 당연히 ruby가 설치되어 있어야 한다.</p>
+<hr />
+<h3>AWS를 이용할 경우</h3>
+<blockquote>
+<p>우분투 저장소 업데이트는 해당되는 사람만 진행하자.</p>
+</blockquote>
+<p>AWS에서 제공하는 패키지 저장소 문제인지 <code>apt-get install</code> 이 안 되더라. 아직은 일본 노드를 사용하고 있으므로 일본 저장소를 추가하려 했으나... 안 된다. 한국 저장소 죽었단 소린 언뜻 들었는데, 해보니 일본 저장소도 죽었다;; 우분투 공식 저장소를 추가하도록 하자.</p>
+<p><code>$ vim /etc/apt/sources.list</code> 명령어를 입력해서 아래의 코드를 추가하도록 하자. main 저장소가 여러개 있으면 충돌이 날 가능성이 있으니 조심.</p>
+<div class="highlight"><pre><span class="c">###### Ubuntu Main Repos</span>
+deb http://archive.ubuntu.com/ubuntu trusty main
+deb-src http://archive.ubuntu.com/ubuntu trusty main
+
+<span class="c">###### Ubuntu Update Repos</span>
+<span class="c"># Major bug fix updates produced after the final release of the distribution.</span>
+deb http://archive.ubuntu.com/ubuntu trusty-updates main
+deb-src http://archive.ubuntu.com/ubuntu trusty-updates main
+
+<span class="c">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span>
+<span class="c">## team. Also, please note that software in universe WILL NOT receive any</span>
+<span class="c">## review or updates from the Ubuntu security team.</span>
+deb http://archive.ubuntu.com/ubuntu trusty universe
+deb-src http://archive.ubuntu.com/ubuntu trusty universe
+deb http://archive.ubuntu.com/ubuntu trusty-updates universe
+deb-src http://archive.ubuntu.com/ubuntu trusty-updates universe
+</pre></div>
+
+
+<p>저장소 목록을 업데이트 했다면 <code>apt-get update</code> 로 목록을 갱신해주고, 다음 단계를 진행하면 된다.</p>
+<hr />
+<p>우선, 아래와 같은 명령어로 필수 패키지들을 설치하자. <code>-y</code> 는 패키지마다 설치할 것이냐고 묻는 걸 모두 <code>yes</code> 처리 해준다.</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev -y
+</pre></div>
+
+
+<p>그 다음, 아래의 명령어를 입력하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>마지막으로,  <code>.bashrc</code> 혹은 <code>.zshrc</code> 파일 하단에 아래와 같은 내용을 추가하자.</p>
+<div class="highlight"><pre><span class="c"># linuxbrew</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.linuxbrew/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export </span><span class="nv">MANPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.linuxbrew/share/man:</span><span class="nv">$MANPATH</span><span class="s2">&quot;</span>
+<span class="nb">export </span><span class="nv">INFOPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.linuxbrew/share/info:</span><span class="nv">$INFOPATH</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p><code>source .zshrc</code> 로 쉘 설정파일을 다시 불러오자.</p>
+<hr />
+<h2>nvm 설치</h2>
+<p>nvm은 node  의 버전관리도구인데, ghost는 node의 0.10.x 버전에서 안정적으로 돌아가기에 버전을 맞춰줄 필요성이 있다. ~~(언제적부터 0.10.x를 계속 권장하는거냐... ghost 재단은 일을 해라!!)~~</p>
+<p>아래와 같이 설치하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>brew install nvm
+</pre></div>
+
+
+<p>그리고 <code>.zshrc</code> 하단에 아래와 같이 추가해주자.</p>
+<div class="highlight"><pre><span class="c"># nvm</span>
+<span class="nb">export </span><span class="nv">NVM_DIR</span><span class="o">=</span>~/.nvm
+<span class="nb">source</span> <span class="k">$(</span>brew --prefix nvm<span class="k">)</span>/nvm.sh
+</pre></div>
+
+
+<p><code>source .zshrc</code> 로 쉘 설정파일을 다시 불러오자.</p>
+<hr />
+<h2>npm 설치</h2>
+<p>npm은 node의 패키지 관리도구인데, ghost 설치를 위해 필요하다. 2015년 12월 현재 2.5.x 버전을 권장하니 거기에 맞춰주자. ~~(언제적부터 2.5.x를 계속 권장하는거냐... ghost 재단은 일을 해라!!)~~</p>
+<p>아래와 같이 설치하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>brew install npm
+</pre></div>
+
+
+<hr />
+<h2>ghost 설치</h2>
+<p>이제 본격적으로 ghost를 설치하자. </p>
+<p><a href="https://github.com/TryGhost/Ghost">Ghost 저장소</a>에 적힌 조언대로, 직접 서비스할 예정이니 가급적 <a href="https://github.com/TryGhost/Ghost/tree/stable">Stable 버전</a>을 다운받아 서버에 올려서 설치하자. 지금은 귀찮으니 master 버전을 설치하겠다. 아래와 같이 github에서 ghost 파일을 받아오자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>git clone git://github.com/tryghost/ghost.git ghost
+</pre></div>
+
+
+<p>그리고 <code>$ cd ghost</code> 로 이동을 해서 grunt를 설치하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>npm install -g grunt-cli
+</pre></div>
+
+
+<p>그리고 아래와 같이 node 패키지를 설치하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>npm install
+</pre></div>
+
+
+<p>그리고 아래처럼 마무리를 하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>grunt init
+<span class="nv">$ </span>grunt prod
+</pre></div>
+
+
+<hr />
+<h3>ghost 환경 설정</h3>
+<p>config.js를 설정하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>cp config.example.js config.js
+<span class="nv">$ </span>vim config.js
+</pre></div>
+
+
+<p>보통 아래에 있는 url만 수정해주어도 된다. 우선은 sqlite3를 사용해보도록 하자. 개인 블로그 정도이니 sqlite3를 사용하여도 무방하다.</p>
+<div class="highlight"><pre><span class="p">...</span>
+    <span class="nx">production</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://my-ghost-blog.com&#39;</span><span class="p">,</span>
+        <span class="nx">mail</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="nx">database</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">client</span><span class="o">:</span> <span class="s1">&#39;sqlite3&#39;</span><span class="p">,</span>
+            <span class="nx">connection</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">filename</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;/content/data/ghost.db&#39;</span><span class="p">)</span>
+            <span class="p">},</span>
+            <span class="nx">debug</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>mariadb 혹은 mysql을 사용할 경우엔 database 부분을 아래와 같이 따로 수정해 주어야 한다. mariadb, mysql을 설치하고, 데이터베이스와 사용자를 생성한 후 아래에 적절히 값을 넣어주면 된다.</p>
+<div class="highlight"><pre><span class="p">...</span>
+<span class="nx">database</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">client</span><span class="o">:</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
+    <span class="nx">connection</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+        <span class="nx">user</span><span class="o">:</span> <span class="s1">&#39;{블로그-DB-유저}&#39;</span><span class="p">,</span>
+        <span class="nx">password</span><span class="o">:</span> <span class="s1">&#39;{DB-비밀번호}&#39;</span><span class="p">,</span>
+        <span class="nx">database</span><span class="o">:</span> <span class="s1">&#39;{DB-이름}&#39;</span><span class="p">,</span>
+        <span class="nx">charset</span><span class="o">:</span> <span class="s1">&#39;utf8&#39;</span>
+    <span class="p">},</span>
+<span class="p">},</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>혹시 DB명, DB ID, DB PW가 그대로 노출되는 게 싫다면 쉘 환경변수를 응용하자.</p>
+<p>그리고 nginx의 sites-available에 아래와 같이 추가하자.</p>
+<div class="highlight"><pre><span class="c1"># https://gist.github.com/vvo/7414035</span>
+
+<span class="c1"># cache 200 10 minutes, 404 1 minute, others status codes not cached</span>
+<span class="k">proxy_cache_valid</span> <span class="mi">200</span> <span class="mi">10m</span><span class="p">;</span>
+<span class="k">proxy_cache_valid</span> <span class="mi">404</span> <span class="mi">1m</span><span class="p">;</span>
+
+<span class="k">proxy_cache_key</span> <span class="s">&quot;</span><span class="nv">$scheme$host$request_uri&quot;</span><span class="p">;</span>
+
+<span class="k">client_body_buffer_size</span> <span class="mi">128k</span><span class="p">;</span>
+
+<span class="c1"># default expires (browser cache) set to 1 minute</span>
+<span class="k">expires</span> <span class="mi">1m</span><span class="p">;</span>
+
+<span class="c1"># add a cache HIT/MISS header</span>
+<span class="k">add_header</span> <span class="s">X-Cache</span> <span class="nv">$upstream_cache_status</span><span class="p">;</span>
+
+<span class="c1">##################################</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">your.blog.com</span><span class="p">;</span>
+    <span class="c1">#   access_log /var/log/nginx/ghost.log;</span>
+
+    <span class="kn">client_max_body_size</span> <span class="mi">20m</span><span class="p">;</span>
+
+    <span class="kn">root</span> <span class="s">/home/blog/ghost</span><span class="p">;</span>
+    <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">HOST</span> <span class="nv">$http_host</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-NginX-Proxy</span> <span class="s">true</span><span class="p">;</span>
+
+    <span class="kn">proxy_ignore_headers</span> <span class="s">&quot;Set-Cookie&quot;</span><span class="p">;</span>
+    <span class="kn">proxy_hide_header</span> <span class="s">&quot;Set-Cookie&quot;</span><span class="p">;</span>
+
+        <span class="kn">proxy_pass</span> <span class="s">http://ghost</span><span class="p">;</span>
+        <span class="kn">proxy_redirect</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+  <span class="c1"># add some caching on static assets</span>
+  <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(jpg|jpeg|png|gif|ico|css|js|eot|woff)</span>$ <span class="p">{</span>
+  <span class="c1"># ghost sends Cache-Control max-age=0 on CSS/JS for now</span>
+  <span class="c1"># see https://github.com/TryGhost/Ghost/issues/1405?source=c#issuecomment-28196957</span>
+    <span class="kn">proxy_ignore_headers</span> <span class="s">&quot;Cache-Control&quot;</span><span class="p">;</span>
+    <span class="kn">expires</span> <span class="s">10y</span><span class="p">;</span>
+    <span class="kn">proxy_pass</span> <span class="s">http://ghost</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">upstream</span> <span class="s">ghost</span> <span class="p">{</span>
+    <span class="kn">ip_hash</span><span class="p">;</span>
+    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">2368</span> <span class="s">weight=3</span><span class="p">;</span>
+    <span class="kn">keepalive</span> <span class="mi">100</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">2368</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">your.blog.com</span><span class="p">;</span>
+
+    <span class="kn">access_log</span> <span class="s">/var/log/nginx/ghost.log</span><span class="p">;</span>
+
+    <span class="kn">root</span> <span class="s">/home/blog/ghost</span><span class="p">;</span>
+    <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">HOST</span> <span class="nv">$http_host</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-NginX-Proxy</span> <span class="s">true</span><span class="p">;</span>
+
+        <span class="kn">proxy_pass</span> <span class="s">http://localhost:2368</span><span class="p">;</span>
+        <span class="kn">proxy_redirect</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>$ sudo service nginx reload</code> 로 nginx 서버 설정을 다시 불러오자.</p>
+<p>그리고 아래와 같은 명령어로 블로그를 실행하면 된다.</p>
+<div class="highlight"><pre><span class="nv">$ </span>npm start --production
+</pre></div>
+
+
+<p>명령어 끝이 &amp; 을 붙이면 백그라운드로 돌아간다. 근데 더 안전한 방법은 forever 패키지를 사용하는 것이다.</p>
+<hr />
+<h2>Ghost run forever</h2>
+<p>Ghost를 계속해서 Background Task로 실행시키기 위해서는 forever를 사용하는 것이 좋다. 예기치 않은 오류로 프로세스가 종료되더라도 forever가 좀비처럼 계속 살려준다. ~~(오오 좀비 오오)~~</p>
+<p>설치는 아래와 같다.</p>
+<div class="highlight"><pre><span class="nv">$ </span>npm install forever -g
+</pre></div>
+
+
+<p>실행은 <code>NODE_ENV=production forever start index.js</code> 로 하고,<br />
+종료는 <code>forever stop index.js</code> 로 한다.<br />
+프로세스 확인은 : <code>forever list</code> 로 하면 된다.</p>
+<p>껏다 킬 때가 많을 땐 자동화 스크립트를 만들어두면 편리하다.<br />
+<code>restart.sh</code> 파일을 만들어 아래의 코드를 넣자.</p>
+<div class="highlight"><pre>forever stop index.js  
+<span class="nv">NODE_ENV</span><span class="o">=</span>production forever start index.js  
+</pre></div>
+
+
+<p>그럼 <code>$ ./restart.sh</code> 만으로 간단히 블로그를 껏다 켤 수 있다. 테마를 개발할 때 자주 사용하게 되더라.</p>
+<p>그리고 <code>/etc/init.d</code> 에 ghost 라는 파일을 생성하고 아래와 같은 코드를 붙여넣자.</p>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+<span class="c">### BEGIN INIT INFO</span>
+<span class="c"># Provides: blog</span>
+<span class="c"># Required-Start:</span>
+<span class="c"># Required-Stop:</span>
+<span class="c"># Default-Start: 2 3 4 5</span>
+<span class="c"># Default-Stop: 0 1 6</span>
+<span class="c">### END INIT INFO</span>
+
+<span class="nv">USER</span><span class="o">=</span><span class="s2">&quot;blog&quot;</span>
+<span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;/home/blog/ghost/index.js&quot;</span>
+<span class="nv">LOG</span><span class="o">=</span><span class="s2">&quot;/var/log/ghost/server.log&quot;</span>
+
+stop<span class="o">()</span> <span class="o">{</span>
+    su - <span class="nv">$USER</span> -c <span class="s2">&quot;source ~/.zshrc; NODE_ENV=production forever stop </span><span class="nv">$APP</span><span class="s2">;&quot;</span>
+    <span class="c"># su - $USER -c &quot;NODE_ENV=production forever stop $APP&quot;</span>
+<span class="o">}</span>
+
+start<span class="o">()</span> <span class="o">{</span>
+    su - <span class="nv">$USER</span> -c <span class="s2">&quot;source ~/.zshrc; NODE_ENV=production forever start --append -l </span><span class="nv">$LOG</span><span class="s2"> -o </span><span class="nv">$LOG</span><span class="s2"> -e </span><span class="nv">$LOG</span><span class="s2"> </span><span class="nv">$APP</span><span class="s2">;&quot;</span>
+    <span class="c"># su - $USER -c &quot;NODE_ENV=production forever start --append -l $LOG -o $LOG -e $LOG $APP&quot;</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> in
+    start<span class="o">)</span>
+        start
+        <span class="p">;;</span>
+    stop<span class="o">)</span>
+        stop
+        <span class="p">;;</span>
+    restart<span class="o">)</span>
+        stop
+        start
+        <span class="p">;;</span>
+    *<span class="o">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart}&quot;</span>
+<span class="k">esac</span>
+</pre></div>
+
+
+<p>마무리는 이렇게...</p>
+<div class="highlight"><pre><span class="nv">$ </span>update-rc.d ghost defaults
+<span class="nv">$ </span>update-rc.d ghost <span class="nb">enable</span>
+</pre></div>
+
+
+<p>그럼 서버가 부팅하면 블로그가 백그라운드로 실행된다.</p>
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="https://github.com/TryGhost/Ghost">Github Ghost 저장소</a></li>
+<li><a href="http://support.ghost.org/deploying-ghost/">Ghost의 Troubleshooting</a></li>
+<li><a href="https://ghost.mailgun.com">Mailgun 코드 생성기</a>  </li>
+<li><a href="http://sharadchhetri.com/2015/06/08/setup-nginx-as-proxy-to-serve-ghost-blog-on-port-80/">sharadchhetri 글</a></li>
+<li><a href="http://zetawiki.com/wiki/리눅스_포트_프로세스_목록_확인">Zetawiki 글</a></li>
+<li><a href="http://nuli.navercorp.com/sharing/blog/post/1132682">NULI Grunt 사용법</a></li>
+<li><a href="http://support.ghost.org/installing-ghost-linux/">Ghost 도움말</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-host-ghost-with-nginx-on-digitalocean">Digital Ocean 커뮤니티</a></li>
+<li><a href="http://taking.kr/blog/archives/1051.html">taking 글</a>  </li>
+<li><a href="http://docs.ghost.org/ko/installation/">Ghost 공식 문서</a>    </li>
+</ol>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>텍스트 문서를 편집하는 문법 중 하나. 쉽게 HTML 등 다른 문서형태로 변환이 가능한 것이 장점.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>보통 버전 숫자가 1.0 이하라면 베타라 보는 것이 좋다.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Single Board Computer의 약자. 보통 작은 마더보드 하나로 작동하는 작은 컴퓨터를 지칭한다.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 10 December 2015</p>
+    <p>Category: <a href="http://git.chann.kr/dev/index">Dev</a>
+ &ndash; Tags:
+      <a href="http://git.chann.kr/tag/dev">dev</a>,      <a href="http://git.chann.kr/tag/nodejs">nodejs</a>,      <a href="http://git.chann.kr/tag/ghost">ghost</a>,      <a href="http://git.chann.kr/tag/blog">blog</a>,      <a href="http://git.chann.kr/tag/server">server</a>,      <a href="http://git.chann.kr/tag/package">package</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "dev/ghost-blog-install-guide";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://githubs.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+		<div id="ending_message">
+			<p>&copy; CHANN. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+		</div>
+	</main>
+</body>
+</html>

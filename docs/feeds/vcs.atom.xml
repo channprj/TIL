@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Today I Learned</title><link href="https://til.chann.kr/" rel="alternate"></link><link href="https://til.chann.kr/feeds/vcs.atom.xml" rel="self"></link><id>https://til.chann.kr/</id><updated>2016-01-20T14:28:00+09:00</updated><entry><title>Git 한글 깨짐문제</title><link href="https://til.chann.kr/vcs/git-ko-path-name-fix" rel="alternate"></link><published>2016-01-20T14:28:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-01-20:vcs/git-ko-path-name-fix</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;p&gt;인코딩 문제. 아래 한 줄이면 됨.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git config core.quotepath &lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://kldp.org/node/132431"&gt;KLDP 글&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="vcs"></category><category term="git"></category><category term="i18n"></category><category term="github"></category><category term="terminal"></category><category term="cli"></category></entry></feed>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>GDG Webtech 160827 - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+<link rel="canonical" href="https://til.chann.kr/study/gdg-webtech-160827">
+
+        <meta name="author" content="CHANN" />
+        <meta name="keywords" content="study,programming,dev,web,chrome,service worker,optimization,tech,gdg" />
+        <meta name="description" content="단순 참고용 메모, 개인 기록임. CPU 와 GPU 사이에 통신하면서 발생하는 이슈 메모리의 한계에 도달했을 때 CPU 데이터 변경 시 GPU 데이터도 변경 필요 Vertex &amp; Plolygon 개념 숙지 렌더링 GPU를 효율적으로 활용하도록 잘 이용해야. 텍스쳐로 이미지 고속 출력 이미 가지고 있는 텍스쳐 재활용 회전, 확대, 축소, 기울임, 반투명 등 동시 ..." />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+	<link href="https://til.chann.kr/feeds/study.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned Study ATOM Feed"/>
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+                <li><a href="https://til.chann.kr/study/index" title="Study">Study</a></li>
+                <li class="active">GDG Webtech 160827</li>
+            </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://til.chann.kr/study/gdg-webtech-160827"
+                       rel="bookmark"
+                       title="Permalink to GDG Webtech 160827">
+                        GDG Webtech 160827
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-08-27T18:30:00+09:00"> 2016-08-27</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://til.chann.kr/tag/study">study</a>
+        /
+	<a href="https://til.chann.kr/tag/programming">programming</a>
+        /
+	<a href="https://til.chann.kr/tag/dev">dev</a>
+        /
+	<a href="https://til.chann.kr/tag/web">web</a>
+        /
+	<a href="https://til.chann.kr/tag/chrome">chrome</a>
+        /
+	<a href="https://til.chann.kr/tag/service-worker">service worker</a>
+        /
+	<a href="https://til.chann.kr/tag/optimization">optimization</a>
+        /
+	<a href="https://til.chann.kr/tag/tech">tech</a>
+        /
+	<a href="https://til.chann.kr/tag/gdg">gdg</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <!--Summary: -->
+
+<blockquote>
+<p>단순 참고용 메모, 개인 기록임.</p>
+</blockquote>
+<ul>
+<li>CPU 와 GPU 사이에 통신하면서 발생하는 이슈</li>
+<li>메모리의 한계에 도달했을 때</li>
+<li>CPU 데이터 변경 시 GPU 데이터도 변경 필요</li>
+</ul>
+<hr />
+<h2>Vertex &amp; Plolygon</h2>
+<p>개념 숙지</p>
+<hr />
+<h2>렌더링</h2>
+<p>GPU를 효율적으로 활용하도록 잘 이용해야.</p>
+<ul>
+<li>텍스쳐로 이미지 고속 출력</li>
+<li>이미 가지고 있는 텍스쳐 재활용</li>
+<li>회전, 확대, 축소, 기울임, 반투명 등</li>
+<li>동시 처리 등</li>
+</ul>
+<hr />
+<h2>주의해야 할 점</h2>
+<ul>
+<li>GPU 비디오 메모리로 데이터 전송하는 것이 매우 느림</li>
+<li>데이터 전송 시간 = 데이터 크기 / 버스 속도</li>
+<li><strong>CPU 처리시간</strong> : CPU에서 데이터 생성 후 GPU로 전송</li>
+</ul>
+<hr />
+<h2>웹페이지 &amp; 크롬 렌더링</h2>
+<p>HTML tab soup --&gt; DOM Tree --&gt; Render Tree --&gt; Paint
+크롬 렌더링은 조금 더 복잡</p>
+<h2>레이어 모델</h2>
+<ul>
+<li>이미지 단위의 요소</li>
+<li>최종적으로 표현될 이미지 단위</li>
+<li>텍스쳐로 GPU로 업로드</li>
+<li>레이어 배치 합성하여 최종 웹페이지 표현</li>
+<li>레이어 이미지는 CPU에서 생성 --&gt; 레이어에 생성되는 이미지는 CPU 소모</li>
+</ul>
+<hr />
+<h2>컴포지트(Composite)</h2>
+<p>Content Rendering --&gt; Page Composition --&gt; Desktop Composition
+뭐 하나만 바뀌어도 이 과정을 모두 다시 거치게 됨.</p>
+<hr />
+<h2>Reflow 이슈</h2>
+<p>Reflow = Layout = Layouting
+* DOM 노드가 가지는 레이아웃 정보(Geometry)가 변경되면 레이아웃은 다시 재계산을 해야함.</p>
+<ol>
+<li>레이아웃의 변경이 트리를 따라 전파 (CPU)</li>
+<li>레이어 이미지의 갱신 필요 (CPU)</li>
+<li>레이어 이미지 변경으로 VRMA의 텍스터 갱신 필요 (RAM to VRAM Bandwidth)</li>
+</ol>
+<hr />
+<h2>Repaint 이슈</h2>
+<p>Repaint = Redraw</p>
+<p>컨텐츠 변경으로 텍스쳐를 새로 생성해야함</p>
+<hr />
+<h2>최적화</h2>
+<ul>
+<li>네이티브 어플리케이션 --&gt; 최대한 가벼운 렌더링 프로세스 구성</li>
+<li>렌더링 패스는 철저히 브라우져 영역</li>
+<li>병목 구간의 발생을 줄여야</li>
+</ul>
+<hr />
+<h2>가장 간단한 Hack - 레이어 분리</h2>
+<h3>크롬에서 DOM 노드가 레이어로 분리되는 조건들</h3>
+<ol>
+<li>3D혹은 Perspective 를 표현하는 CSS Transform 속성을 가진 경우</li>
+<li>하드웨어 가속 디코딩을 사용하는 <video> 엘리먼트</li>
+<li>3D 컨텍스트 혹은 하드웨어 가속 2D 컨텍스트를 가지는 <canvas> 엘리먼트</li>
+<li>플러그인 영역</li>
+<li>Opacity 또는 Trasform 애니메이션의 사용</li>
+<li>가속 가능한 CSS 필터</li>
+<li>COmposite Layer 를 가진 하위 노드</li>
+<li>낮은 z-index 를 가진 형제노드가 Composite Layer 를 가진 경우</li>
+</ol>
+<p>분리 조건 요약 : 해당 DOM 노드가 주변 노드와는 별개로 렌더링되어야 빠른 경우</p>
+<h3>강제적인 레이어 분리가 만능은 아님</h3>
+<ul>
+<li>레이어 분리는 필연적으로 텍스쳐 이미지 분리를 의미 --&gt; 추가 메모리 소모</li>
+<li>메모리 공간 부족 시 기존 데이터 릴리즈 후 새로운 데이터 업로드</li>
+<li>레이어 분리를 통한 성능 향상은 송수신 오버헤드를 발생시킴</li>
+</ul>
+<p><strong>하드웨어 가속으로 얻는 성능은 공짜가 아님</strong></p>
+<hr />
+<h2>CSS의 will-chage</h2>
+<ul>
+<li>바뀔 가능성이 큰 CSS 엘리먼트를 hint 로 제공</li>
+<li>브라우져가 가능할 경우 레이어로 분리해둠</li>
+<li>효과가 미미할 수 있으나 퍼포먼스에 도움이 될 것</li>
+</ul>
+<hr />
+<h2>렌더링 퍼포먼스</h2>
+<p>web fundamental, w3c 등 문서 참고.</p>
+<h2>Webp</h2>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">picture</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="err">...</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="err">...</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="err">...</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">picture</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h2><img>의 sizes, srcset, src...etc</h2>
+<p>자세한 건 검색</p>
+<h2>Round Trip</h2>
+<p>Wifi, LTE, 3G, 2G 등의 통신환경에 따른 대처. 한국은 인프라가 짱짱하므로 국내 서비스에선 대체로 신경쓰지 않아도 됨. HTTP Request 관련 문서 참고. </p>
+<h2>Regioning, Critical then Rest...</h2>
+<p>초반에 Preload 하여 보여준 후 나중에 전체 로딩. FOUC vs 형태 초기로딩 후 천천히 형태를 완성하는 방식. 애니메이션 렌더링 등과 관련된 JS 참고. <a href="https://aerotwist.com/blog/guitar-tuner/">링크</a></p>
+<hr />
+<h2>Defer iFrames</h2>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">data-src</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="err">// async loading iframes</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h2>HTTP/2</h2>
+<p>HTTP/2는 커넥션을 연결하고 한꺼번에 요청을 보내서(stream) 속도가 매우 빨라짐. simplehttp2server by google 참고.</p>
+<h2>Lie-Fi</h2>
+<p>네트워크 인프라의 문제로 서버와의 통신이 원활하지 않음. 그럴 땐 Application Cache를 사용. </p>
+<h2>Service Worker</h2>
+<p>Background 에서 작업을 돌림. 로딩만을 위한 규격은 아님. 오프라인이나 느리게 로딩되는 것을 Service Worker 가 캐시해둠.</p>
+<ul>
+<li>UI 스레드에서 분리되어 실행해야 하므로 DOM 에 대한 직접 접근/조작 불가</li>
+<li>자체적 글로벌 스코프</li>
+<li>일부 속성, API 만 허가</li>
+</ul>
+<p>Shared Worker는 Lifecycle을 가지고 있음.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'gdg-webtech-160827';
+                var disqus_url = 'https://til.chann.kr/study/gdg-webtech-160827';
+
+            var disqus_config = function () {
+                this.language = "ko";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

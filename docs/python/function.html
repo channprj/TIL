@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>파이썬 함수 - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+<link rel="canonical" href="https://til.chann.kr/python/function">
+
+        <meta name="author" content="CHANN" />
+        <meta name="keywords" content="python,programming,dev,scrpit,function,파이썬,프로그래밍,개발,스크립트,함수,공부,스터디,study" />
+        <meta name="description" content="파이썬 함수 개념 def test(a, b) return a+b 파이썬에서는 함수도 객체. def 는 함수 객체를 만드는 구문. test 라는 이름은 생성된 함수 객체를 참조하는 레퍼런스. 메모리 어딘가에 함수 객체가 생성되는 것이고, 객체이기 때문에 생성할 때마다 다른 주소값을 가짐. return 에서는 함수를 종료하고, 해당 함수를 호출한 곳으로 다시 되돌아감 ..." />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+	<link href="https://til.chann.kr/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned Python ATOM Feed"/>
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+                <li><a href="https://til.chann.kr/python/index" title="Python">Python</a></li>
+                <li class="active">파이썬 함수</li>
+            </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://til.chann.kr/python/function"
+                       rel="bookmark"
+                       title="Permalink to 파이썬 함수">
+                        파이썬 함수
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-08T13:00:00+09:00"> 2016-02-08</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://til.chann.kr/tag/python">python</a>
+        /
+	<a href="https://til.chann.kr/tag/programming">programming</a>
+        /
+	<a href="https://til.chann.kr/tag/dev">dev</a>
+        /
+	<a href="https://til.chann.kr/tag/scrpit">scrpit</a>
+        /
+	<a href="https://til.chann.kr/tag/function">function</a>
+        /
+	<a href="https://til.chann.kr/tag/paisseon">파이썬</a>
+        /
+	<a href="https://til.chann.kr/tag/peurogeuraeming">프로그래밍</a>
+        /
+	<a href="https://til.chann.kr/tag/gaebal">개발</a>
+        /
+	<a href="https://til.chann.kr/tag/seukeuribteu">스크립트</a>
+        /
+	<a href="https://til.chann.kr/tag/hamsu">함수</a>
+        /
+	<a href="https://til.chann.kr/tag/gongbu">공부</a>
+        /
+	<a href="https://til.chann.kr/tag/seuteodi">스터디</a>
+        /
+	<a href="https://til.chann.kr/tag/study">study</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <!--Summary: -->
+
+<h2>파이썬 함수 개념</h2>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+
+
+<p>파이썬에서는 함수도 객체. <code>def</code> 는 함수 객체를 만드는 구문. test 라는 이름은 생성된 함수 객체를 참조하는 레퍼런스. 메모리 어딘가에 함수 객체가 생성되는 것이고, 객체이기 때문에 생성할 때마다 다른 주소값을 가짐.</p>
+<p><code>return</code> 에서는 함수를 종료하고, 해당 함수를 호출한 곳으로 다시 되돌아감. 객체를 되돌려줌. <code>return</code> 을 적지 않아도, <code>return</code> 만 적어도 종료되며, 이때 반환값은 None.</p>
+<hr />
+<h2>일반 구조</h2>
+<p>일반적인 파이썬 함수는 아래와 같이 생김.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="err">함수이름(변수1, 변수2, ...):</span>
+    <span class="k">if</span><span class="p">(</span><span class="err">조건</span><span class="p">):</span>
+        <span class="c1"># something...</span>
+    <span class="k">return</span> <span class="err">반환값</span>
+</pre></div>
+
+
+<p>return 을 붙이지 않아도 실행이 모두 끝나면 자동으로 <code>return</code> 이 됨.
+함수의 결과값 반환은 언제나 하나여야 하지만, 클래스 반환 등이 가능하므로 필요시 이러한 점을 응용하여 함수를 만들면 됨.</p>
+<blockquote>
+<p>return 은 언제나 하나의 객체만을 반환하지만, 리스트나 튜플, 심지어 클래스도 반환가능.</p>
+</blockquote>
+<hr />
+<h2>입력 변수 설정(Input Variable)</h2>
+<p>입력 변수의 갯수가 변화할 때는 아래와 같음.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="err">함수이름(*변수):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span> 
+        <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">i</span> 
+    <span class="c1"># something...</span>
+    <span class="k">return</span> <span class="err">반환값</span>
+</pre></div>
+
+
+<p>선택인자와 여러 개의 입력 변수를 통해 아래와 같이 활용 가능. 아래와 같이 <code>*args</code> 로 가변인자를 받는 것은 튜플 형태로 처리가 됨. 가변인자는 맨 뒤에 위치해야.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_mul</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> 
+    <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;sum&quot;</span><span class="p">:</span> 
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span> 
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span> 
+    <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;mul&quot;</span><span class="p">:</span> 
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span> 
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">i</span> 
+    <span class="k">return</span> <span class="n">result</span> 
+</pre></div>
+
+
+<hr />
+<p>아래와 같이 함수에서 입력받는 변수의 초기값을 설정 가능. 단, 초기값을 부여할 변수는 항상 맨 뒤에 위치시켜야.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">true_or_false</span><span class="p">(</span><span class="n">is_false</span><span class="p">,</span> <span class="n">is_true</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span> 
+    <span class="k">if</span> <span class="n">isTrue</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+        <span class="c1"># something...</span>
+</pre></div>
+
+
+<p><code>true_or_false(1)</code> 또는 <code>true_or_false(1, 0)</code> 과 같은 형태로 함수를 사용할 수 있음.</p>
+<hr />
+<p>정의되지 않은 인자는 **를 붙이면 되며, 인자를 사전 형식으로 만들어서 전달하는 것이 특징. 아래와 같이 URL 처리 시 매우 편리하고 유용하게 사용. 위의 내용들과 마찬가지로 정의되지 않은 인자는 항상 맨 뒤에 위치시켜야.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_student</span><span class="p">(</span><span class="o">**</span><span class="n">student</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://chann.kr/?&quot;</span>
+
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">student</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">+=</span> <span class="n">key</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="n">student</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;&amp;&quot;</span>
+
+    <span class="k">return</span> <span class="n">url</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">add_student</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;student_id&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;student_pw&#39;</span><span class="p">))</span>
+<span class="c1"># https://chann.kr/?id=student_id&amp;password=student_pw&amp;</span>
+</pre></div>
+
+
+<hr />
+<h2>인자 전달</h2>
+<p>파이썬에서는 인자를 호출자 내부 객체의 레퍼런스로 전달함. 그러나 기존 컴파일언어인 C/C++의 <code>Call-by-reference</code> 와는 다름. 호출자가 전달하는 변수는 변경 가능한 경우와 변경 불가능한 경우의 처리방식이 다름.</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">sum_modify</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># 이름이 x이고 값이 100인 객체가 생성됨.</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>  <span class="c1"># result: 3</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">sum_modify</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>  <span class="c1"># result: 103</span>
+<span class="c1"># 함수 내부의 변경사항이 함수 외부에 영향을 미치지 않음.</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># result: 1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># result: 2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># result: 3</span>
+</pre></div>
+
+
+<hr />
+<p>그러나 아래와 같은 경우엔 함수 내부에서의 변경값이 외부 변수에 영향을 미침.</p>
+<blockquote>
+<p>정수형 변수는 변경 불가능한 변수이고, 리스트는 변경 가능한 변수임.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">word</span> <span class="o">+=</span> <span class="s1">&#39;OSX&#39;</span>
+
+<span class="k">def</span> <span class="nf">change_char</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="s1">&#39;S&#39;</span>
+    <span class="k">return</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>  <span class="c1"># [&#39;O&#39;, &#39;S&#39;, &#39;X&#39;]</span>
+<span class="n">change_char</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>  <span class="c1"># [&#39;O&#39;, &#39;S&#39;, &#39;S&#39;]</span>
+</pre></div>
+
+
+<hr />
+<h2>스코핑 규칙(Scoping Rule)</h2>
+<p>객체는 별도의 네임스페이스를 가짐. 함수 내부의 변수는 일단 함수 내부의 네임스페이스를 참조함. 함수 내부의 네임스페이스에서 변수를 찾지 못하면 상위 네임스페이스에서 찾음. 먼저 함수 내부의 공간인 <code>Local scope</code> 에서 찾다가, 전역 영역인 <code>Global scope</code> 에서 찾고, 그래도 없을 시엔 파이썬 내장 영역인 <code>Built-in scope</code> 에서 찾음. 이것을 줄여서 <code>LGB Rule</code> 이라고 부름.</p>
+<p>함수 안의 변수는 함수 안에서만 사용 가능. 함수 밖의 변수를 함수 안에서 불러서 변경시키고 싶으면 <code>global</code> 키워드를 사용하면 되지만 각 함수는 독립적으로 존재하도록 짜는 것이 좋음. 예시는 아래의 코드 참조.</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">plus_one</span><span class="p">():</span> 
+    <span class="k">global</span> <span class="n">a</span>  <span class="c1"># 권장 x</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">minus_one</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> 
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">minus_one</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 권장 o</span>
+</pre></div>
+
+
+<hr />
+<p>내장영역의 변수를 보려면 <strong>builtins</strong> 를 검색하면 됨.</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<h3>리턴(Return)</h3>
+<p>함수에서는 return으로 함수를 종료하고 해당 함수를 호출한 곳으로 돌아감. 이 때 return값을 통해 어떤 종류의 객체도 반환 가능하지만 오직 한 객체만 반환 가능함. 따라서 리턴하고자 하는 값이 여러개일 때는 class나 tuple로 묶어서 반환 가능. 보통은 상수와 같은 단일값을 리턴. return값을 따로 명시하지 않으면 None 객체가 반환.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># tuple 형태로 1과 2를 swap</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># result: 2 1</span>
+</pre></div>
+
+
+<p>위와 같은 함수는 언뜻 보면 2개의 값을 반환하는 것 처럼 보이지만 실은 튜플의 형태로 하나의 객체가 반환되는 것.</p>
+<hr />
+<h2>람다 함수(Lambda Function)</h2>
+<p>Java와 마찬가지로 람다 함수는 익명 함수인데, 필요한 곳 어디에서나 쓰일 수 있지만 return 을 적을 수 없음. return 을 적지 않아도 한 줄을 실행한 결과값을 반환함. 예제는 아래와 같음. 이름이 왜 람다인가 찾아보니 <a href="https://ko.wikipedia.org/wiki/람다_대수">람다 대수</a>에서 영향을 받은 것 같음.</p>
+<div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># result: 3</span>
+
+<span class="k">print</span><span class="p">((</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)(</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># result: 9</span>
+</pre></div>
+
+
+<p><code>globals()</code> 로 확인해 보면 알겠지만, 람다 함수는 사용한 직후 바로 사라짐. 그러므로 간단한 기능의 경우 람다 함수로 처리를 하여 편리성과 효율성을 높이는 것이 좋음.</p>
+<p>람다 함수가 길어질 땐 문장의 끝에 <code>\</code> 문자를 붙여서 코드를 여러 줄로 입력 가능하지만 코드의 가독성과 오류를 유발할 수 있으므로 가급적 피해야.</p>
+<hr />
+<h2>재귀 함수(Recursive Function)</h2>
+<p>재귀 함수는 함수 내부에서 자기 자신을 호출함. 그러나 함수 호출이 잦으면 메모리를 과도하게 사용하므로 오버헤드(Overhead)가 날 수 있음. 대개 루프문이 재귀 함수보다 메모리 사용이 적고 속도가 빠르나 하노이의 탑과 같은 일부 문제는 재귀 함수로 접근하는 것이 효율적임.</p>
+<blockquote>
+<p>이름 그대로 함수에서 함수를 자꾸 호출하는 함수</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># result: 120</span>
+</pre></div>
+
+
+<p>재귀 함수는 제네레이터(generator) 에서도 유용하게 쓰임.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crazy</span><span class="p">(</span><span class="n">min_</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="n">min_</span>
+    <span class="n">g</span><span class="o">=</span><span class="n">crazy</span><span class="p">(</span><span class="n">min_</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">min_</span>
+
+<span class="n">i</span><span class="o">=</span><span class="n">crazy</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<h2>pass</h2>
+<p>함수 및 클래스의ㅣ 메서드에서 아무런 동작도 하지 않도록 하기 위해 적는 구문. 언뜻 왜 있는건가 싶을 수도 있지만 빈 클래스를 만들어야 할 때 주로 많이 사용됨. 아래와 같은 예문에서는 pass 가 없으면 당연히 에러가 남.</p>
+<blockquote>
+<p>이름 그대로 그냥 지나치는 녀석.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">empty_dream</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<hr />
+<h2><code>__doc__</code> 속성, help 함수</h2>
+<p>특정 함수를 어떻게 사용해야 할 지 모를 때, <code>help()</code> 를 사용하여 함수의 매개변수와 반환값을 알 수 있음. 아래는 print 함수에 대해 알아보는 예문. 내장함수 뿐만 아니라 프로그래머가 직접 만든 함수에 대해서도 알 수 있음.</p>
+<blockquote>
+<p>윈도우에서의 help 라던가 리눅스에서의 <code>man</code> 명령어와 유사하다고 보면 됨.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="k">print</span><span class="p">)</span>
+
+<span class="n">Help</span> <span class="n">on</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">function</span> <span class="k">print</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">builtins</span><span class="p">:</span>
+
+<span class="k">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="n">Prints</span> <span class="n">the</span> <span class="n">values</span> <span class="n">to</span> <span class="n">a</span> <span class="n">stream</span><span class="p">,</span> <span class="ow">or</span> <span class="n">to</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="n">by</span> <span class="n">default</span><span class="o">.</span>
+    <span class="n">Optional</span> <span class="n">keyword</span> <span class="n">arguments</span><span class="p">:</span>
+    <span class="nb">file</span><span class="p">:</span>  <span class="n">a</span> <span class="nb">file</span><span class="o">-</span><span class="n">like</span> <span class="nb">object</span> <span class="p">(</span><span class="n">stream</span><span class="p">);</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span>
+    <span class="n">sep</span><span class="p">:</span>   <span class="n">string</span> <span class="n">inserted</span> <span class="n">between</span> <span class="n">values</span><span class="p">,</span> <span class="n">default</span> <span class="n">a</span> <span class="n">space</span><span class="o">.</span>
+    <span class="n">end</span><span class="p">:</span>   <span class="n">string</span> <span class="n">appended</span> <span class="n">after</span> <span class="n">the</span> <span class="n">last</span> <span class="n">value</span><span class="p">,</span> <span class="n">default</span> <span class="n">a</span> <span class="n">newline</span><span class="o">.</span>
+    <span class="n">flush</span><span class="p">:</span> <span class="n">whether</span> <span class="n">to</span> <span class="n">forcibly</span> <span class="n">flush</span> <span class="n">the</span> <span class="n">stream</span><span class="o">.</span>
+</pre></div>
+
+
+<p>직접 만든 함수에 대한 추가 설명을 넣고 싶을 떈 <code>__doc__</code> 속성을 사용하면 됨. <code>__doc__</code> 속성은 객체에 대한 설명을 적는 데 사용함. </p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># result: 2</span>
+
+<span class="n">plus</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="s2">&quot;Just plus 1&quot;</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">plus</span><span class="p">)</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># 2</span>
+<span class="c1"># Help on function plus in module __main__:</span>
+<span class="c1"># </span>
+<span class="c1"># plus(x)</span>
+<span class="c1">#     Just plus 1</span>
+</pre></div>
+
+
+<p><code>__doc__</code> 속성으로 설명을 적지 않아도 """(쌍따옴표 3개)를 아래와 같이 함수 내 최상단에 적어주어도 됨.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is Plus Function!!</span>
+<span class="sd">    Oh yeah plus me baby :-)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">plus</span><span class="p">)</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># Help on function plus in module __main__:</span>
+<span class="c1"># </span>
+<span class="c1"># plus(x)</span>
+<span class="c1">#     This is Plus Function!!</span>
+<span class="c1">#     Oh yeah plus me baby :-)</span>
+</pre></div>
+
+
+<hr />
+<h2>이터레이터(iterator)</h2>
+<p>이터레이터는 순회 가능한 객체의 요소에 순서대로 접근할 수 있는 객체임. 아래의 예제는 <code>for</code> 문을 기준으로 작성함. <code>for</code> 문에서 지정한 순회 가능한 이터레이터 객체를 가져오면 이터레이터 안의 <code>__next__()</code> 함수가 실행됨. <code>__next__()</code> 는 현재 이터레이터가 가리키는 객체의 요소를 반환하고 StopIteration 예외를 만날때까지 객체의 다음 요소로 이터레이터를 옮김. <code>__next__()</code> 함수는 내장함수 <code>next()</code> 로도 구현되어 있음.</p>
+<blockquote>
+<p>이름 그대로 되풀이, 반복하는 기능을 가진 녀석임.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>  <span class="c1"># 리스트 순회</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">):</span>  <span class="c1"># 튜플 순회</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span><span class="s1">&#39;large&#39;</span><span class="p">}:</span>  <span class="c1"># 딕셔너리 순회</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s2">&quot;Oh good boy!&quot;</span><span class="p">:</span>  <span class="c1"># 한 글자씩 문자열 순회</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fake.txt&quot;</span><span class="p">):</span>  <span class="c1"># 파일 내용을 라인 단위로 순회</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+
+
+<p>이터레이터를 확인해 보는 예제는 아래와 같음.</p>
+<div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;OSX&quot;</span>
+
+<span class="n">iter_check</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">iter_check</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">iter_check</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">iter_check</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">iter_check</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">iter_check</span><span class="p">))</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># &lt;str_iterator object at 0x106adb898&gt;</span>
+<span class="c1"># O</span>
+<span class="c1"># S</span>
+<span class="c1"># X</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#   File &quot;/Users/CHANN/git/test.py&quot;, line 9, in &lt;module&gt;</span>
+<span class="c1">#     print(next(iter_check))</span>
+<span class="c1"># StopIteration</span>
+</pre></div>
+
+
+<p>위와 같이 이터레이터가 끝에 도달하면 <code>StopIteration</code> 예외를 만나고 에러를 출력.</p>
+<hr />
+<h2>제네레이터(generator)</h2>
+<p>제네레이터는 이터레이터를 만드는 강력한 도구임. 함수가 호출되면 지역 변수와 코드가 스택에 적재되고 코드를 실행함. 그리고 함수가 끝나면 결과값을 호출한 곳에 값을 넘겨주고 함수 객체는 스택에서 사라지는데, 함수에 <code>return</code> 대신 <code>yield</code> 를 적으면 함수를 끝내지 않고 호출한 곳에 값을 전달함.</p>
+<blockquote>
+<p>이름 그대로 값을 계속 발생시키는 녀석임.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;EM-EVOL&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># LOVE-ME</span>
+</pre></div>
+
+
+<p>위의 코드를 보면 <code>reverse()</code> 함수는 7번 호출되며, <code>yield</code> 를 호출한 곳에서 계속 값을 돌려주지만 함수는 메모리에 그대로 있음. 그래서 다음에 <code>reverse()</code> 가 다시 호출되더라도 가장 최근에 호출된 상태로 실행됨. 위에서 <code>return</code> 을 사용했다면 L만 출력됨.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># &lt;&lt;&lt; yield 대신 return 을 사용</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;EM-EVOL&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># L</span>
+</pre></div>
+
+
+<p>앞서 언급한 바와 같이 제네레이터는 함수의 상태가 그대로 보존되기 때문에 이터레이터 객체를 만들 때 매우 강력하고 메모리가 절약된다는 장점을 가짐. 아래의 예제처럼 필요할 때마다 데이터를 생성하면 메모리 사용을 줄일 수 있음.</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># 10개의 객체를 저장할 메모리 공간이 필요</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># 메모리를 저장할 공간이 필요하지 않음</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+
+<hr />
+<h2>데코레이터(decorator)</h2>
+<p>Java 의 <code>annotation</code> 과 굉장히 비슷해보이지만 실은 많이 다름. 파이썬의 데코레이터는 이름 그대로 본체를 꾸며주는 역할을 함. 디자인 패턴의 일종이며, 원래의 작업에 대한 부가적인 작업을 수행할 경우에 주로 사용함. 그러나 원래의 작업에는 끼어들 수는 없다는 한계를 가짐. 본래 장식이라는 게 장식되는 물건을 바꾸지는 않는 것처럼, <code>decorator</code> 또한 원래의 작업은 손대지 않고 그 주변에서 필요한 작업을 하는 것. 이런 방법은 특히나 함수를 비교적 자유롭게 다룰 수 있는 언어(함수형 언어나 Python, Ruby 등의 스크립트 언어 등)들에서는 쉽게 구현됨. 예제는 아래와 같음.</p>
+<blockquote>
+<p>함수를 래핑하여 앞뒤에서 전처리와 후처리를 하는 기능이라고 보면 됨</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">deco_test</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>  <span class="c1"># 생성자 내부에서 func를 불러서 데코레이터 이전에 함수를 생성함</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;생성자!&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">()</span>  <span class="c1"># 함수를 호출</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 함수가 호출될 떄</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;호출됨!&quot;</span><span class="p">)</span>
+
+<span class="nd">@deco_test</span>  <span class="c1"># deco_test에 shit 함수를 꾸며줌.</span>
+<span class="k">def</span> <span class="nf">deco</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;꾸며줌!!&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;끝!!&quot;</span><span class="p">)</span>
+<span class="n">deco</span><span class="p">()</span>
+
+<span class="c1">### result:</span>
+<span class="c1"># 생성자!</span>
+<span class="c1"># 꾸며줌!!</span>
+<span class="c1"># 끝!!</span>
+<span class="c1"># 호출됨!</span>
+</pre></div>
+
+
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="http://codecademy.com">Codecademy</a></li>
+<li><a href="https://wikidocs.net">Wikidocs</a></li>
+<li><a href="https://udacity.com">Udacity</a></li>
+<li><a href="http://legacy-wiki.dgoon.net/doku.php?id=python:decorator">dgoon Wiki</a></li>
+<li><a href="http://python-3-patterns-idioms-test.readthedocs.org/en/latest/PythonDecorators.html">Python 3 Patterns Idioms</a></li>
+</ol>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'function';
+                var disqus_url = 'https://til.chann.kr/python/function';
+
+            var disqus_config = function () {
+                this.language = "ko";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!--
+	## for client-side less
+	<link rel="stylesheet/less" type="text/css" href="http://git.chann.kr/theme/css/style.less">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+	-->
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/pygments.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="CHANN">
+	<meta name="description" content="Posts and writings by CHANN">
+
+	<link href="http://git.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="CHANN World Atom" />
+
+<meta name="keywords" content="ku, django, python, init">
+
+	<title>
+		CHANN World
+&ndash; Python, Django 등의 작업환경 설정하기	</title>
+
+</head>
+
+<body>
+	<aside>
+		<div id="user_meta">
+			<a href="http://git.chann.kr">
+				<img src="http://git.chann.kr/theme/images/logo.png" alt="logo" style="width:100px;height:100px;">
+			</a>
+			<h2><a href="http://git.chann.kr">CHANN</a></h2>
+			<p></p>
+			<ul>
+				<li><a href="/categories">카테고리</a></li>
+				<li><a href="/tags">태그</a></li>
+				<li><a href="/archives">아카이브</a></li>
+				<li><a href="http://blog.chann.kr" target="_blank">Blog</a></li>
+				<li><a href="https://chann.kr" target="_blank">Resume</a></li>
+				<li><a href="https://github.com/channprj" target="_blank">Github</a></li>
+				<li><a href="https://twitter.com/chann_kr" target="_blank">Twitter</a></li>
+				<li><a href="https://fb.com/channprj" target="_blank">Facebook</a></li>
+			</ul>
+		</div>
+	</aside>
+
+	<main>
+		<header>
+			<p>
+			<a href="http://git.chann.kr">Index</a> &brvbar; <a href="http://git.chann.kr/archives.html">Archives</a>
+			&brvbar; <a href="http://git.chann.kr/feeds/all.atom.xml">Atom</a>
+			</p>
+		</header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://git.chann.kr/project/django-python-initial-setting">Python, Django 등의 작업환경 설정하기</a></h3>
+  </div>
+  <div class="article_text">
+    <blockquote>
+<p>작성중</p>
+<p>이 글은 개인 기록용으로, 다소 불친절할 수 있습니다.</p>
+</blockquote>
+<h2>OS X에서 Python 설치하기</h2>
+<p>ruby 기반의 패키지관리 툴인 brew를 사용해서 Python을 설치하자.  </p>
+<div class="highlight"><pre><span class="nv">$ </span>brew update
+<span class="nv">$ </span>brew doctor
+<span class="nv">$ </span>brew install python
+<span class="nv">$ </span>sudo easy_install pip
+<span class="nv">$ </span>brew install pyenv
+</pre></div>
+
+
+<p><a href="https://github.com/yyuu/pyenv">Github pyenv 저장소</a> 의 설명을 잘 보고 따라해야 한다. 나는 bash가 아닌 zshell을 사용하므로 <code>.zshrc</code> 파일을 수정해주었다. 영어로 되어있지만 어려운 내용은 없으니 그냥 시키는대로 하면 된다.  </p>
+<p>제대로 설정이 되었는지 확인해보자.</p>
+<div class="highlight"><pre>CHANN@CHANN-Macbook:~ » python
+Python 3.4.0 <span class="o">(</span>default, Oct <span class="m">26</span> 2015, 06:24:28<span class="o">)</span>
+<span class="o">[</span>GCC 4.2.1 Compatible Apple LLVM 7.0.0 <span class="o">(</span>clang-700.1.76<span class="o">)]</span> on darwin
+Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
+&gt;&gt;&gt; <span class="nb">exit</span><span class="o">()</span>
+CHANN@CHANN-Macbook:~ »
+</pre></div>
+
+
+<hr />
+<h2>python, parser, virtualenv 등 세팅</h2>
+<div class="highlight"><pre><span class="nv">$ </span>pip install beautifulsoup4
+<span class="nv">$ </span>pip install lxml
+<span class="nv">$ </span>pip install requests
+<span class="nv">$ </span>brew install pyenv-virtualenv
+<span class="nv">$ </span>brew install autoenv
+</pre></div>
+
+
+<hr />
+<h2>Django 설치</h2>
+<div class="highlight"><pre><span class="nv">$ </span>pyenv virtualenv 3.4.2 kusle-3.4.2
+<span class="nv">$ </span>pyenv shell kusle-3.4.2
+<span class="nv">$ </span>pip install <span class="nv">django</span><span class="o">==</span>1.8.6
+<span class="nv">$ </span>django-admin startproject kusle .
+</pre></div>
+
+
+<p>그럼 아래와 같은 구조의 폴더가 생성된다.</p>
+<div class="highlight"><pre>kusle
+├── __init__.py
+├── settings.py
+├── urls.py
+└── wsgi.py
+</pre></div>
+
+
+<p>wsgi는 웹 서버 게이트웨이 인터페이스(WSGI, Web Server Gateway Interface)는 웹서버와 웹 애플리케이션의 인터페이스를 위한 파이썬 프레임워크다. Low-Level로 작성되어 웹서버와 웹 어플리케션, 프레임워크간의 벽을 허물었다.</p>
+<p>웹 어플리케이션 개발이 목적이므로, 기본적으로는 HTTP의 요청을 받아 응답을 돌려주어야 한다. 이러한 처리는 1차적으로 nginx를 통해 이뤄지는데, uwsgi라는 데몬을 사용하여 서버사이드를 처리할 예정이다.</p>
+<hr />
+<h3>uwsgi 설치</h3>
+<p>uwsgi의 역할은 아래와 같다.<br />
+client &lt;-&gt; the web server &lt;-&gt; the socket &lt;-&gt; uwsgi &lt;-&gt; Django</p>
+<p><code>pip</code> 를 통해 아래와 같이 <code>uwsgi</code> 를 설치하자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>pip install uwsgi
+<span class="nv">$ </span>mkdir /usr/local/etc/uwsgi/
+</pre></div>
+
+
+<p>근데 <code>uwsgi</code> 명령어가 자꾸 에러를 뿜는다. 중국 형님들 블로그에서 힌트를 얻어 아래와 같은 방법으로 해결을 했다. linuxbrew를 사용해서 겪는 삽질일지도 모르겠다.<br/>
+<code>sudo ln -s /home/사용자/.linuxbrew/lib/libpcre.so.1 /lib</code></p>
+<p>이후에 다음과 같이 테스트해보자</p>
+<div class="highlight"><pre><span class="nv">$ </span>uwsgi --http :8000 --module kusle.wsgi
+</pre></div>
+
+
+<p>그럼 장고 welcome 페이지가 뜰 것이다. 이제 nginx 와 연동을 하자.</p>
+<div class="highlight"><pre>    <span class="c">################# uWSGI configuration #################</span>
+
+    <span class="nv">event</span> <span class="o">=</span> epoll
+    <span class="nv">ssl</span> <span class="o">=</span> True
+    <span class="nv">plugin_dir</span> <span class="o">=</span> .
+    <span class="nv">timer</span> <span class="o">=</span> timerfd
+    <span class="nv">capabilities</span> <span class="o">=</span> False
+    <span class="nv">yaml</span> <span class="o">=</span> embedded
+    <span class="nv">pcre</span> <span class="o">=</span> True
+    <span class="nv">filemonitor</span> <span class="o">=</span> inotify
+    <span class="nv">malloc</span> <span class="o">=</span> libc
+    <span class="nv">zlib</span> <span class="o">=</span> True
+    <span class="nv">execinfo</span> <span class="o">=</span> False
+    <span class="nv">json</span> <span class="o">=</span> False
+    <span class="nv">ifaddrs</span> <span class="o">=</span> True
+    <span class="nv">xml</span> <span class="o">=</span> expat
+    <span class="nv">routing</span> <span class="o">=</span> True
+    <span class="nv">locking</span> <span class="o">=</span> pthread_mutex
+    <span class="nv">kernel</span> <span class="o">=</span> Linux
+    <span class="nv">debug</span> <span class="o">=</span> False
+
+    <span class="c">############## end of uWSGI configuration #############</span>
+    total build <span class="nb">time</span>: <span class="m">24</span> seconds
+    *** uWSGI is ready, launch it with /home/kusle/.pyenv/versions/kusle-3.4.2/bin/uwsgi ***
+</pre></div>
+
+
+<div class="highlight"><pre><span class="c1"># uwsgi.ini</span>
+<span class="k">[uwsgi]</span>
+<span class="c1"># the base directory (full path)</span>
+<span class="na">base</span>            <span class="o">=</span> <span class="s">/home/kusle/django</span>
+<span class="na">project</span>         <span class="o">=</span> <span class="s">kusle</span>
+
+<span class="na">chdir</span>           <span class="o">=</span> <span class="s">%(base)</span>
+
+<span class="c1"># the virtualenv (full path)</span>
+<span class="na">home</span>            <span class="o">=</span> <span class="s">/home/kusle/.pyenv/versions/kusle-3.4.2</span>
+
+<span class="c1"># test...</span>
+<span class="c1"># projectdomain = kusle.kuple.kr</span>
+<span class="c1"># protocol = uwsgi</span>
+<span class="c1"># daemonize = /home/kusle/django/log/kusle.log</span>
+
+<span class="c1"># Django&#39;s wsgi file</span>
+<span class="na">module</span>          <span class="o">=</span> <span class="s">kusle.wsgi</span>
+
+<span class="c1"># the socket (use the full path to be safe</span>
+<span class="na">socket</span>          <span class="o">=</span> <span class="s">kusle.sock</span>
+
+<span class="c1">######</span>
+
+<span class="c1"># process-related settings</span>
+<span class="na">master</span>          <span class="o">=</span> <span class="s">true</span>
+
+<span class="c1"># maximum number of worker processes</span>
+<span class="na">processes</span>       <span class="o">=</span> <span class="s">10</span>
+
+<span class="c1"># ... with appropriate permissions - may be needed</span>
+<span class="c1"># chmod-socket    = 664</span>
+
+<span class="c1"># clear environment on exit</span>
+<span class="c1"># vacuum          = true</span>
+</pre></div>
+
+
+<p>마스터로 계속 돌아가는 uwsgi를 멈추는 방법은 <code>killall -s INT uwsgi</code>명령어를 사용하면 된다.</p>
+<hr />
+<h2>자동으로 uWSGI 실행되도록 설정</h2>
+<div class="highlight"><pre>description &quot;uWSGI server instance configured to serve my project&quot;
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+setuid kusle
+setgid www-data
+
+env PATH=/home/kusle/django/myprojectenv/bin
+chdir /home/kusle/django
+exec uwsgi --http :8000 kusle.ini
+</pre></div>
+
+
+<hr />
+<h2>MariaDB 설정</h2>
+<p>Django는 기본설정으로 Sqlite3를 사용한다. 하지만 이번 프로젝트에서는 새롭게 DB를 구축하는 것 이외에 기존의 DB를 활용하는 방안도 고려중이므로, 되도록이면 같은 DB를 사용하는 것이 나을 것 같다는 판단을 하였다.</p>
+<p>먼저, DB를 새롭게 생성하자. 먼저, <code>$ mysql -u root -p</code>를 통해 mariadb 콘솔로 접속한다.</p>
+<div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">user</span> <span class="n">django</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">user</span> <span class="n">django</span><span class="o">@</span><span class="n">localhost</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;{비밀번호}&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">grant</span> <span class="k">all</span> <span class="k">privileges</span> <span class="k">on</span> <span class="n">django</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="n">django</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+</pre></div>
+
+
+<p>settings.py에 그대로 드러나는 DB명, 아이디, 암호를 감추어야 하는데, 이것은 쉘 변수를 활용하면 된다. settings.py는 <code>import os</code>를 하므로 쉘 변수를 그대로 불러올 수 있다.</p>
+<p>.bashrc 또는 .zshrc 등의 쉘 환경설정 파일에 다음과 같이 추가한다</p>
+<div class="highlight"><pre><span class="nb">export </span><span class="nv">DB_NAME</span><span class="o">=</span><span class="s2">&quot;DB이름&quot;</span>
+<span class="nb">export </span><span class="nv">DB_ID</span><span class="o">=</span><span class="s2">&quot;DB 계정 아이디&quot;</span>
+<span class="nb">export </span><span class="nv">DB_PW</span><span class="o">=</span><span class="s2">&quot;DB 계정 암호&quot;</span>
+</pre></div>
+
+
+<p>그리고 settings.py의 DB 관련 코드를 아래와 같이 수정한다.</p>
+<div class="highlight"><pre><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&quot;DB_NAME&quot;</span><span class="p">],</span>
+        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&quot;DB_ID&quot;</span><span class="p">],</span>
+        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&quot;DB_PW&quot;</span><span class="p">],</span>
+        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s">&#39;PORT&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>설치를 완료했으면 DB 연동이 제대로 되었는지 테스트를 해보자.</p>
+<div class="highlight"><pre><span class="nv">$ </span>./manage.py collectstatic
+</pre></div>
+
+
+<hr />
+<h2>최종 트리</h2>
+<div class="highlight"><pre>django
+├── 3.4.2
+│   ├── bin
+│   ├── lib
+│   └── <span class="nb">local</span>
+├── 404.htm
+├── 50x.htm
+├── db-parsing
+│   ├── bs4_test2.py
+│   ├── bs4_test3.py
+│   └── bs4_test.py
+├── index.html
+├── kusle
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── wsgi.py.original
+├── kusle.sock
+├── log
+│   └── kusle.log
+├── manage.py
+├── README.md
+├── requirements.txt
+├── static
+│   └── admin
+├── test.py
+├── uwsgi.ini
+└── versions
+    ├── bin
+    ├── lib
+    └── <span class="nb">local</span>
+</pre></div>
+
+
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-applications-using-uwsgi-web-server-with-nginx">Digital Ocean의 uWSGI, Nginx 관련글</a></li>
+<li><a href="https://ko.wikipedia.org/wiki/웹_서버_게이트웨이_인터페이스">위키피디아 wsgi 관련글</a></li>
+<li><a href="http://codingdojang.com/scode/364">코딩도장의 uwsgi 관련글</a></li>
+<li><a href="http://uwsgi-docs.readthedocs.org/en/latest/tutorials/Django_and_nginx.html">uWSGI Docs</a></li>
+<li><a href="http://link2me.tistory.com/431">link2me님 블로그의 DB 관련글</a></li>
+<li><a href="https://docs.djangoproject.com/en/1.8/ref/databases/">Django DB 관련 공식 문서</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-mysql-or-mariadb-with-your-django-application-on-ubuntu-14-04">Digital Ocean의 MariaDB, Django 관련글</a></li>
+<li><a href="http://knot.tistory.com/97">용이님 블로그의 관련글</a></li>
+<li><a href="http://uwsgi-docs.readthedocs.org/en/latest/Install.html">uwsgi 공식 문서</a></li>
+<li><a href="http://codingdojang.com/scode/373">코딩도장의 django 관련글</a></li>
+<li><a href="http://software-engineer.gatsbylee.com/uwsgi란-무엇인가-어떻게-사용해야-하는가/">gatsby님 블로그의 관련글</a></li>
+<li><a href="http://tutorial.djangogirls.org/ko/django_models/index.html">djangogirls 홈페이지</a></li>
+<li><a href="http://blog.hannal.com">hannal님 블로그</a></li>
+</ol>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 13 October 2015</p>
+    <p>Category: <a href="http://git.chann.kr/project/index">Project</a>
+ &ndash; Tags:
+      <a href="http://git.chann.kr/tag/ku">ku</a>,      <a href="http://git.chann.kr/tag/django">django</a>,      <a href="http://git.chann.kr/tag/python">python</a>,      <a href="http://git.chann.kr/tag/init">init</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "project/django-python-initial-setting";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://githubs.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+		<div id="ending_message">
+			<p>&copy; CHANN. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+		</div>
+	</main>
+</body>
+</html>

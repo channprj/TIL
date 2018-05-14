@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Today I Learned</title><link href="https://til.chann.kr/" rel="alternate"></link><link href="https://til.chann.kr/feeds/pelican.atom.xml" rel="self"></link><id>https://til.chann.kr/</id><updated>2016-02-27T18:00:00+09:00</updated><entry><title>Pelican 문서 작성법</title><link href="https://til.chann.kr/pelican/how-to-write-pelican-docs" rel="alternate"></link><published>2016-02-27T18:00:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-02-27:pelican/how-to-write-pelican-docs</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;p&gt;개인적으로 &lt;code&gt;.rst&lt;/code&gt; &lt;a href="https://en.wikipedia.org/wiki/ReStructuredText"&gt;(reStructuredText)&lt;/a&gt; 방식의 문서를 선호하지 않으므로, 이 글에서는 &lt;code&gt;.md&lt;/code&gt; &lt;a href="https://nolboo.github.io/blog/2013/09/07/john-gruber-markdown/"&gt;(Markdown)&lt;/a&gt; 방식의 문서를 작성하는 법을 다룰 예정.&lt;/p&gt;
+&lt;h2&gt;기본 틀&lt;/h2&gt;
+&lt;p&gt;양식의 기본적인 틀은 아래와 같다. Slug나 Summary 와 같이 없어도 그만인 것들은 생략 가능. Slug는 문서의 URL을 생성하는 것인데, 가급적 영어로 적는 것을 추천. 한글로 적으면 자동으로 한글리쉬(...) 같은 형태로 바꿔버리기 때문. 예를들어, &lt;code&gt;한글로 적지마요&lt;/code&gt; 를 Slug로 하면 &lt;code&gt;hangeulro-jeokjimayo&lt;/code&gt; 같은 형태로 문서가 발행됨.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;문서&lt;/span&gt; &lt;span class="err"&gt;제목&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;
+&lt;span class="n"&gt;Modified&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;펠리칸&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;펠리칸&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="err"&gt;문서&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;slug&lt;/span&gt;
+&lt;span class="n"&gt;Authors&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;CHANN&lt;/span&gt;
+&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;펠리칸&lt;/span&gt; &lt;span class="err"&gt;문서를&lt;/span&gt; &lt;span class="err"&gt;작성하는&lt;/span&gt; &lt;span class="err"&gt;법을&lt;/span&gt; &lt;span class="err"&gt;다룹니다&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="err"&gt;마크다운이&lt;/span&gt; &lt;span class="err"&gt;좋아요&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+&lt;span class="err"&gt;여기다&lt;/span&gt; &lt;span class="err"&gt;본문을&lt;/span&gt; &lt;span class="err"&gt;작성하면&lt;/span&gt; &lt;span class="err"&gt;됩니다&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;확장기능&lt;/h2&gt;
+&lt;p&gt;Pelican 은 &lt;a href="http://pythonhosted.org/Markdown/extensions/"&gt;Markdown Extension&lt;/a&gt;을 비롯한 다양한 &lt;a href="https://github.com/getpelican/pelican-plugins"&gt;Plugin&lt;/a&gt;들을 제공함. 여러모로 쓸만한 플러그인을 대충 뽑아보자면 다음과 같음.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Related Post&lt;/li&gt;
+&lt;li&gt;Category Order&lt;/li&gt;
+&lt;li&gt;CJK auto spacing&lt;/li&gt;
+&lt;li&gt;GitHub activity&lt;/li&gt;
+&lt;li&gt;Interlinks&lt;/li&gt;
+&lt;li&gt;Pelican Page Order&lt;/li&gt;
+&lt;li&gt;Share post&lt;/li&gt;
+&lt;li&gt;Sitemap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Github Pages 에서 404 페이지 작성&lt;/h2&gt;
+&lt;p&gt;아래와 같이 작성하면 됨. &lt;em&gt;Status&lt;/em&gt; 를 &lt;em&gt;hidden&lt;/em&gt; 으로 하면 목록에 뜨지 않음. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Not&lt;/span&gt; &lt;span class="n"&gt;Found&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;404&lt;/span&gt;
+&lt;span class="n"&gt;Save_as&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;html&lt;/span&gt;
+&lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hidden&lt;/span&gt;
+
+&lt;span class="err"&gt;글을&lt;/span&gt; &lt;span class="err"&gt;찾을&lt;/span&gt; &lt;span class="err"&gt;수&lt;/span&gt; &lt;span class="err"&gt;없습니다&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="err"&gt;검색&lt;/span&gt;&lt;span class="o"&gt;](/&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;하시거나&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="err"&gt;아카이브&lt;/span&gt;&lt;span class="o"&gt;](/&lt;/span&gt;&lt;span class="n"&gt;archives&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;를&lt;/span&gt; &lt;span class="err"&gt;확인해주세요&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;단점&lt;/h2&gt;
+&lt;p&gt;글이 이미지 추가 시 마크다운 문법에 맞추어 따로 상대경로를 입력해줘야하는게 귀찮음. 글 수정 시 수정시간을 적어줘야 하는데, 수정시간을 수정하는 걸 깜박하거나 귀찮아서 방치하게 됨.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;추가사항&lt;/h2&gt;
+&lt;p&gt;다국어지원도 되고 연관된 컨텐츠 보여주기 기능도 있는데, 기타 자세한 점은 &lt;a href="http://docs.getpelican.com/en"&gt;Pelican Documentation&lt;/a&gt;을 직접 확인하도록 하자. 공개된 Plugin을 찾아보면 입맛에 맞게 커스터미이징 할 수 있음.&lt;/p&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://docs.getpelican.com/en"&gt;Pelican Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://nolboo.github.io/blog/2013/09/07/john-gruber-markdown/"&gt;존 그루버 마크다운 페이지 번역&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/ReStructuredText"&gt;rst Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="python"></category><category term="pelican"></category><category term="static site generator"></category><category term="파이썬"></category><category term="펠리칸"></category><category term="정적 페이지 생성기"></category><category term="블로그"></category><category term="blog"></category><category term="github pages"></category><category term="markdown"></category><category term="마크다운"></category><category term="writing"></category><category term="글쓰기"></category></entry></feed>

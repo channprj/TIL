@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Today I Learned</title><link href="https://til.chann.kr/" rel="alternate"></link><link href="https://til.chann.kr/feeds/ci.atom.xml" rel="self"></link><id>https://til.chann.kr/</id><updated>2016-03-22T23:00:00+09:00</updated><entry><title>TIL에 Travis-CI 적용하기</title><link href="https://til.chann.kr/ci/travis-ci-setting-on-til" rel="alternate"></link><published>2016-03-22T23:00:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-03-22:ci/travis-ci-setting-on-til</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;p&gt;TIL의 Generator 저장소와 Github Pages 저장소를 분리해서 운영하다가 지저분함을 느끼고 하나로 합침. 내 Travis-CI의 YAML 파일은 아래와 같음.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;language&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;python&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;3.4&amp;#39;&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;env&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;global&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;GIT_COMMITTER_NAME={your-id}&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;GIT_COMMITTER_EMAIL={your-email}&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;GIT_AUTHOR_NAME={your-name}&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;GIT_AUTHOR_EMAIL={your-email}&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;secure&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;your-key&lt;/span&gt;&lt;span class="p p-Indicator"&gt;}&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;before_install&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git config --global user.email &amp;quot;{your-email}&amp;quot;&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git config --global user.name &amp;quot;{your-id}&amp;quot;&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git clone -b generator --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git generator&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cd generator&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;install&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pip install -r requirements.txt -q&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;npm install -g less&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;before_script&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git clone -b gh-pages --depth 1 --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git output&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cd content&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;rm -rf posts&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git clone -b master --quiet https://${GH_TOKEN}@github.com/channprj/TIL.git posts&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cd ..&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;make publish&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;after_success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cd output&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git add -A&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git commit -m &amp;quot;Pages updated from Github using Travis-CI.&amp;quot;&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git push https://${GH_TOKEN}@github.com/channprj/TIL.git gh-pages --quiet&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;branches&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;only&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;master&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;notifications&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;email&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;설정법 요약&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Travis-CI 에서 해당 브랜치를 체크&lt;/li&gt;
+&lt;li&gt;Github 환경설정에서 Key 발급 후 키를 암호화하여 Travis YAML 파일에 사용&lt;/li&gt;
+&lt;li&gt;Travis Document 를 보며 자신에게 알맞은 프로세스로 dotfile 생성&lt;/li&gt;
+&lt;li&gt;정상 작동하는지 테스트 해보고, 오류가 났다면 Travis 로그를 보고 수정&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h2&gt;후기&lt;/h2&gt;
+&lt;p&gt;Github 저장소 페이지에서 보기 좋게 하기 위해 master 브랜치에서는 오로지 MD 문서만 정리를 하였음. generator 브랜치에서 master 수정 내역을 불러와서 Pelican 으로 Publish 한 다음, gh-pages 브랜치로 Publish 결과를 다시 푸시함.&lt;/p&gt;
+&lt;p&gt;결과적으로, 저장소를 이중화 했을 때보단 겉보기엔 깔끔해보이나 commit log 를 볼 땐 지저분해 보일 수 밖에 없음. Git-Flow 라던가 Github-Flow 에 맞지 않은 브랜치 전략이지만 일단은 이대로 계속 운영해 볼 생각.&lt;/p&gt;
+&lt;p&gt;Git 의 Submodule 이나 Subtree 를 좀 더 자유자재로 사용 가능해지면 좀 더 깔끔하고 어썸한 방법으로 구조를 바꿀 생각.&lt;/p&gt;</summary><category term="ci"></category><category term="travis-ci"></category><category term="dev"></category><category term="script"></category><category term="yaml"></category><category term="til"></category><category term="개발"></category><category term="스크립트"></category><category term="자동화"></category><category term="지속적통합"></category></entry></feed>

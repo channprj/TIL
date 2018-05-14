@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Today I Learned</title><link href="https://til.chann.kr/" rel="alternate"></link><link href="https://til.chann.kr/feeds/shell.atom.xml" rel="self"></link><id>https://til.chann.kr/</id><updated>2016-06-04T20:00:00+09:00</updated><entry><title>zsh 소유권 문제 해결</title><link href="https://til.chann.kr/shell/zsh-ownership-issue-fix" rel="alternate"></link><published>2016-06-04T20:00:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-06-04:shell/zsh-ownership-issue-fix</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;p&gt;가끔 터미널로 작업하다 보면 아래와 같은 상황을 직면한다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Welcome to Ubuntu 14.04.3 LTS &lt;span class="o"&gt;(&lt;/span&gt;GNU/Linux 3.13.0-66-generic x86_64&lt;span class="o"&gt;)&lt;/span&gt;
+
+ * Documentation:  https://help.ubuntu.com/
+Last login: Sat Oct &lt;span class="m"&gt;31&lt;/span&gt; 15:15:36 &lt;span class="m"&gt;2015&lt;/span&gt; from 203.229.151.243
+zsh compinit: insecure directories, run compaudit &lt;span class="k"&gt;for&lt;/span&gt; list.
+Ignore insecure directories and &lt;span class="k"&gt;continue&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;y&lt;span class="o"&gt;]&lt;/span&gt; or abort compinit &lt;span class="o"&gt;[&lt;/span&gt;n&lt;span class="o"&gt;]&lt;/span&gt;?
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;이러한 상황의 문제점은 대부분 zshell과 관련된 소유권과 권한의 문제일 가능성이 큼. 특정 패키지나 라이브러리 등을 설치할 때 외부의 스크립트를 사용할 경우, 가끔 &lt;code&gt;/usr/local/share/&lt;/code&gt; 의 소유권과 권한을 변경해버리기 때문.&lt;/p&gt;
+&lt;p&gt;아래의 두 가지 방법이 있음. zshell을 사용하는 OS X, Linux 모두 적용 가능.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;site-functions 의 소유권 문제일 경우&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /usr/local/share/zsh
+$ sudo chown -R root:root ./site-functions
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;zsh 권한과 소유권 문제일 경우&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /usr/local/share/
+$ sudo chmod -R &lt;span class="m"&gt;755&lt;/span&gt; zsh
+$ sudo chown -R root:staff zsh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.zsh.org/mla/users/2012/msg00062.html"&gt;Zsh.org의 글&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Homebrew/homebrew/issues/7801#issuecomment-2187273"&gt;Homebrew의 이슈&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="zsh"></category><category term="shell"></category><category term="terminal"></category><category term="cli"></category><category term="sh"></category><category term="ohmyzsh"></category><category term="bug"></category><category term="issue"></category><category term="fix"></category><category term="터미널"></category><category term="쉘"></category><category term="권한"></category><category term="문제해결"></category></entry><entry><title>서버 재부팅 시 서비스 자동 실행 쉘스크립트</title><link href="https://til.chann.kr/shell/upstart-service-shell-script" rel="alternate"></link><published>2016-02-16T22:00:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-02-16:shell/upstart-service-shell-script</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Ubuntu Linux 기준으로 작성함.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;init 파일 생성&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;/etc/init.d&lt;/code&gt; 에 example 생성 후 아래와 같이 설정.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ chmod &lt;span class="m"&gt;755&lt;/span&gt; example
+$ chown root:root example
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;쉘 스크립트&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;example&lt;/code&gt; 의 코드는 아래와 같이 작성 가능.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span class="c1"&gt;### BEGIN INIT INFO&lt;/span&gt;
+&lt;span class="c1"&gt;# Provides: blog&lt;/span&gt;
+&lt;span class="c1"&gt;# Required-Start:&lt;/span&gt;
+&lt;span class="c1"&gt;# Required-Stop:&lt;/span&gt;
+&lt;span class="c1"&gt;# Default-Start: 2 3 4 5&lt;/span&gt;
+&lt;span class="c1"&gt;# Default-Stop: 0 1 6&lt;/span&gt;
+&lt;span class="c1"&gt;### END INIT INFO&lt;/span&gt;
+
+&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;service&amp;quot;&lt;/span&gt;    
+
+stop&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;  &lt;span class="c1"&gt;# -c 옵션은 해당 USER로 실행함을 의미.&lt;/span&gt;
+    sudo su - &lt;span class="nv"&gt;$USER&lt;/span&gt; -c &lt;span class="s2"&gt;&amp;quot;# something to stop&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+start&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;  
+    sudo su - &lt;span class="nv"&gt;$USER&lt;/span&gt; -c &lt;span class="s2"&gt;&amp;quot;# something to start&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; in  
+    start&lt;span class="o"&gt;)&lt;/span&gt;
+        start
+        &lt;span class="p"&gt;;;&lt;/span&gt;
+    stop&lt;span class="o"&gt;)&lt;/span&gt;
+        stop
+        &lt;span class="p"&gt;;;&lt;/span&gt;
+    restart&lt;span class="o"&gt;)&lt;/span&gt; 
+        stop
+        start
+        &lt;span class="p"&gt;;;&lt;/span&gt;
+    &lt;span class="c1"&gt;# 필요할 경우 reload 등의 옵션을 추가적으로 구현.&lt;/span&gt;
+    *&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Usage: &lt;/span&gt;&lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="s2"&gt; {start|stop|restart}&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;esac&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;위의 주석처리 된 부분에서 &lt;code&gt;runlevel&lt;/code&gt;을 2, 3, 4, 5라고 명시한 것(Default-Start)은 싱글유저 모드 이외엔 자동 시작하겠다는 의미. 위의 스크립트는 굉장히 간단하니 기타 응용 방법은 &lt;code&gt;/etc/init.d/&lt;/code&gt; 의 다른 스크립트들을 보고 참고.&lt;/p&gt;
+&lt;h2&gt;심볼릭 링크 추가&lt;/h2&gt;
+&lt;p&gt;쉘스크립트 작성이 끝났으면 아래와 같이 심볼릭 링크를 추가하자. rc(run command)는 다목적 시동 스크립트를 의미한다. upstart init은 우분투 6.10 때부터 도입됨.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ update-rc.d ghost defaults
+$ update-rc.d ghost &lt;span class="nb"&gt;enable&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="shell"></category><category term="terminal"></category><category term="cli"></category><category term="sh"></category><category term="init"></category><category term="init.d"></category><category term="ubuntu"></category><category term="upstart"></category><category term="script"></category><category term="쉘"></category><category term="스크립트. 터미널"></category></entry><entry><title>zsh에서 vim 명령어 자동완성 오류</title><link href="https://til.chann.kr/shell/ohmyzsh-autocomplete-bug-fix" rel="alternate"></link><published>2016-01-25T21:12:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-01-25:shell/ohmyzsh-autocomplete-bug-fix</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;p&gt;갑자기 &lt;code&gt;vim&lt;/code&gt; 을 입력하고 tab을 누르니 &lt;code&gt;_arguments:450: _vim_files: function definition file not found&lt;/code&gt; 라는 오류메시지가 떴다. 구글링을 해 보니 홈 폴더에서 &lt;code&gt;.zcompdump*&lt;/code&gt; 파일을 지우면 대체로 잔버그가 해결된다는 답변&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;에 꽤나 힘이 실려있었는데, 이번 경우에는 좀처럼 통하지 않았다.  알고 보니 &lt;code&gt;exec zsh&lt;/code&gt; 해야 해결되었다. 아무 생각 없이 &lt;code&gt;source .zshrc&lt;/code&gt; 를 치고 '어... 왜 안 고쳐지지?' 헤맸던 내가 바보같다... dotfile 은 환경설정이거늘 ㅠㅠ&lt;/p&gt;
+&lt;h2&gt;정리&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rm ~/.zcompdump*
+$ &lt;span class="nb"&gt;exec&lt;/span&gt; zsh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;oh-my-zsh 버전이 올라갈 때마다 잔버그가 자주 나타나는 모양이다.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="zsh"></category><category term="shell"></category><category term="terminal"></category><category term="cli"></category><category term="sh"></category><category term="ohmyzsh"></category><category term="bug"></category><category term="fix"></category><category term="터미널"></category><category term="쉘"></category></entry></feed>

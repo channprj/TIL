@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Today I Learned</title><link href="https://til.chann.kr/" rel="alternate"></link><link href="https://til.chann.kr/feeds/front-end.atom.xml" rel="self"></link><id>https://til.chann.kr/</id><updated>2016-01-15T20:12:00+09:00</updated><entry><title>Bower 사용법</title><link href="https://til.chann.kr/front-end/how-to-use-bower" rel="alternate"></link><published>2016-01-15T20:12:00+09:00</published><author><name>CHANN</name></author><id>tag:til.chann.kr,2016-01-15:front-end/how-to-use-bower</id><summary type="html">&lt;!--Summary: --&gt;
+
+&lt;p&gt;&lt;a href="http://bower.io"&gt;Bower&lt;/a&gt; 는 웹을 위한 패키지 관리도구다. 트위터에서 개발하였고, 웹 개발시 자주 쓰이는 라이브러리를 쉽고 간편하게 관리할 수 있다. &lt;code&gt;npm&lt;/code&gt;, &lt;code&gt;pip&lt;/code&gt;, &lt;code&gt;gem&lt;/code&gt; 과는 다르게 '웹 패키지 관리도구'라서 특정 언어의 종속성을 가지고 있지 않다. 개인적으로 느낀 장단점은 아래와 같다.&lt;/p&gt;
+&lt;h2&gt;장점&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;패키지 설치 및 버전 관리, 의존성 관리 용이&lt;/li&gt;
+&lt;li&gt;HTML, CSS, JS, Font, Image 파일 등의 최적화된 패키지&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;단점&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;패키지 설치장소 변경 불가, 패키지 디렉토리가 깔끔하지 않음.&lt;br /&gt;
+(예시: ~/project/bower_components/bootstrap/dist/js)&lt;/li&gt;
+&lt;li&gt;npm 에 의존적인 패키지 관리자. npm으로 bower를 설치 및 관리해야함.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;사용법&lt;/h2&gt;
+&lt;h3&gt;Bower 설치&lt;/h3&gt;
+&lt;p&gt;아래와 같이 설치한다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;npm install -g bower
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h3&gt;패키지 설치&lt;/h3&gt;
+&lt;p&gt;패키지 설치는 &lt;code&gt;npm&lt;/code&gt; 등 다른 패키지 관리도구와 비슷하다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ bower install bootstrap
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h3&gt;패키지 검색&lt;/h3&gt;
+&lt;p&gt;아래와 같다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ bower search bootstrap  &lt;span class="c1"&gt;# bootstrap 패키지 전체 검색&lt;/span&gt;
+$ bower lookup bootstrap  &lt;span class="c1"&gt;# bootstrap과 일치하는 패키지만 찾기&lt;/span&gt;
+$ bower info bootstrap  &lt;span class="c1"&gt;# bootstrap의 버전 정보 확인&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h3&gt;패키지 버전, 의존성 관리&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;node.js&lt;/code&gt; 에서는 &lt;code&gt;package.json&lt;/code&gt; 으로 관리하는데, bower에서도 비슷하게 &lt;code&gt;bower.json&lt;/code&gt; 으로 관리를 한다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ bower init  &lt;span class="c1"&gt;# bower 패키지 정보를 저장&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;패키지 설치할 때, &lt;code&gt;--save&lt;/code&gt; 를 뒤에 붙여주면 설치하고 나서 &lt;code&gt;bower.json&lt;/code&gt;에 자동으로 기록해준다.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://bower.io"&gt;Bower 공식 홈페이지&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bower/bower"&gt;Bower 저장소&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="dev"></category><category term="bower"></category><category term="package manager"></category><category term="tool"></category><category term="개발"></category><category term="패키지매니져"></category></entry></feed>

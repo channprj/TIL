@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>python - Today I Learned</title>
+	<!-- Using the latest rendering mode for IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+
+
+    <meta name="author" content="CHANN" />
+    <meta name="keywords" content="python" />
+
+	<!-- CSS Components -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/bower_components/xeicon/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/pygment.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://blog.chann.kr/assets/css/bigfoot-number.css">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://til.chann.kr/theme/css/base.css"/>
+
+	<link href="https://til.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Today I Learned ATOM Feed"/>
+
+
+
+</head>
+<body>
+<!-- GNB -->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="gnb container">
+		<div class="navbar-header">
+			<a href="https://til.chann.kr/" class="navbar-brand">
+Today I Learned			</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://blog.chann.kr"><i class="gnb-xeicon xi-ghost"></i></a></li>
+				<li><a href="https://twitter.com/channprj"><i class="gnb-xeicon xi-twitter"></i></a></li>
+				<li><a href="https://github.com/channprj/TIL"><i class="gnb-xeicon xi-github"></i></a></li>
+				<li><a href="https://til.chann.kr/about"><i class="gnb-xeicon xi-unknown-circle"></i></a></li>
+				<li><a href="https://til.chann.kr/archives"><i class="gnb-xeicon xi-archive"></i><!-- <span class="icon-label"></span> --></a></li>
+				<li><a href="https://til.chann.kr/categories"><i class="gnb-xeicon xi-sitemap"></i></a></li>
+				<li><a href="https://til.chann.kr/tags"><i class="gnb-xeicon xi-tags"></i></a></li>
+				<li><a href="https://til.chann.kr/search"><i class="gnb-xeicon xi-magnifier"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- //GNB -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <ol class="breadcrumb">
+        <li><a href="https://til.chann.kr" title="Today I Learned"><i class="xi-home"></i></a></li>
+        <li><a href="https://til.chann.kr/tags" title="Tags">Tags</a></li>
+        <li class="active">python</li>
+    </ol>
+</div>
+<!-- banner -->
+<div class="container">
+	<div class="wrap row">
+		<div class="col-lg-12">
+            <article>
+                <h2><a href="https://til.chann.kr/python/unit_test">파이썬 단위 테스트</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<p>파이썬은 기본적으로 제공하는 unittest(PyUnit) 모듈에서 단위 테스트를 지원. 어떤 모듈이나 함수를 작성할때 정상 작동여부를 테스트하는 과정을 거치는데, 단위 테스트를 사용하면 코드가 수정되어도 테스트를 동일하게 돌려볼 수 있음.</p>
+<p>간단한 테스트 작성법은 아래와 같음.</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">unittest is the batteries-included test module in the Python standard library. Its API will be familiar to ...</span></pre></div></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/unit_test">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/module">파이썬 모듈</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<p>모듈은 특정 기능을 담당하는 코드모음으로, 함수나 변수 또는 클래스 들을 모아 놓은 파일임. 프로그램에서 불러와 사용할수 있게끔 만들어진 파이썬 파일이라고도 할 수 있음. 이미 만들어 놓은 모듈을 사용할 수도 있고 직접 만들어서 사용할 수도 있음.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>  <span class="c1"># math 모듈을 불러옴</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># math 모듈의 pi 사용</span>
+<span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow ...</span></pre></div></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/module">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/class">파이썬 클래스</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<p>파이썬은 객체지향 언어이기에 클래스를 사용을 권장함. 클래스는 좀 더 효율적이고 간결하게 기능을 구현하기 위해 존재. 클래스는 <a href="https://ko.wikipedia.org/wiki/객체_지향_프로그래밍">객체지향 프로그래밍 언어</a>에서 주로 사용하는 개념. 상속(Inheritance), 다형성(Polymorphism), 캡슐화(Encapsulation) 또는 정보은닉(Information Hiding)의 개념을 알아야 함.</p>
+<h2>선언</h2>
+<p>클래스는 선언과 동시에 객체로 생성됨. 일반적인 클래스는 데이터와 메서드로 구성되나 없어도 무방 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/class">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/loop-condition">파이썬 제어문</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<h2>조건문</h2>
+<p>다른 언어들과 마찬가지로 <code>if</code>, <code>elif</code>, <code>else</code> 조건문이 있음. 여러줄일 경우 들여쓰기로 블록을 지정해야 함. 예시는 아래와 같음.</p>
+<hr />
+<h3>if 문</h3>
+<div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a is 1 !!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a is 2 !!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a is not 1 and 2&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<h4>파이썬에서의 장점</h4>
+<p><em>C</em> 나 <em>Java</em> 계열의 언어와는 다르게 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/loop-condition">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/upgrade-all-python-packages">파이썬 패키지 한번에 업그레이드하기</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<p><a href="https://github.com/channprj/TIL">TIL</a>을 운영하면서 <a href="http://requires.io">require.io</a> 서비스의 뱃지가 <em>outdated</em> 라는 영롱한 글자와 함께 노란불이 들어와 있는 것이 영 거슬렸음.</p>
+<p>여러가지 방법이 있지만 요약하면 대개 아래와 같음.</p>
+<ol>
+<li>쉘 명령어로 해결</li>
+<li>파이썬 코드로 해결 (쉘 사용)</li>
+</ol>
+<hr />
+<p>1번의 경우 <code>$ pip list --outdated</code> 라는 쉘 스크립트와 정규표현식을 활용해서 파일을 작성 가능하지만, 쉘 스크립트와 정규표현식은 아직 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/upgrade-all-python-packages">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/coding-convention">파이썬 코딩 컨벤션</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<p><center><img alt="Imgur" src="https://i.imgur.com/P58yvJI.png" /></center></p>
+<p><a href="https://en.wikipedia.org/wiki/Coding_conventions">코딩 컨벤션(Coding convention)</a>이란 읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약(약속)임.</p>
+<p>대부분의 언어는 대표적인 코딩 컨벤션을 가지고 있고, 일반적으로는 그러한 암묵적인 표준을 따르게 됨. 하지만 프로젝트별, 회사별, 기타 단체마다 각자 다른 규칙을 가짐. 단체에서는 아무리 작은 프로젝트라 하더라도 유지 보수 및 추가 개발 등의 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/coding-convention">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/base-function">파이썬 기본 함수들</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<h2>입출력</h2>
+<blockquote>
+<p>작성중</p>
+</blockquote>
+<h2>참고</h2>
+<ol>
+<li><a href="http://codecademy.com">Codecademy</a></li>
+<li><a href="https://wikidocs.net">Wikidocs</a></li>
+</ol>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/base-function">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/how-to-write-pelican-docs">Pelican 문서 작성법</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<p>개인적으로 <code>.rst</code> <a href="https://en.wikipedia.org/wiki/ReStructuredText">(reStructuredText)</a> 방식의 문서를 선호하지 않으므로, 이 글에서는 <code>.md</code> <a href="https://nolboo.github.io/blog/2013/09/07/john-gruber-markdown/">(Markdown)</a> 방식의 문서를 작성하는 법을 다룰 예정.</p>
+<h2>기본 틀</h2>
+<p>양식의 기본적인 틀은 아래와 같다. Slug나 Summary 와 같이 없어도 그만인 것들은 생략 가능. Slug는 문서의 URL을 생성하는 것인데, 가급적 영어로 적는 것을 추천. 한글로 적으면 자동으로 한글리쉬(...) 같은 형태로 바꿔버리기 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/how-to-write-pelican-docs">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/function">파이썬 함수</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<h2>파이썬 함수 개념</h2>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+
+
+<p>파이썬에서는 함수도 객체. <code>def</code> 는 함수 객체를 만드는 구문. test 라는 이름은 생성된 함수 객체를 참조하는 레퍼런스. 메모리 어딘가에 함수 객체가 생성되는 것이고, 객체이기 때문에 생성할 때마다 다른 주소값을 가짐.</p>
+<p><code>return</code> 에서는 함수를 종료하고, 해당 함수를 호출한 곳으로 다시 되돌아감 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/function">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="https://til.chann.kr/python/variable-operator">파이썬 기초</a></h2>
+                <div class="summary"><!--Summary: -->
+
+<blockquote>
+<p>작성중</p>
+</blockquote>
+<h2>특징</h2>
+<ul>
+<li>인터프리터 언어</li>
+<li>가독성이 좋음</li>
+<li>접착성이 좋음(풀 언어(glue language)라고도 부름)</li>
+<li>무료</li>
+<li>방대한 오픈소스</li>
+<li>유니코드 기반</li>
+<li>동적 타이핑</li>
+</ul>
+<hr />
+<h2>2.x와 3.x의 차이</h2>
+<blockquote>
+<p>작성중</p>
+</blockquote>
+<ul>
+<li>print 함수 형태 변경</li>
+<li>int 형으로 통일됨</li>
+<li>하지만 나누기 결과는 float</li>
+<li>3.x는 문자열 기본 인코딩이 유니코드</li>
+</ul>
+<hr />
+<h2>설치법</h2>
+<h3>윈도우</h3>
+<p><a href="https://www.python.org/downloads/">파이썬 재단 홈페이지</a> 참고 ...</p></!--summary:>
+                    <a class="btn btn-default btn-xs" href="https://til.chann.kr/python/variable-operator">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+		</div>
+	</div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 <a href="/">CHANN</a></div>
+         <div class="col-xs-2"><p class="pull-right"><i class="xi-angle-up"></i><a href="#">Top</a></p></div>
+      </div>
+   </div>
+</footer>
+<!-- JS Components -->
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://til.chann.kr/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://blog.chann.kr/assets/js/bigfoot.min.js"></script>
+<script type="text/javascript">$.bigfoot();</script>
+<!-- <script src="https://til.chann.kr/theme/js/prism.js"></script> -->
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'githubs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65628430-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

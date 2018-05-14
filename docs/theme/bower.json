@@ -1,0 +1,15 @@
+{
+  "name": "peliwiki",
+  "homepage": "https://github.com/channprj/wiki.chann.kr-source",
+  "authors": [
+    "CHANN <chann@chann.kr>"
+  ],
+  "description": "pelican wiki theme components",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "xeicon": "~1.0.4"
+  }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!--
+	## for client-side less
+	<link rel="stylesheet/less" type="text/css" href="http://git.chann.kr/theme/css/style.less">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+	-->
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://git.chann.kr/theme/css/pygments.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="CHANN">
+	<meta name="description" content="Posts and writings by CHANN">
+
+	<link href="http://git.chann.kr/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="CHANN World Atom" />
+
+<meta name="keywords" content="ku, db, parsing, python">
+
+	<title>
+		CHANN World
+&ndash; 강의 편람 DB 파싱	</title>
+
+</head>
+
+<body>
+	<aside>
+		<div id="user_meta">
+			<a href="http://git.chann.kr">
+				<img src="http://git.chann.kr/theme/images/logo.png" alt="logo" style="width:100px;height:100px;">
+			</a>
+			<h2><a href="http://git.chann.kr">CHANN</a></h2>
+			<p></p>
+			<ul>
+				<li><a href="/categories">카테고리</a></li>
+				<li><a href="/tags">태그</a></li>
+				<li><a href="/archives">아카이브</a></li>
+				<li><a href="http://blog.chann.kr" target="_blank">Blog</a></li>
+				<li><a href="https://chann.kr" target="_blank">Resume</a></li>
+				<li><a href="https://github.com/channprj" target="_blank">Github</a></li>
+				<li><a href="https://twitter.com/chann_kr" target="_blank">Twitter</a></li>
+				<li><a href="https://fb.com/channprj" target="_blank">Facebook</a></li>
+			</ul>
+		</div>
+	</aside>
+
+	<main>
+		<header>
+			<p>
+			<a href="http://git.chann.kr">Index</a> &brvbar; <a href="http://git.chann.kr/archives.html">Archives</a>
+			&brvbar; <a href="http://git.chann.kr/feeds/all.atom.xml">Atom</a>
+			</p>
+		</header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://git.chann.kr/project/ku-lecture-db-parsing">강의 편람 DB 파싱</a></h3>
+  </div>
+  <div class="article_text">
+    <blockquote>
+<p>작성중</p>
+<p>이 글은 개인 기록용으로, 다소 불친절할 수 있습니다.</p>
+</blockquote>
+<p>강의평가 시스템을 구축하기 전에, 먼저 강의 편람 정보를 가지고 있어야 한다.<br />
+고려대는 강의편람을 xml 등의 형식으로 따로 제공하지 않으므로, html 파싱을 해서 추출해야 한다.<br />
+추출하기 전에 앞서 소스 URL을 찾아내야만 했다.  </p>
+<p><code>http://sugang.korea.ac.kr</code> 의 코드를 면밀히 분석한 결과, 아래의 URL을 찾아낼 수 있었다.<br />
+아래의 주소를 통해 수강 편람을 파싱받아 DB에 뼈대를 저장해 두면 될 것 같다.  </p>
+<p><code>http://infodepot.korea.ac.kr/lecture/LecMajorSub.jsp?yy=2010&amp;tm=1R&amp;col=4460&amp;dept=4548</code></p>
+<hr />
+<p>아래의 코드를 참고하여 GET으로 값을 전달하면 쉽게 HTML 파싱을 할 수 있다.<br />
+각 변수별 값은 <code>html</code>과 <code>js</code>를 통해 추출 가능하다.  </p>
+<div class="highlight"><pre>...
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;yy&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2015&quot;</span> <span class="na">selected=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>2015년<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2014&quot;</span><span class="nt">&gt;</span>2014년<span class="nt">&lt;/option&gt;</span>
+...
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;tm&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1R&quot;</span><span class="nt">&gt;</span>1학기<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1S&quot;</span><span class="nt">&gt;</span>여름학기<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">&quot;&quot;</span> <span class="na">value=</span><span class="s">&quot;2R&quot;</span><span class="nt">&gt;</span>2학기<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;2W&quot;</span><span class="nt">&gt;</span>겨울학기<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SC&quot;</span><span class="nt">&gt;</span>국제하계대학<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;col&quot;</span> <span class="na">onchange=</span><span class="s">&quot;changeCol(frm_ms, this, frm_ms.dept);&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">&quot;&quot;</span> <span class="na">value=</span><span class="s">&quot;0137&quot;</span> <span class="na">style=</span><span class="s">&quot;color:black&quot;</span><span class="nt">&gt;</span>법과대학<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;0140&quot;</span> <span class="na">style=</span><span class="s">&quot;color:black&quot;</span><span class="nt">&gt;</span>경영대학<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;0143&quot;</span> <span class="na">style=</span><span class="s">&quot;color:black&quot;</span><span class="nt">&gt;</span>문과대학<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;4652&quot;</span> <span class="na">style=</span><span class="s">&quot;color:black&quot;</span><span class="nt">&gt;</span>생명과학대학  <span class="nt">&lt;/option&gt;</span>
+...
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;4460&quot;</span> <span class="na">style=</span><span class="s">&quot;color:black&quot;</span><span class="nt">&gt;</span>과학기술대학<span class="nt">&lt;/optin&gt;</span>
+...
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;dept&quot;</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;4548&quot;</span> <span class="na">style=</span><span class="s">&quot;color: black;&quot;</span><span class="nt">&gt;</span>컴퓨터정보학과 <span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;4549&quot;</span> <span class="na">style=</span><span class="s">&quot;color: black;&quot;</span><span class="nt">&gt;</span>정보통계학과   <span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;4550&quot;</span> <span class="na">style=</span><span class="s">&quot;color: black;&quot;</span><span class="nt">&gt;</span>전자및정보공학부 <span class="nt">&lt;/option&gt;</span>
+...
+</pre></div>
+
+
+<p>Parser는 <code>Python</code>의 <code>Beautiful Soup</code> 라이브러리를 사용하면 편리할 것 같다.</p>
+<hr />
+<h3>Making the soup</h3>
+<p>아래의 코드는 링크를 모두 가져오는 bs4 예제다.</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">r</span>  <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;http://kuple.kr/free&quot;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">&quot;lxml&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;href&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<hr />
+<h2>참고</h2>
+<ol>
+<li><a href="http://zevross.com/blog/2014/05/16/using-the-python-library-beautifulsoup-to-extract-data-from-a-webpage-applied-to-world-cup-rankings/">zevross의 블로그 글</a></li>
+<li><a href="https://wikidocs.net/book/1">점프 투 파이썬</a></li>
+</ol>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 08 October 2015</p>
+    <p>Category: <a href="http://git.chann.kr/project/index">Project</a>
+ &ndash; Tags:
+      <a href="http://git.chann.kr/tag/ku">ku</a>,      <a href="http://git.chann.kr/tag/db">db</a>,      <a href="http://git.chann.kr/tag/parsing">parsing</a>,      <a href="http://git.chann.kr/tag/python">python</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "project/ku-lecture-db-parsing";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://githubs.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+		<div id="ending_message">
+			<p>&copy; CHANN. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+		</div>
+	</main>
+</body>
+</html>
